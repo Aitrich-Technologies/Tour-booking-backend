@@ -169,3 +169,4 @@ C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\
 C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\ref\TourBooking.dll
 C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\Domain.dll
 C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\Domain.pdb
+C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\AutoMapper.dll

@@ -7,12 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Enum\" />
+    <Folder Include="Services\Destination\DTO\" />
+    <Folder Include="Services\Destination\Interface\" />
+    <Folder Include="Services\Participant\DTO\" />
+    <Folder Include="Services\Participant\Interface\" />
+    <Folder Include="Services\Terms\DTO\" />
+    <Folder Include="Services\Terms\Interface\" />
+    <Folder Include="Services\TourBooking\DTO\" />
+    <Folder Include="Services\TourBooking\Interface\" />
+    <Folder Include="Services\Tour\DTO\" />
+    <Folder Include="Services\Tour\Interface\" />
+    <Folder Include="Services\User\DTO\" />
+    <Folder Include="Services\User\Interface\" />
   </ItemGroup>
 
 </Project>

@@ -206,24 +206,8 @@ public partial class TourBookingDbContext : DbContext
                 .HasConstraintName("FK_TourBooking_Tour");
         });
 
-        modelBuilder.Entity<TsCompanyMaster>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__TS_Compa__3213E83F007862AB");
-
-            entity.ToTable("TS_Company_Master");
-
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
-            entity.Property(e => e.Name)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("name");
-            entity.Property(e => e.Remarks)
-                .HasMaxLength(250)
-                .IsUnicode(false)
-                .HasColumnName("remarks");
-        });
+       
+          
 
         OnModelCreatingPartial(modelBuilder);
     }
