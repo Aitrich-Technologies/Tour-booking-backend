@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Enum;
+using System;
 using System.Collections.Generic;
 
 namespace Domain.Models;
@@ -15,7 +16,7 @@ public partial class AuthUser
 
     public DateOnly? Dob { get; set; }
 
-    public string? Role { get; set; }
+    public UserRole Role { get; set; }
 
     public string UserName { get; set; } = null!;
 

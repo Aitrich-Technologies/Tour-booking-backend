@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Enum;
+using System;
 using System.Collections.Generic;
 
 namespace Domain.Models;
@@ -21,7 +22,7 @@ public partial class Tour
 
     public string? Customer { get; set; }
 
-    public string? Status { get; set; }
+    public TourStatus Status { get; set; }
 
     public string? Consultant { get; set; }
 
