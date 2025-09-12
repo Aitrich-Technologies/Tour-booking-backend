@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Enum;
+using System;
 using System.Collections.Generic;
 
 namespace Domain.Models;
@@ -29,9 +30,9 @@ public partial class TourBookingForm
 
     public bool? LeadPassenger { get; set; }
 
-    public string? ParticipantType { get; set; }
+    public ParticipantType ParticipantType { get; set; }
 
-    public string? Status { get; set; }
+    public TourStatus Status { get; set; }
 
     public virtual ICollection<ParticipantInformation> ParticipantInformations { get; set; } = new List<ParticipantInformation>();
 

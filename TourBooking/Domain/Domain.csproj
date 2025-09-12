@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Enum\" />
     <Folder Include="Services\Destination\DTO\" />
     <Folder Include="Services\Destination\Interface\" />
     <Folder Include="Services\Participant\DTO\" />
