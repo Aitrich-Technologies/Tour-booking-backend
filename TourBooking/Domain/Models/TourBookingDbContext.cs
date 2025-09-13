@@ -27,7 +27,53 @@ public partial class TourBookingDbContext : DbContext
 
     public virtual DbSet<TourBookingForm> TourBookingForms { get; set; }
 
-   
-    
-    
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // Tour → Customer (AuthUser)
+        modelBuilder.Entity<Tour>()
+            .HasOne(t => t.Customer)
+            .WithMany()
+            .HasForeignKey(t => t.CustomerId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Tour → Consultant (AuthUser)
+        modelBuilder.Entity<Tour>()
+            .HasOne(t => t.Consultant)
+            .WithMany()
+            .HasForeignKey(t => t.ConsultantId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Tour → TermsAndConditions
+        modelBuilder.Entity<TermsAndCondition>()
+            .HasOne(tc => tc.Tour)
+            .WithMany(t => t.TermsAndConditions)
+            .HasForeignKey(tc => tc.TourId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Tour → Notes
+        modelBuilder.Entity<Notes>()
+            .HasOne(n => n.Tour)
+            .WithMany(t => t.Notes)
+            .HasForeignKey(n => n.TourId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // TourBookingForm → Tour
+        modelBuilder.Entity<TourBookingForm>()
+            .HasOne(tbf => tbf.Tour)
+            .WithMany(t => t.TourBookingForms)
+            .HasForeignKey(tbf => tbf.TourId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // ParticipantInformation → TourBookingForm
+        modelBuilder.Entity<ParticipantInformation>()
+            .HasOne(pi => pi.Lead)
+            .WithMany(tbf => tbf.ParticipantInformations)
+            .HasForeignKey(pi => pi.LeadId)
+            .OnDelete(DeleteBehavior.Restrict);
+    }
+
+
 }
