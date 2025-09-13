@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Domain.Helper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Services.Participant.Interface;
+using Domain.Services.Participant;
 
 namespace Domain.Extension
 {
@@ -17,6 +20,9 @@ namespace Domain.Extension
             services.AddDbContext<TourBookingDbContext>(options =>
                options.UseSqlServer(config.GetConnectionString("DefaultConnection"))
             );
+            services.AddAutoMapper(typeof(MappingProfile));
+            services.AddScoped<IParticipantRepository, ParticipantRepository>();
+            services.AddScoped<IParticipantService, ParticipantService>();
             return services;
         }
     }

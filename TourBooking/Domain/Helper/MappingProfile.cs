@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Domain.Models;
+using Domain.Services.Participant.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,13 @@ namespace Domain.Helper
     {
         public MappingProfile() 
         {
+            // Entity → DTO
+            CreateMap<ParticipantInformation, ParticipantDto>()
+                .ForMember(dest => dest.BookingId, opt => opt.MapFrom(src => src.LeadId));
+
+            // DTO → Entity
+            CreateMap<ParticipantDto, ParticipantInformation>()
+                .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.BookingId));
         }
     }
 }
