@@ -4,6 +4,7 @@ using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(TourBookingDbContext))]
-    partial class TourBookingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250915040953_Add")]
+    partial class Add
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -220,9 +223,12 @@ namespace Domain.Migrations
                     b.Property<string>("PlaceOfBirth")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("TourBookingFormId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("LeadId");
+                    b.HasIndex("TourBookingFormId");
 
                     b.ToTable("ParticipantInformations");
                 });
@@ -310,13 +316,9 @@ namespace Domain.Migrations
 
             modelBuilder.Entity("ParticipantInformation", b =>
                 {
-                    b.HasOne("Domain.Models.TourBookingForm", "Lead")
+                    b.HasOne("Domain.Models.TourBookingForm", null)
                         .WithMany("ParticipantInformations")
-                        .HasForeignKey("LeadId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Lead");
+                        .HasForeignKey("TourBookingFormId");
                 });
 
             modelBuilder.Entity("Tour", b =>
