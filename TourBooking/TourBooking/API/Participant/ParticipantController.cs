@@ -1,9 +1,7 @@
 ﻿using Domain.Services.Participant.DTO;
 using Domain.Services.Participant.Interface;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TourBooking.API.Participant.RequestObjects;
-using TourBooking.Controllers;
 
 namespace TourBooking.API.Participant
 {
@@ -34,15 +32,43 @@ namespace TourBooking.API.Participant
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddParticipant(Guid bookingId, [FromBody] ParticipantDto dto)
+        public async Task<IActionResult> AddParticipant(Guid bookingId, [FromBody] AddParticipantRequest request)
         {
+            var dto = new ParticipantDto
+            {
+                LeadId = request.LeadId,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Gender = request.Gender,
+                Citizenship = request.Citizenship,
+                PassportNumber = request.PassportNumber,
+                IssueDate = request.IssueDate,
+                ExpiryDate = request.ExpiryDate,
+                PlaceOfBirth = request.PlaceOfBirth
+            };
+
             var result = await _service.AddParticipantAsync(bookingId, dto);
             return CreatedAtAction(nameof(GetParticipantById), new { bookingId, id = result.Id }, result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateParticipant(Guid bookingId, Guid id, [FromBody] ParticipantDto dto)
+        public async Task<IActionResult> UpdateParticipant(Guid bookingId, Guid id, [FromBody] UpdateParticipantRequest request)
         {
+            var dto = new ParticipantDto
+            {
+                Id = id,
+                BookingId = bookingId,
+                LeadId = bookingId,//to be changed
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Gender = request.Gender,
+                Citizenship = request.Citizenship,
+                PassportNumber = request.PassportNumber,
+                IssueDate = request.IssueDate,
+                ExpiryDate = request.ExpiryDate,
+                PlaceOfBirth = request.PlaceOfBirth
+            };
+
             var result = await _service.UpdateParticipantAsync(bookingId, id, dto);
             if (result == null) return NotFound();
             return Ok(result);
@@ -56,6 +82,4 @@ namespace TourBooking.API.Participant
             return Ok(new { message = "Participant deleted successfully", id });
         }
     }
-
-
 }

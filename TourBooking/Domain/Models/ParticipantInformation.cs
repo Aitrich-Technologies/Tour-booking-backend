@@ -1,29 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Domain.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Models;
-
-public partial class ParticipantInformation
+public class ParticipantInformation
 {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // ✅ Let DB generate Id
     public Guid Id { get; set; }
 
     public Guid LeadId { get; set; }
-
+    public Guid BookingId { get; set; }
     public string FirstName { get; set; } = null!;
-
     public string LastName { get; set; } = null!;
-
     public string? Gender { get; set; }
-
     public string? Citizenship { get; set; }
-
     public string? PassportNumber { get; set; }
-
     public DateOnly? IssueDate { get; set; }
-
     public DateOnly? ExpiryDate { get; set; }
-
     public string? PlaceOfBirth { get; set; }
-
-    public virtual TourBookingForm Lead { get; set; } = null!;
+    // Navigation
+    public TourBookingForm Lead { get; set; } = null!;
 }
+
