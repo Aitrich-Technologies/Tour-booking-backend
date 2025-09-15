@@ -2,12 +2,13 @@
 using Domain.Services.Participant.Interface;
 using Microsoft.AspNetCore.Mvc;
 using TourBooking.API.Participant.RequestObjects;
+using TourBooking.Controllers;
 
 namespace TourBooking.API.Participant
 {
     [ApiController]
     [Route("api/v1/TourBooking/{bookingId}/Participant")]
-    public class ParticipantController : ControllerBase
+    public class ParticipantController : BaseApiController<ParticipantController>
     {
         private readonly IParticipantService _service;
 
