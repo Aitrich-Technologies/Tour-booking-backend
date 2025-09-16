@@ -73,7 +73,17 @@ public partial class TourBookingDbContext : DbContext
             .WithMany(tbf => tbf.ParticipantInformations)
             .HasForeignKey(pi => pi.LeadId)
             .OnDelete(DeleteBehavior.Restrict);
+
+
+        modelBuilder.Entity<ParticipantInformation>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+
+            // Make database generate the Id
+            entity.Property(e => e.Id)
+                  .HasDefaultValueSql("NEWSEQUENTIALID()");
+        });
     }
-
-
 }
+
+
