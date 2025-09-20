@@ -28,3 +28,18 @@ D:\Reeshma\Tour Booking Project\Tour-booking-backend\TourBooking\Domain\obj\Debu
 D:\Reeshma\Tour Booking Project\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\Domain.pdb
 D:\Reeshma\Tour Booking Project\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\Domain.genruntimeconfig.cache
 D:\Reeshma\Tour Booking Project\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\ref\Domain.dll
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\bin\Debug\net8.0\Domain.runtimeconfig.json
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\bin\Debug\net8.0\Domain.dll
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\bin\Debug\net8.0\Domain.pdb
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\Domain.dll
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\Domain.pdb
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\Domain.genruntimeconfig.cache
+D:\AitrichProjects\Tour-booking-backend\TourBooking\Domain\obj\Debug\net8.0\ref\Domain.dll

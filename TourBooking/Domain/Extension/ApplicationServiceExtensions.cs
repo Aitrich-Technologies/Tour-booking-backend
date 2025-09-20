@@ -12,6 +12,8 @@ using Domain.Services.Participant.Interface;
 using Domain.Services.Participant;
 using Domain.Services.User.Interface;
 using Domain.Services.User;
+using Domain.Services.Terms.Interface;
+using Domain.Services.Terms;
 
 namespace Domain.Extension
 {
@@ -27,6 +29,8 @@ namespace Domain.Extension
             services.AddScoped<IParticipantService, ParticipantService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ITermsAndConditionRepository, TermsRepository>();
+            services.AddScoped<ITermsAndConditionService, TermsService>();
             return services;
         }
     }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj": {}
+    "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj": {}
   },
   "projects": {
-    "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
+    "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
+        "projectPath": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,7 +43,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -89,24 +89,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj": {
+    "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
+        "projectUniqueName": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
         "projectName": "TourBooking",
-        "projectPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\TourBooking\\obj\\",
+        "projectPath": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -115,15 +115,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj"
+              "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj"
               }
             }
           }
@@ -137,7 +136,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -189,7 +189,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
