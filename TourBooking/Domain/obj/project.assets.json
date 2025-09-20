@@ -76,7 +76,25 @@
           }
         }
       },
-<<<<<<< HEAD
+      "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "7.1.2"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.JsonPatch/9.0.9": {
         "type": "package",
         "dependencies": {
@@ -85,33 +103,14 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {
-=======
-      "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "7.1.2"
-        },
-        "compile": {
-          "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
             "related": ".xml"
           }
         },
         "runtime": {
-<<<<<<< HEAD
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {
             "related": ".xml"
           }
         }
-=======
-          "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
-            "related": ".xml"
-          }
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
       },
       "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
         "type": "package",
@@ -460,7 +459,6 @@
           }
         }
       },
-<<<<<<< HEAD
       "Microsoft.CSharp/4.7.0": {
         "type": "package",
         "compile": {
@@ -470,8 +468,6 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-=======
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
       "Microsoft.Data.SqlClient/5.1.6": {
         "type": "package",
         "dependencies": {
@@ -1697,23 +1693,30 @@
         "logo.png"
       ]
     },
-<<<<<<< HEAD
-    "Microsoft.AspNetCore.JsonPatch/9.0.9": {
-      "sha512": "5TxJGAp8lznbXKmu2mpBfeHZIDjQur8T5+09fuWe+FWDEEsO/knXyHcSvVQzzmZ50YOOnV95vTWWEzEvG7g0DQ==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.jsonpatch/9.0.9",
-=======
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.1": {
       "sha512": "6xI3L6n8ucpUSkVn0Ax0MOtSJKIT6lrIkYGxIRda9LgmAjOFS3wPj2J2Y75dGUFkgTgpxPNq9K0oDCMPS2zBMg==",
       "type": "package",
       "path": "microsoft.aspnetcore.authentication.jwtbearer/8.0.1",
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "THIRD-PARTY-NOTICES.TXT",
-<<<<<<< HEAD
+        "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
+        "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
+        "microsoft.aspnetcore.authentication.jwtbearer.8.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.JsonPatch/9.0.9": {
+      "sha512": "5TxJGAp8lznbXKmu2mpBfeHZIDjQur8T5+09fuWe+FWDEEsO/knXyHcSvVQzzmZ50YOOnV95vTWWEzEvG7g0DQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.jsonpatch/9.0.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
         "lib/net462/Microsoft.AspNetCore.JsonPatch.dll",
         "lib/net462/Microsoft.AspNetCore.JsonPatch.xml",
         "lib/net9.0/Microsoft.AspNetCore.JsonPatch.dll",
@@ -1722,12 +1725,6 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.xml",
         "microsoft.aspnetcore.jsonpatch.9.0.9.nupkg.sha512",
         "microsoft.aspnetcore.jsonpatch.nuspec"
-=======
-        "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
-        "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
-        "microsoft.aspnetcore.authentication.jwtbearer.8.0.1.nupkg.sha512",
-        "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
@@ -2712,7 +2709,6 @@
         "microsoft.codeanalysis.workspaces.msbuild.nuspec"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.CSharp/4.7.0": {
       "sha512": "pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
       "type": "package",
@@ -2782,8 +2778,6 @@
         "version.txt"
       ]
     },
-=======
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
     "Microsoft.Data.SqlClient/5.1.6": {
       "sha512": "+pz7gIPh5ydsBcQvivt4R98PwJXer86fyQBBToIBLxZ5kuhW4N13Ijz87s9WpuPtF1vh4JesYCgpDPAOgkMhdg==",
       "type": "package",
@@ -4630,34 +4624,31 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "AutoMapper >= 13.0.1",
-<<<<<<< HEAD
-      "Microsoft.AspNetCore.JsonPatch >= 9.0.9",
-=======
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.1",
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
+      "Microsoft.AspNetCore.JsonPatch >= 9.0.9",
       "Microsoft.EntityFrameworkCore >= 9.0.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.8",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.8"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hp\\.nuget\\packages\\": {},
+    "C:\\Users\\afraa\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
+      "projectPath": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+      "packagesPath": "C:\\Users\\afraa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\afraa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4694,15 +4685,13 @@
             "target": "Package",
             "version": "[13.0.1, )"
           },
-<<<<<<< HEAD
-          "Microsoft.AspNetCore.JsonPatch": {
-            "target": "Package",
-            "version": "[9.0.9, )"
-=======
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[8.0.1, )"
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
+          },
+          "Microsoft.AspNetCore.JsonPatch": {
+            "target": "Package",
+            "version": "[9.0.9, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -4735,7 +4724,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
