@@ -43,7 +43,7 @@ namespace Domain.Services.User
         }
         public async Task<AuthUser> GetUserByIdAsync(Guid userId)
         {
-            return await _context.AuthUsers.FindAsync(userId);
+            return await _context.AuthUsers.AsNoTracking().FirstOrDefaultAsync(u => u.Id == userId);
         }
 
         public async Task<AuthUser> UpdateUserAsync(AuthUser user)
