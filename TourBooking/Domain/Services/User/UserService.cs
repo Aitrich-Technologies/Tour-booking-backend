@@ -111,13 +111,26 @@ namespace Domain.Services.User
             return updatedUser;
         }
 
-        public async Task<UserResponseDto> PatchUserAsync(Guid id, AddUserDto request)
+        public async Task<UserResponseDto> PatchUserAsync(Guid id, PatchUserDto dto)
         {
             var existing = await _userRepository.GetUserByIdAsync(id);
             if (existing == null) return null;
 
-            // Map only non-null fields from request onto tracked entity
-            _mapper.Map(request, existing);
+            existing.FirstName = dto.FirstName??existing.FirstName;
+            existing.LastName=dto.LastName??existing.LastName;
+            existing.Gender = dto.Gender??existing.Gender;
+            existing.UserName = dto.UserName??existing.UserName;
+            existing.DateOfBirth=dto.DateOfBirth??existing.DateOfBirth;
+            existing.Role = dto.Role??existing.Role;
+            existing.UserName = dto.UserName??existing.UserName;
+            existing.TelephoneNo=dto.TelephoneNo??existing.TelephoneNo;
+            existing.Email = dto.Email??existing.Email;
+            //if (dto.FirstName == null) existing.FirstName = existing.FirstName; else existing.FirstName = dto.FirstName;
+            //if (dto.LastName == null ) existing.LastName = existing.LastName; else existing.LastName = dto.LastName;
+            //if (dto.Gender == null) existing.Gender = existing.Gender;
+            //if (dto.Role == null) existing.Role = existing.Role;
+            //if (dto.DateOfBirth == null || dto.DateOfBirth <= DateOnly.FromDateTime(DateTime.Now)) existing.FirstName = existing.FirstName;
+            //if (dto.TelephoneNo == null) existing.TelephoneNo = existing.TelephoneNo;
 
             // Save via repository (UpdateUserAsync should call SaveChanges)
             var updated = await _userRepository.UpdateUserAsync(existing);

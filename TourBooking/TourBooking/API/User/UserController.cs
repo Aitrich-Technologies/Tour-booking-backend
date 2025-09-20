@@ -82,11 +82,11 @@ namespace TourBooking.API.User
             var response = _mapper.Map<UserResponse>(updated);
             return Ok(response);
         }
-        [Authorize]
+        //[Authorize]
         [HttpPatch("{id}")]
         public async Task<IActionResult> PatchUser(Guid id, [FromBody] PatchUserRequest request)
         {
-            var PatchUserRequest = _mapper.Map<AddUserDto>(request);
+            var PatchUserRequest = _mapper.Map<PatchUserDto>(request);
             var updated = await _userService.PatchUserAsync(id, PatchUserRequest);
             if (updated == null) return NotFound();
             return Ok(updated);

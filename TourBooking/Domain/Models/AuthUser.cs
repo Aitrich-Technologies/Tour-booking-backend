@@ -38,10 +38,10 @@ public partial class AuthUser
     [MaxLength(10)]
     public string Gender { get; set; }
 
-    public DateOnly DateOfBirth { get; set; }
+    public DateOnly? DateOfBirth { get; set; }
 
     [Required]
-    public UserRole Role { get; set; }
+    public UserRole? Role { get; set; }
 
     [Required, MaxLength(50)]
     public string UserName { get; set; }
@@ -56,10 +56,4 @@ public partial class AuthUser
     public string Password { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-}
-public partial class AuthResponse
-{
-    public string Token { get; set; } 
-    public string UserName { get; set; }
-    public string Role { get; set; }
 }

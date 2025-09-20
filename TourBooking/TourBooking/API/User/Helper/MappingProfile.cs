@@ -21,17 +21,10 @@ namespace TourBooking.API.User.Helper
 
             // Model → DTO
             CreateMap<AuthUser, UserResponseDto>().ReverseMap();
-           
-            CreateMap<PatchUserRequest, AuthUser>()
-    .ForAllMembers(opts => opts.Condition((src, dest, srcMember) =>
-    {
-        if (srcMember == null) return false;
 
-        if (srcMember is string str)
-            return !string.IsNullOrWhiteSpace(str);
+            CreateMap<PatchUserRequest, PatchUserDto>().ReverseMap();
 
-        return true;
-    }));
+
 
         }
 

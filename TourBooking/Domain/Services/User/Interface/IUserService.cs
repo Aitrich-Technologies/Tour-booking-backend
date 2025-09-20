@@ -15,7 +15,7 @@ namespace Domain.Services.User.Interface
         Task<IEnumerable<UserResponseDto>> GetAllUsersAsync();
         Task<UserResponseDto> GetUserByIdAsync(Guid userId);
         Task<UserResponseDto> UpdateUserAsync(Guid userId, AddUserDto user);
-        Task<UserResponseDto> PatchUserAsync(Guid userId, AddUserDto user);
+        Task<UserResponseDto> PatchUserAsync(Guid userId, PatchUserDto user);
         Task<bool> DeleteUserAsync(Guid userId);
     }
 }
