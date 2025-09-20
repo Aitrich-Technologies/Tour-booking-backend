@@ -105,6 +105,122 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TourBooking.API.TourBooking.TourBookingController",
+    "Method": "AddTourBooking",
+    "RelativePath": "api/v1/tourbookings",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Domain.Services.TourBooking.DTO.TourBookingDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.TourBooking.TourBookingController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/tourbookings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.TourBooking.TourBookingController",
+    "Method": "GetTourBookingById",
+    "RelativePath": "api/v1/tourbookings/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.TourBooking.TourBookingController",
+    "Method": "Patch",
+    "RelativePath": "api/v1/tourbookings/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "Domain.Services.TourBooking.DTO.UpdateTourBookingDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.TourBooking.TourBookingController",
+    "Method": "UpdateTourBooking",
+    "RelativePath": "api/v1/tourbookings/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "TourBooking.API.TourBooking.RequestObjects.UpdateTourBookingRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.TourBooking.TourBookingController",
+    "Method": "Delete",
+    "RelativePath": "api/v1/tourbookings/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.TourBooking.TourBookingController",
+    "Method": "GetByTourId",
+    "RelativePath": "api/v1/tourbookings/by-tour/{tourId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tourId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TourBooking.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",
@@ -122,6 +238,7 @@
         ],
         "StatusCode": 200
       }
-    ]
+    ],
+    "EndpointName": "GetWeatherForecast"
   }
 ]
