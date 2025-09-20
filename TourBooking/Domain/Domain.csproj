@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
@@ -25,8 +26,13 @@
     <Folder Include="Services\Terms\Interface\" />
     <Folder Include="Services\TourBooking\DTO\" />
     <Folder Include="Services\TourBooking\Interface\" />
+<<<<<<< HEAD
     <Folder Include="Services\User\DTO\" />
     <Folder Include="Services\User\Interface\" />
+=======
+    <Folder Include="Services\Tour\DTO\" />
+    <Folder Include="Services\Tour\Interface\" />
+>>>>>>> facdea97111f48023ce1a09bfb508f050eee1d1b
   </ItemGroup>
 
 </Project>

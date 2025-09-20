@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\Tour_project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {}
   },
   "projects": {
@@ -12,12 +13,29 @@
         "projectPath": "D:\\Tour_project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\KDN\\.nuget\\packages\\",
         "outputPath": "D:\\Tour_project\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
+=======
+    "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {}
+  },
+  "projects": {
+    "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
+>>>>>>> facdea97111f48023ce1a09bfb508f050eee1d1b
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\KDN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> facdea97111f48023ce1a09bfb508f050eee1d1b
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -55,6 +73,10 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.8, )"
@@ -86,7 +108,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+>>>>>>> facdea97111f48023ce1a09bfb508f050eee1d1b
         }
       }
     }
