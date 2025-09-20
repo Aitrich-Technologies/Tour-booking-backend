@@ -4,6 +4,7 @@ using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(TourBookingDbContext))]
-    partial class TourBookingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250916064342_Authuser")]
+    partial class Authuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,6 +101,48 @@ namespace Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Destinations");
+                });
+
+            modelBuilder.Entity("Domain.Models.ParticipantInformation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Citizenship")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateOnly?>("ExpiryDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateOnly?>("IssueDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("LeadId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PassportNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlaceOfBirth")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeadId");
+
+                    b.ToTable("ParticipantInformations");
                 });
 
             modelBuilder.Entity("Domain.Models.TermsAndCondition", b =>
@@ -195,52 +240,6 @@ namespace Domain.Migrations
                     b.ToTable("Notes");
                 });
 
-            modelBuilder.Entity("ParticipantInformation", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("NEWSEQUENTIALID()");
-
-                    b.Property<Guid>("BookingId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Citizenship")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateOnly?>("ExpiryDate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateOnly?>("IssueDate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("LeadId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("PassportNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PlaceOfBirth")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LeadId");
-
-                    b.ToTable("ParticipantInformations");
-                });
-
             modelBuilder.Entity("Tour", b =>
                 {
                     b.Property<Guid>("Id")
@@ -289,6 +288,17 @@ namespace Domain.Migrations
                     b.ToTable("Tours");
                 });
 
+            modelBuilder.Entity("Domain.Models.ParticipantInformation", b =>
+                {
+                    b.HasOne("Domain.Models.TourBookingForm", "Lead")
+                        .WithMany("ParticipantInformations")
+                        .HasForeignKey("LeadId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Lead");
+                });
+
             modelBuilder.Entity("Domain.Models.TermsAndCondition", b =>
                 {
                     b.HasOne("Tour", "Tour")
@@ -320,17 +330,6 @@ namespace Domain.Migrations
                         .IsRequired();
 
                     b.Navigation("Tour");
-                });
-
-            modelBuilder.Entity("ParticipantInformation", b =>
-                {
-                    b.HasOne("Domain.Models.TourBookingForm", "Lead")
-                        .WithMany("ParticipantInformations")
-                        .HasForeignKey("LeadId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Lead");
                 });
 
             modelBuilder.Entity("Tour", b =>
