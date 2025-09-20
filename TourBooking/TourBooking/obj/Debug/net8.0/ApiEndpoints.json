@@ -85,6 +85,32 @@
   },
   {
     "ContainingType": "TourBooking.API.Participant.ParticipantController",
+    "Method": "PatchParticipant",
+    "RelativePath": "api/v1/TourBooking/{bookingId}/Participant/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookingId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "TourBooking.API.Participant.RequestObjects.PatchParticipantRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.Participant.ParticipantController",
     "Method": "DeleteParticipant",
     "RelativePath": "api/v1/TourBooking/{bookingId}/Participant/{id}",
     "HttpMethod": "DELETE",
