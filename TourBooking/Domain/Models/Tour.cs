@@ -15,17 +15,20 @@ public partial class Tour
     public DateOnly? ArrivalDate { get; set; }
 
     // Foreign keys for AuthUser
-    public Guid CustomerId { get; set; }
-    public Guid ConsultantId { get; set; }
+    public Guid? CustomerId { get; set; }   // make nullable
+    public virtual AuthUser? Customer { get; set; }
 
+    public Guid ConsultantId { get; set; }
+    public virtual AuthUser Consultant { get; set; } = null!;
     public TourStatus Status { get; set; }
 
     // Navigation properties
     public virtual Destination Destination { get; set; } = null!;
-    public virtual AuthUser Customer { get; set; } = null!;
-    public virtual AuthUser Consultant { get; set; } = null!;
+   
+  
 
     public virtual ICollection<TermsAndCondition> TermsAndConditions { get; set; } = new List<TermsAndCondition>();
     public virtual ICollection<Notes> Notes { get; set; } = new List<Notes>();
     public virtual ICollection<TourBookingForm> TourBookingForms { get; set; } = new List<TourBookingForm>();
+    
 }

@@ -239,7 +239,7 @@ namespace Domain.Migrations
                     b.Property<Guid>("ConsultantId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid?>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateOnly?>("DepartureDate")
@@ -330,8 +330,7 @@ namespace Domain.Migrations
                     b.HasOne("Domain.Models.AuthUser", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Domain.Models.Destination", "Destination")
                         .WithMany("Tours")
