@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|d:\\aitrichprojects\\tour-booking-backend\\tourbooking\\tourbooking\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|d:\\aitrichprojects\\tour-booking-backend\\tourbooking\\tourbooking\\api\\terms\\termscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\api\\terms\\termscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -54,10 +58,6 @@
       "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|d:\\aitrichprojects\\tour-booking-backend\\tourbooking\\tourbooking\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E11E0DE4-FC51-4B55-AC14-FF80C0F4C512}|Domain\\Domain.csproj|d:\\aitrichprojects\\tour-booking-backend\\tourbooking\\domain\\helper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E11E0DE4-FC51-4B55-AC14-FF80C0F4C512}|Domain\\Domain.csproj|solutionrelative:domain\\helper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -81,19 +81,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginRequest.cs",
-              "DocumentMoniker": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\LoginRequest.cs",
-              "RelativeDocumentMoniker": "TourBooking\\API\\User\\RequestObjects\\LoginRequest.cs",
-              "ToolTip": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\LoginRequest.cs",
-              "RelativeToolTip": "TourBooking\\API\\User\\RequestObjects\\LoginRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-19T13:06:19.696Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\UserController.cs",
               "RelativeDocumentMoniker": "TourBooking\\API\\User\\UserController.cs",
@@ -105,7 +93,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "TourBooking.http",
               "DocumentMoniker": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.http",
               "RelativeDocumentMoniker": "TourBooking\\TourBooking.http",
@@ -117,7 +105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\Program.cs",
               "RelativeDocumentMoniker": "TourBooking\\Program.cs",
@@ -129,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": ".NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
               "DocumentMoniker": "C:\\Users\\User\\AppData\\Local\\SourceServer\\1084ba2d1b3af499651e82048fb0f58e7d54aac166e7376abe1f8b5be3b9bb12\\TourBooking\\Domain\\obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
               "ToolTip": "C:\\Users\\User\\AppData\\Local\\SourceServer\\1084ba2d1b3af499651e82048fb0f58e7d54aac166e7376abe1f8b5be3b9bb12\\TourBooking\\Domain\\obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
@@ -139,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "TermsController.cs",
               "DocumentMoniker": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Terms\\TermsController.cs",
               "RelativeDocumentMoniker": "TourBooking\\API\\Terms\\TermsController.cs",
@@ -152,7 +140,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\appsettings.json",
+              "RelativeDocumentMoniker": "TourBooking\\appsettings.json",
+              "ToolTip": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\appsettings.json",
+              "RelativeToolTip": "TourBooking\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-19T12:20:40.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "TourBooking\\API\\User\\RequestObjects\\LoginRequest.cs",
+              "ToolTip": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\LoginRequest.cs",
+              "RelativeToolTip": "TourBooking\\API\\User\\RequestObjects\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T13:06:19.696Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "AddUserRequest.cs",
               "DocumentMoniker": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\AddUserRequest.cs",
               "RelativeDocumentMoniker": "TourBooking\\API\\User\\RequestObjects\\AddUserRequest.cs",
@@ -164,7 +177,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Domain.AssemblyInfo.cs",
               "DocumentMoniker": "C:\\Users\\User\\AppData\\Local\\SourceServer\\1db56931a5ed2c2dcc1a305cdfd5c9708ce0d7d5d3f1b246f2aef1cabc143fca\\TourBooking\\Domain\\obj\\Debug\\net8.0\\Domain.AssemblyInfo.cs",
               "ToolTip": "C:\\Users\\User\\AppData\\Local\\SourceServer\\1db56931a5ed2c2dcc1a305cdfd5c9708ce0d7d5d3f1b246f2aef1cabc143fca\\TourBooking\\Domain\\obj\\Debug\\net8.0\\Domain.AssemblyInfo.cs",
@@ -174,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "TermsAndCondition.cs",
               "DocumentMoniker": "C:\\Users\\User\\AppData\\Local\\SourceServer\\5681d18ad16d0429c5fa0c14e45d15fa614786a79a6ef2fb5edf707ec788ffa7\\TourBooking\\Domain\\Models\\TermsAndCondition.cs",
               "ToolTip": "C:\\Users\\User\\AppData\\Local\\SourceServer\\5681d18ad16d0429c5fa0c14e45d15fa614786a79a6ef2fb5edf707ec788ffa7\\TourBooking\\Domain\\Models\\TermsAndCondition.cs",
@@ -184,7 +197,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "C:\\Users\\User\\AppData\\Local\\SourceServer\\01571006595bc7a46189c0383ead7fa64e4dc78f31768e8c15d9cd820b8323a8\\TourBooking\\Domain\\Helper\\MappingProfile.cs",
               "ToolTip": "C:\\Users\\User\\AppData\\Local\\SourceServer\\01571006595bc7a46189c0383ead7fa64e4dc78f31768e8c15d9cd820b8323a8\\TourBooking\\Domain\\Helper\\MappingProfile.cs",
@@ -194,7 +207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ApplicationServiceExtensions.cs",
               "DocumentMoniker": "C:\\Users\\User\\AppData\\Local\\SourceServer\\da2a9c181e13f18fa34c9404a7f38f6671e67843888a94025f96be8557c5750c\\TourBooking\\Domain\\Extension\\ApplicationServiceExtensions.cs",
               "ToolTip": "C:\\Users\\User\\AppData\\Local\\SourceServer\\da2a9c181e13f18fa34c9404a7f38f6671e67843888a94025f96be8557c5750c\\TourBooking\\Domain\\Extension\\ApplicationServiceExtensions.cs",
@@ -204,7 +217,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "TourBooking",
               "DocumentMoniker": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
               "RelativeDocumentMoniker": "TourBooking\\TourBooking.csproj",
@@ -215,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "TourBooking\\Controllers\\WeatherForecastController.cs",
@@ -224,18 +237,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-19T12:58:35.525Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\appsettings.json",
-              "RelativeDocumentMoniker": "TourBooking\\appsettings.json",
-              "ToolTip": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\TourBooking\\appsettings.json",
-              "RelativeToolTip": "TourBooking\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAACCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-09-19T12:20:40.12Z"
             },
             {
               "$type": "Document",
@@ -251,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "ApplicationServiceExtensions.cs",
               "DocumentMoniker": "D:\\AitrichProjects\\Tour-booking-backend\\TourBooking\\Domain\\Extension\\ApplicationServiceExtensions.cs",
               "RelativeDocumentMoniker": "Domain\\Extension\\ApplicationServiceExtensions.cs",
