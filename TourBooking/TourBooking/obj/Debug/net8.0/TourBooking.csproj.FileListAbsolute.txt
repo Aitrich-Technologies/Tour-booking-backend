@@ -170,6 +170,10 @@ C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\
 C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\Domain.dll
 C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\Domain.pdb
 C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\AutoMapper.dll
+<<<<<<< HEAD
+C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\Newtonsoft.Json.dll
+=======
 D:\Reeshma\Tour Booking Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\appsettings.Development.json
 D:\Reeshma\Tour Booking Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\appsettings.json
 D:\Reeshma\Tour Booking Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\TourBooking.exe
@@ -343,3 +347,4 @@ D:\Reeshma\Tour Booking Project\Tour-booking-backend\TourBooking\TourBooking\obj
 D:\Reeshma\Tour Booking Project\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.genruntimeconfig.cache
 D:\Reeshma\Tour Booking Project\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\ref\TourBooking.dll
 D:\Reeshma\Tour Booking Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+>>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
