@@ -9,11 +9,8 @@
       "Domain/1.0.0": {
         "dependencies": {
           "AutoMapper": "13.0.1",
-<<<<<<< HEAD
-          "Microsoft.AspNetCore.JsonPatch": "9.0.9",
-=======
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.1",
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
+          "Microsoft.AspNetCore.JsonPatch": "9.0.9",
           "Microsoft.EntityFrameworkCore": "9.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.8",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.8"
@@ -76,7 +73,17 @@
           }
         }
       },
-<<<<<<< HEAD
+      "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.1": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "7.1.2"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "assemblyVersion": "8.0.1.0",
+            "fileVersion": "8.0.123.58008"
+          }
+        }
+      },
       "Microsoft.AspNetCore.JsonPatch/9.0.9": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -86,16 +93,6 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {
             "assemblyVersion": "9.0.9.0",
             "fileVersion": "9.0.925.42003"
-=======
-      "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.1": {
-        "dependencies": {
-          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "7.1.2"
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
-            "assemblyVersion": "8.0.1.0",
-            "fileVersion": "8.0.123.58008"
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
           }
         }
       },
@@ -395,10 +392,7 @@
           }
         }
       },
-<<<<<<< HEAD
       "Microsoft.CSharp/4.7.0": {},
-=======
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
       "Microsoft.Data.SqlClient/5.1.6": {
         "dependencies": {
           "Azure.Identity": "1.11.4",
@@ -735,13 +729,7 @@
       },
       "Microsoft.IdentityModel.Tokens/7.1.2": {
         "dependencies": {
-<<<<<<< HEAD
-          "Microsoft.CSharp": "4.7.0",
-          "Microsoft.IdentityModel.Logging": "6.35.0",
-          "System.Security.Cryptography.Cng": "5.0.0"
-=======
           "Microsoft.IdentityModel.Logging": "7.1.2"
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
         },
         "runtime": {
           "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
@@ -1111,21 +1099,19 @@
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
     },
-<<<<<<< HEAD
-    "Microsoft.AspNetCore.JsonPatch/9.0.9": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-5TxJGAp8lznbXKmu2mpBfeHZIDjQur8T5+09fuWe+FWDEEsO/knXyHcSvVQzzmZ50YOOnV95vTWWEzEvG7g0DQ==",
-      "path": "microsoft.aspnetcore.jsonpatch/9.0.9",
-      "hashPath": "microsoft.aspnetcore.jsonpatch.9.0.9.nupkg.sha512"
-=======
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-6xI3L6n8ucpUSkVn0Ax0MOtSJKIT6lrIkYGxIRda9LgmAjOFS3wPj2J2Y75dGUFkgTgpxPNq9K0oDCMPS2zBMg==",
       "path": "microsoft.aspnetcore.authentication.jwtbearer/8.0.1",
       "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.8.0.1.nupkg.sha512"
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
+    },
+    "Microsoft.AspNetCore.JsonPatch/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5TxJGAp8lznbXKmu2mpBfeHZIDjQur8T5+09fuWe+FWDEEsO/knXyHcSvVQzzmZ50YOOnV95vTWWEzEvG7g0DQ==",
+      "path": "microsoft.aspnetcore.jsonpatch/9.0.9",
+      "hashPath": "microsoft.aspnetcore.jsonpatch.9.0.9.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
       "type": "package",
@@ -1190,7 +1176,6 @@
       "path": "microsoft.codeanalysis.workspaces.msbuild/4.8.0",
       "hashPath": "microsoft.codeanalysis.workspaces.msbuild.4.8.0.nupkg.sha512"
     },
-<<<<<<< HEAD
     "Microsoft.CSharp/4.7.0": {
       "type": "package",
       "serviceable": true,
@@ -1198,8 +1183,6 @@
       "path": "microsoft.csharp/4.7.0",
       "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
     },
-=======
->>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
     "Microsoft.Data.SqlClient/5.1.6": {
       "type": "package",
       "serviceable": true,
