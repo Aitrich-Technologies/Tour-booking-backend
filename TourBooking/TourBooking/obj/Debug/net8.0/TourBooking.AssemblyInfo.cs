@@ -15,14 +15,22 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9b2bb23de932f4870f33651c8079be19c354ef8")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1adf8a7d19493da134b6275b86ba7734497d1b76")]
+>>>>>>> 8ae062e80ccf490c857aa438339ee6814383fd3d
 =======
 <<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f5cbdf61f3b7585784972830eb0829f1ba930492")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8f1fe576a7a6c4d37ee06132b06a4e3b69dde3d")]
 >>>>>>> e1178d8477b685b566452de9d892c3e5d9c7243b
+<<<<<<< HEAD
 >>>>>>> facdea97111f48023ce1a09bfb508f050eee1d1b
+=======
+>>>>>>> a2054b9ea512b785ffe0ba500efe76324d41dd4b
+>>>>>>> 8ae062e80ccf490c857aa438339ee6814383fd3d
 [assembly: System.Reflection.AssemblyProductAttribute("TourBooking")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TourBooking")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
