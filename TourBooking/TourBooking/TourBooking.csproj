@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="API\Destination\RequestObjects\" />
     <Folder Include="API\Notes\RequestObjects\" />
     <Folder Include="API\Terms\RequestObjects\" />
     <Folder Include="API\TourBooking\RequestObjects\" />

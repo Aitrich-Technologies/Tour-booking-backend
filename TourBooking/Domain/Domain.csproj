@@ -7,12 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\Destination\**" />
+    <EmbeddedResource Remove="Services\Destination\**" />
+    <None Remove="Services\Destination\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+<<<<<<< HEAD
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+=======
 
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="9.0.9" />
 
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
 
+>>>>>>> df226a5ffc4e5b1e939f88eeb15eb131fdeb9629
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
@@ -23,8 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Destination\DTO\" />
-    <Folder Include="Services\Destination\Interface\" />
     <Folder Include="Services\Notes\DTO\" />
     <Folder Include="Services\Notes\Interface\" />
     <Folder Include="Services\Terms\DTO\" />
