@@ -10,6 +10,8 @@ namespace Domain.Services.User.Interface
     public interface IUserRepository
     {
         Task<AuthUser> AddUserAsync(AuthUser user);
+        Task<AuthUser?> GetByUserNameOrEmailAsync(string userName, string email);
+
         Task<AuthUser> LoginAsync(string username, string password);
         Task<IEnumerable<AuthUser>> GetAllUsersAsync();
         Task<AuthUser> GetUserByIdAsync(Guid userId);

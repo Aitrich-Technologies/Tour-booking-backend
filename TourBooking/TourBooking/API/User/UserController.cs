@@ -5,6 +5,8 @@ using TourBooking.Controllers;
 using Domain.Models;
 using Domain.Services.User.Interface;
 using Domain.Services.User.DTO;
+using AutoMapper;
+using TourBooking.API.User.RequestObjects;
 
 namespace TourBooking.API.User
 {
@@ -13,36 +15,36 @@ namespace TourBooking.API.User
     public class UserController : BaseApiController<UserController>
     {
         private readonly IUserService _userService;
+        private readonly IMapper _mapper;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IMapper mapper)
         {
             _userService = userService;
+            _mapper = mapper;
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddUser([FromBody] AddUserDto dto)
+        public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)
         {
-            var user = new AuthUser
+            try
             {
-                FirstName = dto.FirstName,
-                LastName = dto.LastName,
-                Gender = dto.Gender,
-                DateOfBirth = dto.DateOfBirth,
-                Role = dto.Role,
-                UserName = dto.UserName,
-                Email = dto.Email,
-                TelephoneNo = dto.TelephoneNo,
-                Password = dto.Password
-            };
+                var dto = _mapper.Map<AddUserDto>(request);
+                var result = await _userService.AddUserAsync(dto);
 
-            var result = await _userService.AddUserAsync(user);
-            return Ok(result);
+                var response = _mapper.Map<UserResponse>(result);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginDto dto)
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            var token = await _userService.LoginAsync(dto.UserName, dto.Password);
+            var dto = _mapper.Map<LoginDto>(request);
+            var token = await _userService.LoginAsync(dto);
             if (token == null) return Unauthorized("Invalid credentials");
 
             return Ok(new { token });
@@ -53,7 +55,9 @@ namespace TourBooking.API.User
         public async Task<IActionResult> GetAll()
         {
             var users = await _userService.GetAllUsersAsync();
-            return Ok(users);
+            var response = _mapper.Map<IEnumerable<UserResponse>>(users);
+
+            return Ok(response);
         }
 
         [Authorize]
@@ -62,31 +66,32 @@ namespace TourBooking.API.User
         {
             var user = await _userService.GetUserByIdAsync(userId);
             if (user == null) return NotFound();
-            return Ok(user);
+            var response = _mapper.Map<UserResponse>(user);
+            return Ok(response);
         }
 
         [Authorize]
         [HttpPut("{userId}")]
-        public async Task<IActionResult> Update(Guid userId, [FromBody] AddUserDto dto)
+        public async Task<IActionResult> Update(Guid userId, [FromBody] AddUserRequest request)
         {
-            var user = new AuthUser
-            {
-                FirstName = dto.FirstName,
-                LastName = dto.LastName,
-                Gender = dto.Gender,
-                DateOfBirth = dto.DateOfBirth,
-                Role = dto.Role,
-                UserName = dto.UserName,
-                Email = dto.Email,
-                TelephoneNo = dto.TelephoneNo,
-                Password = dto.Password
-            };
+            var dto = _mapper.Map<AddUserDto>(request);
+            var updated = await _userService.UpdateUserAsync(userId, dto);
 
-            var updated = await _userService.UpdateUserAsync(userId, user);
             if (updated == null) return NotFound();
 
+            var response = _mapper.Map<UserResponse>(updated);
+            return Ok(response);
+        }
+        //[Authorize]
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchUser(Guid id, [FromBody] PatchUserRequest request)
+        {
+            var PatchUserRequest = _mapper.Map<PatchUserDto>(request);
+            var updated = await _userService.PatchUserAsync(id, PatchUserRequest);
+            if (updated == null) return NotFound();
             return Ok(updated);
         }
+
 
         [Authorize]
         [HttpDelete("{userId}")]
