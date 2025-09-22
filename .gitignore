@@ -1,18 +1,21 @@
-# Visual Studio files
+# Visual Studio
 .vs/
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
 
-# Build results
-[Bb]in/
-[Oo]bj/
+# Build artifacts
+bin/
+obj/
 *.dll
-*.exe
 *.pdb
 *.cache
 *.log
+
+# NuGet
+*.nupkg
+packages/
 
 # Other
 *.nuget.cache

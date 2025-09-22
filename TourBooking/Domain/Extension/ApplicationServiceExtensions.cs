@@ -10,10 +10,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Services.Participant.Interface;
 using Domain.Services.Participant;
+
+using Domain.Services.Destinations.Interface;
+using Domain.Services.Destinations;
+
 using Domain.Services.User.Interface;
 using Domain.Services.User;
 using Domain.Services.Terms.Interface;
 using Domain.Services.Terms;
+
 
 namespace Domain.Extension
 {
@@ -27,10 +32,19 @@ namespace Domain.Extension
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddScoped<IParticipantRepository, ParticipantRepository>();
             services.AddScoped<IParticipantService, ParticipantService>();
+
+            services.AddScoped<IDestinationService, DestinationService>();
+            services.AddScoped<IDestinationRepository, DestinationRepository>();
+
+
+
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+
             services.AddScoped<ITermsAndConditionRepository, TermsRepository>();
             services.AddScoped<ITermsAndConditionService, TermsService>();
+
+
             return services;
         }
     }

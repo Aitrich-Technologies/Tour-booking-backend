@@ -18,6 +18,7 @@ using Domain.Migrations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Azure.Core;
 
 
 namespace Domain.Services.User
@@ -59,7 +60,9 @@ namespace Domain.Services.User
             var claims = new[]
      {
         new Claim(JwtRegisteredClaimNames.Sub, username),
-        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        new Claim(ClaimTypes.Email, user.Email ?? string.Empty),
+        new Claim(ClaimTypes.Role, user.Role.ToString())
     };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
@@ -110,35 +113,59 @@ namespace Domain.Services.User
             var updatedUser = _mapper.Map<UserResponseDto>(updated);
             return updatedUser;
         }
+        //public async Task<UserResponseDto> PatchUserAsync(Guid id, PatchUserDto dto)
+        //{
+        //    var existing = await _userRepository.GetUserByIdAsync(id);
+        //    if (existing == null) return null;
 
-        public async Task<UserResponseDto> PatchUserAsync(Guid id, PatchUserDto dto)
+        //    // Get all properties of PatchUserDto
+        //    var properties = typeof(PatchUserDto).GetProperties();
+
+        //    foreach (var prop in properties)
+        //    {
+        //        var value = prop.GetValue(dto);
+
+        //        // Skip nulls and empty strings
+        //        if (value == null) continue;
+        //        if (value is string str && string.IsNullOrWhiteSpace(str)) continue;
+
+        //        // Find corresponding property in AuthUser
+        //        var existingProp = typeof(AuthUser).GetProperty(prop.Name);
+        //        if (existingProp != null && existingProp.CanWrite)
+        //        {
+        //            existingProp.SetValue(existing, value);
+        //        }
+        //    }
+
+        //    // Save changes
+        //    var updated = await _userRepository.UpdateUserAsync(existing);
+
+        //    // Map back to response DTO
+        //    return _mapper.Map<UserResponseDto>(updated);
+        //}
+
+        public async Task<UserResponseDto> PatchUserAsync(Guid id, PatchUserDto request)
         {
             var existing = await _userRepository.GetUserByIdAsync(id);
             if (existing == null) return null;
+            var properties = typeof(PatchUserDto).GetProperties();
 
-            existing.FirstName = dto.FirstName??existing.FirstName;
-            existing.LastName=dto.LastName??existing.LastName;
-            existing.Gender = dto.Gender??existing.Gender;
-            existing.UserName = dto.UserName??existing.UserName;
-            existing.DateOfBirth=dto.DateOfBirth??existing.DateOfBirth;
-            existing.Role = dto.Role??existing.Role;
-            existing.UserName = dto.UserName??existing.UserName;
-            existing.TelephoneNo=dto.TelephoneNo??existing.TelephoneNo;
-            existing.Email = dto.Email??existing.Email;
-            //if (dto.FirstName == null) existing.FirstName = existing.FirstName; else existing.FirstName = dto.FirstName;
-            //if (dto.LastName == null ) existing.LastName = existing.LastName; else existing.LastName = dto.LastName;
-            //if (dto.Gender == null) existing.Gender = existing.Gender;
-            //if (dto.Role == null) existing.Role = existing.Role;
-            //if (dto.DateOfBirth == null || dto.DateOfBirth <= DateOnly.FromDateTime(DateTime.Now)) existing.FirstName = existing.FirstName;
-            //if (dto.TelephoneNo == null) existing.TelephoneNo = existing.TelephoneNo;
+            if (request.FirstName != null) existing.FirstName = request.FirstName;
+            if (request.LastName != null) existing.LastName = request.LastName;
+            if (request.Gender != null) existing.Gender = request.Gender;
+            if (request.Role != null) existing.Role = request.Role;
+            if (request.UserName != null) existing.UserName = request.UserName;
+            if (request.DateOfBirth != null) existing.DateOfBirth = request.DateOfBirth;
+            if (request.TelephoneNo != null) existing.TelephoneNo = request.TelephoneNo;
+            if (request.Email != null) existing.Email = request.Email;
 
-            // Save via repository (UpdateUserAsync should call SaveChanges)
+
+         
             var updated = await _userRepository.UpdateUserAsync(existing);
 
-            return _mapper.Map<UserResponseDto>(updated);
+            var updatedUser = _mapper.Map<UserResponseDto>(updated);
+            return updatedUser;
         }
-
-
         public async Task<bool> DeleteUserAsync(Guid userId)
         {
             return await _userRepository.DeleteUserAsync(userId);
