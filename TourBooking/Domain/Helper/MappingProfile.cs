@@ -21,7 +21,7 @@ namespace Domain.Helper
                 CreateMap<ParticipantInformation, ParticipantDto>()
                     .ForMember(dest => dest.BookingId, opt => opt.MapFrom(src => src.LeadId));
 
-<<<<<<< HEAD
+
             // DTO → Entity
             CreateMap<ParticipantDto, ParticipantInformation>()
                 .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.BookingId));
@@ -30,7 +30,7 @@ namespace Domain.Helper
             CreateMap<Destination, DestinationResponseDto>().ReverseMap();
 
 
-=======
+
                 // DTO → Entity
                 CreateMap<ParticipantDto, ParticipantInformation>()
                     .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.BookingId));
@@ -39,7 +39,6 @@ namespace Domain.Helper
 
             CreateMap<AuthUser, UserResponseDto>().ReverseMap(); ;
         }
->>>>>>> df226a5ffc4e5b1e939f88eeb15eb131fdeb9629
         }
     }
 
