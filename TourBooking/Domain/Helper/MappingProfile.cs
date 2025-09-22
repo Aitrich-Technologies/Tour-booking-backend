@@ -3,7 +3,11 @@ using Domain.Enum;
 using Domain.Models;
 using Domain.Services.Destinations.DTO;
 using Domain.Services.Participant.DTO;
+
+using Domain.Services.Terms.DTO;
+
 using Domain.Services.User.DTO;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +25,7 @@ namespace Domain.Helper
                 CreateMap<ParticipantInformation, ParticipantDto>()
                     .ForMember(dest => dest.BookingId, opt => opt.MapFrom(src => src.LeadId));
 
-<<<<<<< HEAD
+
             // DTO → Entity
             CreateMap<ParticipantDto, ParticipantInformation>()
                 .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.BookingId));
@@ -30,16 +34,20 @@ namespace Domain.Helper
             CreateMap<Destination, DestinationResponseDto>().ReverseMap();
 
 
-=======
+
                 // DTO → Entity
                 CreateMap<ParticipantDto, ParticipantInformation>()
                     .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.BookingId));
 
+            CreateMap<TermsDto, TermsAndCondition>().ReverseMap();
+
+
             CreateMap<AddUserDto, AuthUser>() .ReverseMap(); 
 
-            CreateMap<AuthUser, UserResponseDto>().ReverseMap(); ;
+            CreateMap<AuthUser, UserResponseDto>().ReverseMap(); 
+
         }
->>>>>>> df226a5ffc4e5b1e939f88eeb15eb131fdeb9629
+
         }
     }
 
