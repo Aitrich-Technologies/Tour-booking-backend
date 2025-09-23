@@ -23,6 +23,8 @@ namespace Domain.Extension
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddScoped<IParticipantRepository, ParticipantRepository>();
             services.AddScoped<IParticipantService, ParticipantService>();
+            services.AddScoped<INoteRepository, NoteRepository>();
+            services.AddScoped<INoteService, NoteService>();
             return services;
         }
     }

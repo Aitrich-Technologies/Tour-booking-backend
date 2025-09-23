@@ -19,8 +19,6 @@
   <ItemGroup>
     <Folder Include="Services\Destination\DTO\" />
     <Folder Include="Services\Destination\Interface\" />
-    <Folder Include="Services\Notes\DTO\" />
-    <Folder Include="Services\Notes\Interface\" />
     <Folder Include="Services\Terms\DTO\" />
     <Folder Include="Services\Terms\Interface\" />
     <Folder Include="Services\TourBooking\DTO\" />
