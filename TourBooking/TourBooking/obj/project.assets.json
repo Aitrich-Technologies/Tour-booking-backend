@@ -95,6 +95,42 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+<<<<<<< HEAD
+=======
+      "Microsoft.AspNetCore.Http.Abstractions/2.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.3.0",
+          "System.Text.Encodings.Web": "8.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/2.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
       "Microsoft.AspNetCore.JsonPatch/9.0.9": {
         "type": "package",
         "dependencies": {
@@ -1712,6 +1748,10 @@
         "dependencies": {
           "AutoMapper": "13.0.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.1",
+<<<<<<< HEAD
+=======
+          "Microsoft.AspNetCore.Http.Abstractions": "2.3.0",
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
           "Microsoft.AspNetCore.JsonPatch": "9.0.9",
           "Microsoft.EntityFrameworkCore": "9.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.8",
@@ -1813,6 +1853,35 @@
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
       ]
     },
+<<<<<<< HEAD
+=======
+    "Microsoft.AspNetCore.Http.Abstractions/2.3.0": {
+      "sha512": "39r9PPrjA6s0blyFv5qarckjNkaHRA5B+3b53ybuGGNTXEj1/DStQJ4NWjFL6QTRQpL9zt7nDyKxZdJOlcnq+Q==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.abstractions/2.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.xml",
+        "microsoft.aspnetcore.http.abstractions.2.3.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Features/2.3.0": {
+      "sha512": "f10WUgcsKqrkmnz6gt8HeZ7kyKjYN30PO7cSic1lPtH7paPtnQqXPOveul/SIPI43PhRD4trttg4ywnrEmmJpA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.features/2.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
+        "microsoft.aspnetcore.http.features.2.3.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.nuspec"
+      ]
+    },
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
     "Microsoft.AspNetCore.JsonPatch/9.0.9": {
       "sha512": "5TxJGAp8lznbXKmu2mpBfeHZIDjQur8T5+09fuWe+FWDEEsO/knXyHcSvVQzzmZ50YOOnV95vTWWEzEvG7g0DQ==",
       "type": "package",
@@ -5093,23 +5162,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\hp\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\Lenovo\\.nuget\\packages\\": {},
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
       "projectName": "TourBooking",
       "projectPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
       "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
       "outputPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\TourBooking\\obj\\",
+=======
+      "projectUniqueName": "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
+      "projectName": "TourBooking",
+      "projectPath": "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
+      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+      "outputPath": "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\TourBooking\\obj\\",
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5118,15 +5203,23 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+<<<<<<< HEAD
         "C:\\Program Files\\dotnet\\library-packs": {},
+=======
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+<<<<<<< HEAD
             "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
               "projectPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj"
+=======
+            "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj"
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
             }
           }
         }
@@ -5140,7 +5233,12 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
+<<<<<<< HEAD
       }
+=======
+      },
+      "SdkAnalysisLevel": "9.0.300"
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
     },
     "frameworks": {
       "net8.0": {
@@ -5200,7 +5298,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
       }
     }
   }

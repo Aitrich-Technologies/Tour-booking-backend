@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj": {}
   },
   "projects": {
@@ -12,12 +13,29 @@
         "projectPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
         "outputPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
+=======
+    "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj": {}
+  },
+  "projects": {
+    "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +44,10 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+<<<<<<< HEAD
           "C:\\Program Files\\dotnet\\library-packs": {},
+=======
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,7 +65,12 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
+<<<<<<< HEAD
         }
+=======
+        },
+        "SdkAnalysisLevel": "9.0.300"
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
       },
       "frameworks": {
         "net8.0": {
@@ -58,6 +84,13 @@
               "target": "Package",
               "version": "[8.0.1, )"
             },
+<<<<<<< HEAD
+=======
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
             "Microsoft.AspNetCore.JsonPatch": {
               "target": "Package",
               "version": "[9.0.9, )"
@@ -97,6 +130,7 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
@@ -109,12 +143,30 @@
         "projectPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
         "outputPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\TourBooking\\obj\\",
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
+        "projectName": "TourBooking",
+        "projectPath": "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\TourBooking\\obj\\",
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -123,15 +175,23 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+<<<<<<< HEAD
           "C:\\Program Files\\dotnet\\library-packs": {},
+=======
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+<<<<<<< HEAD
               "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
                 "projectPath": "D:\\Reeshma\\Tour Booking Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj"
+=======
+              "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Aitrich project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj"
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
               }
             }
           }
@@ -145,7 +205,12 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
+<<<<<<< HEAD
         }
+=======
+        },
+        "SdkAnalysisLevel": "9.0.300"
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
       },
       "frameworks": {
         "net8.0": {
@@ -205,7 +270,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+>>>>>>> 4f997e506bde54e4de5a2dadad0f1b9923db5930
         }
       }
     }

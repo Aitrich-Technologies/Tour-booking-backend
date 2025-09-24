@@ -7,9 +7,9 @@ public partial class Destination
 {
     public Guid Id { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string? Name { get; set; } 
 
-    public string City { get; set; } = null!;
+    public string? City { get; set; } 
 
     // New property for storing image binary
     public byte[]? ImageData { get; set; }
