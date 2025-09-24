@@ -1,5 +1,100 @@
 [
   {
+    "ContainingType": "TourBooking.API.User.UserController",
+    "Method": "AddUser",
+    "RelativePath": "api/User",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Domain.Services.User.DTO.AddUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.User.UserController",
+    "Method": "GetAll",
+    "RelativePath": "api/User",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.User.UserController",
+    "Method": "GetById",
+    "RelativePath": "api/User/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.User.UserController",
+    "Method": "Update",
+    "RelativePath": "api/User/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "Domain.Services.User.DTO.AddUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.User.UserController",
+    "Method": "Delete",
+    "RelativePath": "api/User/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.User.UserController",
+    "Method": "Login",
+    "RelativePath": "api/User/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Domain.Services.User.DTO.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TourBooking.API.Participant.ParticipantController",
     "Method": "GetParticipants",
     "RelativePath": "api/v1/TourBooking/{bookingId}/Participant",
@@ -29,8 +124,8 @@
         "IsRequired": true
       },
       {
-        "Name": "dto",
-        "Type": "Domain.Services.Participant.DTO.ParticipantDto",
+        "Name": "request",
+        "Type": "TourBooking.API.Participant.RequestObjects.AddParticipantRequest",
         "IsRequired": true
       }
     ],
@@ -76,8 +171,34 @@
         "IsRequired": true
       },
       {
-        "Name": "dto",
-        "Type": "Domain.Services.Participant.DTO.ParticipantDto",
+        "Name": "request",
+        "Type": "TourBooking.API.Participant.RequestObjects.UpdateParticipantRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.Participant.ParticipantController",
+    "Method": "PatchParticipant",
+    "RelativePath": "api/v1/TourBooking/{bookingId}/Participant/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookingId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "TourBooking.API.Participant.RequestObjects.PatchParticipantRequest",
         "IsRequired": true
       }
     ],
@@ -113,8 +234,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "Domain.Services.TourBooking.DTO.TourBookingDto",
+        "Name": "request",
+        "Type": "TourBooking.API.TourBooking.RequestObjects.AddTourBookingRequest",
         "IsRequired": true
       }
     ],
@@ -122,7 +243,7 @@
   },
   {
     "ContainingType": "TourBooking.API.TourBooking.TourBookingController",
-    "Method": "GetAll",
+    "Method": "GetAllTourBookings",
     "RelativePath": "api/v1/tourbookings",
     "HttpMethod": "GET",
     "IsController": true,
@@ -148,9 +269,9 @@
   },
   {
     "ContainingType": "TourBooking.API.TourBooking.TourBookingController",
-    "Method": "Patch",
+    "Method": "UpdateTourBooking",
     "RelativePath": "api/v1/tourbookings/{id}",
-    "HttpMethod": "PATCH",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -169,9 +290,9 @@
   },
   {
     "ContainingType": "TourBooking.API.TourBooking.TourBookingController",
-    "Method": "UpdateTourBooking",
+    "Method": "PatchTourBooking",
     "RelativePath": "api/v1/tourbookings/{id}",
-    "HttpMethod": "PUT",
+    "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -181,8 +302,8 @@
         "IsRequired": true
       },
       {
-        "Name": "request",
-        "Type": "TourBooking.API.TourBooking.RequestObjects.UpdateTourBookingRequest",
+        "Name": "dto",
+        "Type": "Domain.Services.TourBooking.DTO.PatchTourBookingDto",
         "IsRequired": true
       }
     ],

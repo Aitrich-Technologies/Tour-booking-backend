@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Domain.Enum;
 using Domain.Models;
+using Domain.Services.Participant.DTO;
 using Domain.Services.TourBooking.DTO;
 using Domain.Services.TourBooking.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -21,25 +23,72 @@ namespace Domain.Services.TourBooking
             _repository = repository;
             _mapper = mapper;
         }
-        //public async Task<TourBookingDto> AddTourBookingAsync(TourBookingDto dto)
-        //{
-        //       var details=_mapper.Map<TourBookingForm>(dto);
-        //       details=await _repository.AddTourBookingAsync(details);
-        //    return _mapper.Map<TourBookingDto>(details);
-        //}
+     
         public async Task<TourBookingDto> AddTourBookingAsync(TourBookingDto dto)
         {
-            var entity = _mapper.Map<TourBookingForm>(dto);
-            entity.Id = Guid.NewGuid(); // create new Id
-            entity = await _repository.AddTourBookingAsync(entity);
-            return _mapper.Map<TourBookingDto>(entity);
-        }
+            // Map DTO -> Entity
+            var entity = new TourBookingForm
+            {
+                Id = Guid.NewGuid(),
+                TourId = dto.TourId,
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                Gender = dto.Gender,
+                Dob = dto.Dob,
+                Citizenship = dto.Citizenship,
+                PassportNumber = dto.PassportNumber,
+                IssueDate = dto.IssueDate,
+                ExpiryDate = dto.ExpiryDate,
+                PlaceOfBirth = dto.PlaceOfBirth,
+                LeadPassenger = dto.LeadPassenger,
+                ParticipantType = dto.ParticipantType,
+                Status = dto.Status
+            };
 
+            var saved = await _repository.AddTourBookingAsync(entity);
+
+            // Map Entity -> DTO for returning
+            return new TourBookingDto
+            {
+                Id = saved.Id,
+                TourId = saved.TourId,
+                FirstName = saved.FirstName,
+                LastName = saved.LastName,
+                Gender = saved.Gender,
+                Dob = saved.Dob,
+                Citizenship = saved.Citizenship,
+                PassportNumber = saved.PassportNumber,
+                IssueDate = saved.IssueDate,
+                ExpiryDate = saved.ExpiryDate,
+                PlaceOfBirth = saved.PlaceOfBirth,
+                LeadPassenger = saved.LeadPassenger,
+                ParticipantType = saved.ParticipantType,
+                Status = saved.Status
+            };
+        }
+      
         public async Task<IEnumerable<TourBookingDto>> GetAllTourBookingsAsync()
         {
-            var entities = await _repository.GetAllTourBookingsAsync();
-            return _mapper.Map<IEnumerable<TourBookingDto>>(entities);
+            var entities = await _repository.GetAllAsync();
+            return entities.Select(e => new TourBookingDto
+            {
+                Id = e.Id,
+                TourId = e.TourId,
+                FirstName = e.FirstName,
+                LastName = e.LastName,
+                Gender = e.Gender,
+                Dob = e.Dob,
+                Citizenship = e.Citizenship,
+                PassportNumber = e.PassportNumber,
+                IssueDate = e.IssueDate,
+                ExpiryDate = e.ExpiryDate,
+                PlaceOfBirth = e.PlaceOfBirth,
+                LeadPassenger = e.LeadPassenger,
+                ParticipantType = e.ParticipantType,
+                Status = e.Status
+            });
         }
+
 
         public async Task<TourBookingDto?> GetTourBookingByIdAsync(Guid id)
         {
@@ -52,195 +101,74 @@ namespace Domain.Services.TourBooking
             var entities = await _repository.GetTourBookingsByTourIdAsync(tourId);
             return _mapper.Map<IEnumerable<TourBookingDto>>(entities);
         }
-        public async Task<PartialTourBookingDto?> PatchTourBookingAsync(Guid id, UpdateTourBookingDto dto)
+        public async Task<TourBookingDto?>UpdateTourBookingAsync(Guid id, UpdateTourBookingDto dto)
+
         {
-            // Fetch the booking from the database
-            var booking = await _repository.GetTourBookingByIdAsync(id);
-            if (booking == null) return null;
+            var entity = await _repository.GetTourBookingByIdAsync(id);
+            if (entity == null) return null;
 
-            // Update only provided fields
-            if (!string.IsNullOrEmpty(dto.FirstName))
-                booking.FirstName = dto.FirstName;
+            // Full replace
+            entity.TourId = dto.TourId;
+            entity.FirstName = dto.FirstName;
+            entity.LastName = dto.LastName;
+            entity.Gender = dto.Gender;
+            entity.Dob = dto.Dob;
+            entity.Citizenship = dto.Citizenship;
+            entity.PassportNumber = dto.PassportNumber;
+            entity.IssueDate = dto.IssueDate;
+            entity.ExpiryDate = dto.ExpiryDate;
+            entity.PlaceOfBirth = dto.PlaceOfBirth;
+            entity.LeadPassenger = dto.LeadPassenger;
+            entity.ParticipantType = dto.ParticipantType;
+            entity.Status = dto.Status;
 
-            if (!string.IsNullOrEmpty(dto.LastName))
-                booking.LastName = dto.LastName;
-
-            if (!string.IsNullOrEmpty(dto.Gender))
-                booking.Gender = dto.Gender;
-
-            if (!string.IsNullOrEmpty(dto.Citizenship))
-                booking.Citizenship = dto.Citizenship;
-
-            if (dto.LeadPassenger.HasValue)
-                booking.LeadPassenger = dto.LeadPassenger.Value;
-
-            if (!string.IsNullOrEmpty(dto.PlaceOfBirth))
-                booking.PlaceOfBirth = dto.PlaceOfBirth;
-
-            // ParticipantType is enum; only update if it differs
-            booking.ParticipantType = dto.ParticipantType;
-
-            // Save changes
-            await _context.SaveChangesAsync();
-
-            // Map updated entity to Partial DTO
-            var result = new PartialTourBookingDto
-            {
-                Id = booking.Id,
-                FirstName = booking.FirstName,
-                LastName = booking.LastName,
-                Gender = booking.Gender ?? string.Empty,
-                Citizenship = booking.Citizenship ?? string.Empty,
-                LeadPassenger = booking.LeadPassenger.Value,
-                ParticipantType = booking.ParticipantType
-            };
-
-            return result;
+            var saved = await _repository.UpdateAsync(entity);
+            return MapToDto(saved);
         }
+
+        public async Task<TourBookingDto?> PatchTourBookingAsync(Guid id, PatchTourBookingDto dto)
         
-
-
-        //public async Task<PartialTourBookingDto?> PatchTourBookingAsync(Guid id, UpdateTourBookingDto dto)
-        //{
-        //var booking = await _repository.GetTourBookingByIdAsync(id);
-        //if (booking == null) return null;
-
-        //    // Only update fields if they are provided (non-null)
-        //    if (!string.IsNullOrEmpty(dto.FirstName))
-        //        booking.FirstName = dto.FirstName;
-
-        //    if (!string.IsNullOrEmpty(dto.LastName))
-        //        booking.LastName = dto.LastName;
-
-        //    if (!string.IsNullOrEmpty(dto.Gender))
-        //        booking.Gender = dto.Gender;
-
-        //    if (!string.IsNullOrEmpty(dto.Citizenship))
-        //        booking.Citizenship = dto.Citizenship;
-
-        //    if (dto.LeadPassenger.HasValue)
-        //        booking.LeadPassenger = dto.LeadPassenger.Value;
-
-        //    // ParticipantType is required, always update
-        //    booking.ParticipantType = dto.ParticipantType;
-
-        //    var updated = await _repository.UpdateTourBookingAsync(booking);
-
-        //    return MapToPartialDto(updated);
-        //}
-
-        //private static PartialTourBookingDto MapToPartialDto(TourBookingForm booking)
-        //{
-        //    return new PartialTourBookingDto
-        //    {
-        //        FirstName = booking.FirstName,
-        //        LastName = booking.LastName,
-        //        Gender = booking.Gender,
-        //        Citizenship = booking.Citizenship,
-        //        LeadPassenger= booking.LeadPassenger.Value,
-        //        ParticipantType = booking.ParticipantType
-        //    };
-        //}
-
-        // 1️⃣ Fetch booking by ID
-        //var booking = await _repository.GetTourBookingByIdAsync(id);
-        //if (booking == null) return null; // Not found
-
-        // 2️⃣ Apply partial updates only for non-null values
-        //if (dto.FirstName != null)
-        //    booking.FirstName = dto.FirstName;
-
-        //if (dto.LastName != null)
-        //    booking.LastName = dto.LastName;
-
-        //if (dto.Gender != null)
-        //    booking.Gender = dto.Gender;
-
-        //if (dto.Citizenship != null)
-        //    booking.Citizenship = dto.Citizenship;
-
-        //if (dto.LeadPassenger.HasValue)
-        //    booking.LeadPassenger = dto.LeadPassenger.Value;
-
-        //booking.ParticipantType = dto.ParticipantType;
-
-
-        //3️⃣ Save changes to DB
-        //await _repository.UpdateTourBookingAsync(booking);
-
-        //4️⃣ Map Entity → DTO before returning
-        //    return new PartialTourBookingDto
-        //    {
-        //        Id = booking.Id,
-        //        FirstName = booking.FirstName,
-        //        LastName = booking.LastName,
-        //        Gender = booking.Gender,
-        //        Citizenship = booking.Citizenship,
-        //    LeadPassenger = booking.LeadPassenger.Value,
-        //            ParticipantType = booking.ParticipantType
-        //};
-
-
-
-        //var existing = await _repository.GetTourBookingByIdAsync(id);
-        //if (existing == null) return null;
-
-        //_mapper.Map(dto, existing); // Maps only the changed properties
-        //var updated = await _repository.UpdateTourBookingAsync(existing);
-        ////return _mapper.Map<PartialTourBookingDto>(dto);
-        //return _mapper.Map<PartialTourBookingDto>(updated);
-
-        //return _mapper.Map<TourBookingDto>(updated);
-
-
-
-
-        //public async Task<TourBookingDto?> UpdateTourBookingAsync(Guid id, TourBookingDto dto)
-        //{
-        //    var existing = await _repository.GetTourBookingByIdAsync(id);
-        //    if (existing == null) return null;
-
-        //    // Map dto values onto existing entity
-        //    _mapper.Map(dto, existing);
-        //    var updated = await _repository.UpdateTourBookingAsync(existing);
-        //    return _mapper.Map<TourBookingDto>(updated);
-        //}
-        public async Task<UpdateTourBookingDto> UpdateTourBookingAsync(Guid id, UpdateTourBookingDto dto)
         {
-            var booking = await _repository.GetTourBookingByIdAsync(id);
-            if (booking == null) return null;
+            var entity = await _repository.GetTourBookingByIdAsync(id);
+            if (entity == null) return null;
 
-            // 🔑 FULL UPDATE (overwrite every field)
-            booking.FirstName = dto.FirstName;
-            booking.LastName = dto.LastName;
-            booking.Gender = dto.Gender;
-            booking.Citizenship = dto.Citizenship;
-            //booking.PassportNumber = dto.PassportNumber;
-            //booking.IssueDate = dto.IssueDate;
-            //booking.ExpiryDate = dto.ExpiryDate;
-            booking.ParticipantType= dto.ParticipantType;
-            booking.LeadPassenger= dto.LeadPassenger;
-            booking.PlaceOfBirth = dto.PlaceOfBirth;
+            // Only update provided fields
+            if (dto.TourId.HasValue) entity.TourId = dto.TourId.Value;
+            if (!string.IsNullOrEmpty(dto.FirstName)) entity.FirstName = dto.FirstName;
+            if (!string.IsNullOrEmpty(dto.LastName)) entity.LastName = dto.LastName;
+            if (!string.IsNullOrEmpty(dto.Gender)) entity.Gender = dto.Gender;
+            if (dto.Dob.HasValue) entity.Dob = dto.Dob;
+            if (!string.IsNullOrEmpty(dto.Citizenship)) entity.Citizenship = dto.Citizenship;
+            if (!string.IsNullOrEmpty(dto.PassportNumber)) entity.PassportNumber = dto.PassportNumber;
+            if (dto.IssueDate.HasValue) entity.IssueDate = dto.IssueDate;
+            if (dto.ExpiryDate.HasValue) entity.ExpiryDate = dto.ExpiryDate;
+            if (!string.IsNullOrEmpty(dto.PlaceOfBirth)) entity.PlaceOfBirth = dto.PlaceOfBirth;
+            if (dto.LeadPassenger.HasValue) entity.LeadPassenger = dto.LeadPassenger;
+            if (dto.ParticipantType.HasValue) entity.ParticipantType = dto.ParticipantType.Value;
+            if (dto.Status.HasValue) entity.Status = dto.Status.Value;
 
-            var updated = await _repository.UpdateTourBookingAsync(booking);
-                  
-
-              return new UpdateTourBookingDto
-            {
-                //Id = entity.Id,
-                //TourId = entity.TourId,
-                FirstName = updated.FirstName,
-                LastName =updated.LastName,
-                Gender = updated.Gender,
-                Citizenship = updated.Citizenship,
-                //PassportNumber = entity.PassportNumber,
-                //IssueDate = entity.IssueDate,
-                //ExpiryDate = entity.ExpiryDate,
-                LeadPassenger = updated.LeadPassenger,
-                ParticipantType = updated.ParticipantType,
-                PlaceOfBirth = updated.PlaceOfBirth
-            };
+            var saved = await _repository.UpdateAsync(entity);
+            return MapToDto(saved);
         }
+
+        private static TourBookingDto MapToDto(TourBookingForm e) => new()
+        {
+            Id = e.Id,
+            TourId = e.TourId,
+            FirstName = e.FirstName,
+            LastName = e.LastName,
+            Gender = e.Gender,
+            Dob = e.Dob,
+            Citizenship = e.Citizenship,
+            PassportNumber = e.PassportNumber,
+            IssueDate = e.IssueDate,
+            ExpiryDate = e.ExpiryDate,
+            PlaceOfBirth = e.PlaceOfBirth,
+            LeadPassenger = e.LeadPassenger,
+            ParticipantType = e.ParticipantType,
+            Status = e.Status
+        };
+       
         public async Task<bool> DeleteTourBookingAsync(Guid id)
             => await _repository.DeleteTourBookingAsync(id);
     }

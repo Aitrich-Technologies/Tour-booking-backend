@@ -46,17 +46,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ParticipantDto"
+                "$ref": "#/components/schemas/AddParticipantRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ParticipantDto"
+                "$ref": "#/components/schemas/AddParticipantRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ParticipantDto"
+                "$ref": "#/components/schemas/AddParticipantRequest"
               }
             }
           }
@@ -127,17 +127,66 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ParticipantDto"
+                "$ref": "#/components/schemas/UpdateParticipantRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ParticipantDto"
+                "$ref": "#/components/schemas/UpdateParticipantRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ParticipantDto"
+                "$ref": "#/components/schemas/UpdateParticipantRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Participant"
+        ],
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchParticipantRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchParticipantRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchParticipantRequest"
               }
             }
           }
@@ -188,17 +237,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TourBookingDto"
+                "$ref": "#/components/schemas/AddTourBookingRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TourBookingDto"
+                "$ref": "#/components/schemas/AddTourBookingRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TourBookingDto"
+                "$ref": "#/components/schemas/AddTourBookingRequest"
               }
             }
           }
@@ -242,7 +291,7 @@
           }
         }
       },
-      "patch": {
+      "put": {
         "tags": [
           "TourBooking"
         ],
@@ -282,7 +331,7 @@
           }
         }
       },
-      "put": {
+      "patch": {
         "tags": [
           "TourBooking"
         ],
@@ -301,17 +350,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateTourBookingRequest"
+                "$ref": "#/components/schemas/PatchTourBookingDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateTourBookingRequest"
+                "$ref": "#/components/schemas/PatchTourBookingDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateTourBookingRequest"
+                "$ref": "#/components/schemas/PatchTourBookingDto"
               }
             }
           }
@@ -352,6 +401,162 @@
         "parameters": [
           {
             "name": "tourId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/{userId}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
             "in": "path",
             "required": true,
             "schema": {
@@ -409,18 +614,10 @@
   },
   "components": {
     "schemas": {
-      "ParticipantDto": {
+      "AddParticipantRequest": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
           "leadId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "bookingId": {
             "type": "string",
             "format": "uuid"
           },
@@ -461,6 +658,121 @@
         },
         "additionalProperties": false
       },
+      "AddTourBookingRequest": {
+        "type": "object",
+        "properties": {
+          "tourId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "dob": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "citizenship": {
+            "type": "string",
+            "nullable": true
+          },
+          "passportNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "issueDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "expiryDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "placeOfBirth": {
+            "type": "string",
+            "nullable": true
+          },
+          "leadPassenger": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "participantType": {
+            "$ref": "#/components/schemas/ParticipantType"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TourStatus"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddUserDto": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "telephoneNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginDto": {
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ParticipantType": {
         "enum": [
           0,
@@ -470,7 +782,47 @@
         "type": "integer",
         "format": "int32"
       },
-      "TourBookingDto": {
+      "PatchParticipantRequest": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "citizenship": {
+            "type": "string",
+            "nullable": true
+          },
+          "passportNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "issueDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "expiryDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "placeOfBirth": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PatchTourBookingDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -479,7 +831,8 @@
           },
           "tourId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "nullable": true
           },
           "firstName": {
             "type": "string",
@@ -545,7 +898,7 @@
         "type": "integer",
         "format": "int32"
       },
-      "UpdateTourBookingDto": {
+      "UpdateParticipantRequest": {
         "type": "object",
         "properties": {
           "firstName": {
@@ -564,23 +917,38 @@
             "type": "string",
             "nullable": true
           },
-          "leadPassenger": {
-            "type": "boolean",
+          "passportNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "issueDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "expiryDate": {
+            "type": "string",
+            "format": "date",
             "nullable": true
           },
           "placeOfBirth": {
             "type": "string",
             "nullable": true
-          },
-          "participantType": {
-            "$ref": "#/components/schemas/ParticipantType"
           }
         },
         "additionalProperties": false
       },
-      "UpdateTourBookingRequest": {
+      "UpdateTourBookingDto": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "tourId": {
+            "type": "string",
+            "format": "uuid"
+          },
           "firstName": {
             "type": "string",
             "nullable": true
@@ -593,7 +961,30 @@
             "type": "string",
             "nullable": true
           },
+          "dob": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
           "citizenship": {
+            "type": "string",
+            "nullable": true
+          },
+          "passportNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "issueDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "expiryDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "placeOfBirth": {
             "type": "string",
             "nullable": true
           },
@@ -601,12 +992,11 @@
             "type": "boolean",
             "nullable": true
           },
-          "placeOfBirth": {
-            "type": "string",
-            "nullable": true
-          },
           "participantType": {
             "$ref": "#/components/schemas/ParticipantType"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TourStatus"
           }
         },
         "additionalProperties": false
@@ -634,6 +1024,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Enter 'Bearer' [space] and then your token",
+        "name": "Authorization",
+        "in": "header"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

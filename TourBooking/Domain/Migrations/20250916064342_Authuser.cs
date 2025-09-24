@@ -5,7 +5,7 @@
 namespace Domain.Migrations
 {
     /// <inheritdoc />
-    public partial class First : Migration
+    public partial class Authuser : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

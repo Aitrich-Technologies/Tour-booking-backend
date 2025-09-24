@@ -28,36 +28,50 @@ namespace Domain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateOnly?>("Dob")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("EmailId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TelephoneNo")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -84,48 +98,6 @@ namespace Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Destinations");
-                });
-
-            modelBuilder.Entity("Domain.Models.ParticipantInformation", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Citizenship")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateOnly?>("ExpiryDate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateOnly?>("IssueDate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("LeadId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("PassportNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PlaceOfBirth")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LeadId");
-
-                    b.ToTable("ParticipantInformations");
                 });
 
             modelBuilder.Entity("Domain.Models.TermsAndCondition", b =>
@@ -223,6 +195,52 @@ namespace Domain.Migrations
                     b.ToTable("Notes");
                 });
 
+            modelBuilder.Entity("ParticipantInformation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWSEQUENTIALID()");
+
+                    b.Property<Guid>("BookingId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Citizenship")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateOnly?>("ExpiryDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateOnly?>("IssueDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("LeadId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PassportNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlaceOfBirth")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeadId");
+
+                    b.ToTable("ParticipantInformations");
+                });
+
             modelBuilder.Entity("Tour", b =>
                 {
                     b.Property<Guid>("Id")
@@ -271,17 +289,6 @@ namespace Domain.Migrations
                     b.ToTable("Tours");
                 });
 
-            modelBuilder.Entity("Domain.Models.ParticipantInformation", b =>
-                {
-                    b.HasOne("Domain.Models.TourBookingForm", "Lead")
-                        .WithMany("ParticipantInformations")
-                        .HasForeignKey("LeadId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Lead");
-                });
-
             modelBuilder.Entity("Domain.Models.TermsAndCondition", b =>
                 {
                     b.HasOne("Tour", "Tour")
@@ -313,6 +320,17 @@ namespace Domain.Migrations
                         .IsRequired();
 
                     b.Navigation("Tour");
+                });
+
+            modelBuilder.Entity("ParticipantInformation", b =>
+                {
+                    b.HasOne("Domain.Models.TourBookingForm", "Lead")
+                        .WithMany("ParticipantInformations")
+                        .HasForeignKey("LeadId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Lead");
                 });
 
             modelBuilder.Entity("Tour", b =>

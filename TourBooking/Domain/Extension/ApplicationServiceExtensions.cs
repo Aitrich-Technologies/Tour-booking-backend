@@ -10,9 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Services.Participant.Interface;
 using Domain.Services.Participant;
+
 using Domain.Services.TourBooking.DTO;
 using Domain.Services.TourBooking.Interface;
 using Domain.Services.TourBooking;
+
+using Domain.Services.User.Interface;
+using Domain.Services.User;
+
 
 namespace Domain.Extension
 {
@@ -26,8 +31,13 @@ namespace Domain.Extension
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddScoped<IParticipantRepository, ParticipantRepository>();
             services.AddScoped<IParticipantService, ParticipantService>();
+
            services. AddScoped<ITourBookingRepository, TourBookingRepository>();
            services.AddScoped<ITourBookingService, TourBookingService>();
+           
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
 
             return services;
         }

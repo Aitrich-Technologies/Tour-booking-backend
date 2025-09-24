@@ -24,11 +24,13 @@ namespace Domain.Services.TourBooking
             return form;
         }
       
-        public async Task<IEnumerable<TourBookingForm>> GetAllTourBookingsAsync()
-            => await _context.TourBookingForms.ToListAsync();
-
-        //public async Task<TourBookingForm?> GetTourBookingByIdAsync(Guid id)
-        //    => await _context.TourBookingForms.FindAsync(id);
+       
+        public async Task<IEnumerable<TourBookingForm>> GetAllAsync()
+        {
+            return await _context.TourBookingForms
+                                 .AsNoTracking()
+                                 .ToListAsync();
+        }
 
         public async Task<TourBookingForm?> GetTourBookingByIdAsync(Guid id)
         {
@@ -40,31 +42,13 @@ namespace Domain.Services.TourBooking
                              .Where(x => x.TourId == tourId)
                              .ToListAsync();
 
-        //public async Task<TourBookingForm> UpdateTourBookingAsync(TourBookingForm form)
-        //{
-        //    // No need to call _context.Update(form)
-        //    await _context.SaveChangesAsync();
-        //    return form;
-        //}
-        public async Task<TourBookingForm> UpdateTourBookingAsync(TourBookingForm form)
+
+       
+        public async Task<TourBookingForm?> UpdateAsync(TourBookingForm booking)
         {
-            _context.TourBookingForms.Update(form);
+            _context.TourBookingForms.Update(booking);
             await _context.SaveChangesAsync();
-            return form;
-        }
-
-        //public async Task UpdateTourBookingAsync(TourBookingForm booking)
-        //{
-        //    _context.TourBookingForms.Update(booking);
-        //    await _context.SaveChangesAsync();
-        //}
-
-
-        public async Task<TourBookingForm> PatchTourBookingAsync(TourBookingForm form)
-        {
-            _context.TourBookingForms.Update(form);
-            await _context.SaveChangesAsync();
-            return form;
+            return booking;
         }
 
         public async Task<bool> DeleteTourBookingAsync(Guid id)
