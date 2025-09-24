@@ -24,7 +24,7 @@ public partial class TourBookingDbContext : DbContext
     public virtual DbSet<TermsAndCondition> TermsAndConditions { get; set; }
 
     public virtual DbSet<Tour> Tours { get; set; }
-
+    public virtual DbSet<Notes> Notes { get; set; }
     public virtual DbSet<TourBookingForm> TourBookingForms { get; set; }
 
 
