@@ -16,6 +16,7 @@
 //        }
 //    }
 
+using Azure.Core;
 using Domain.Models;
 using Domain.Services.Tours.DTO;
 using TourBooking.Services.Tours.DTO;
@@ -30,9 +31,10 @@ namespace TourBooking.Services.Tours.Interface
         Task<Tour?> PutTourAsync(Guid id, TourPutDto dto);
         Task<bool> DeleteTourAsync(Guid id);
         Task<Tour?> PatchTourAsync(Guid id, UpdateTourDto dto);
+        Task<AuthUser?> GetAuthUserByIdAsync(Guid id);
 
 
-      
+        //Task<IEnumerable<Tour>> GetToursByStatusAsync(string status);
 
     }
 }

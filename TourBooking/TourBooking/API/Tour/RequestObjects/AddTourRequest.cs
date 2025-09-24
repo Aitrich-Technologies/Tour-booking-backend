@@ -1,4 +1,5 @@
 ﻿using Domain.Enum;
+using System.Text.Json.Serialization;
 
 namespace TourBooking.API.Tour.RequestObjects
 {
@@ -13,6 +14,8 @@ namespace TourBooking.API.Tour.RequestObjects
         public int Price { get; set; }
         public DateOnly? DepartureDate { get; set; }
         public DateOnly? ArrivalDate { get; set; }
+
+        
         public Guid? CustomerId { get; set; }
         public Guid ConsultantId { get; set; }
         public TourStatus Status { get; set; }

@@ -56,11 +56,17 @@ namespace TourBooking.Services.Tours
             return tour;
         }
 
+
         public async Task<Tour> TourPutAsync(Tour tour)
         {
             _context.Tours.Update(tour);
             await _context.SaveChangesAsync();
             return tour;
+        }
+        public async Task<AuthUser?> GetAuthUserByIdAsync(Guid id)
+        {
+            return await _context.AuthUsers
+                .FirstOrDefaultAsync(u => u.Id == id);
         }
 
 

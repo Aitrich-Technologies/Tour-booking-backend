@@ -10,8 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Services.Participant.Interface;
 using Domain.Services.Participant;
-using Domain.Services.User.Interface;
-using Domain.Services.User;
 
 namespace Domain.Extension
 {
@@ -25,8 +23,6 @@ namespace Domain.Extension
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddScoped<IParticipantRepository, ParticipantRepository>();
             services.AddScoped<IParticipantService, ParticipantService>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IUserService, UserService>();
             return services;
         }
     }

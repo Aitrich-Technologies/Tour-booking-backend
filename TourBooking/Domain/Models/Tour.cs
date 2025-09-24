@@ -15,7 +15,7 @@ public partial class Tour
     public DateOnly? ArrivalDate { get; set; }
 
     // Foreign keys for AuthUser
-    public Guid? CustomerId { get; set; }   // make nullable
+    public Guid? CustomerId { get; set; } // make nullable
     public virtual AuthUser? Customer { get; set; }
 
     public Guid ConsultantId { get; set; }

@@ -13,6 +13,7 @@ namespace TourBooking.Services.Tours.DTO
         public DateOnly? DepartureDate { get; set; }
         public DateOnly? ArrivalDate { get; set; }
 
+
         // Foreign keys for AuthUser
         public Guid? CustomerId { get; set; }    // nullable as you wanted
         public Guid ConsultantId { get; set; }

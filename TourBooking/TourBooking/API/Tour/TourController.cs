@@ -2,6 +2,7 @@
 using Domain.Services.Tours.DTO;
 using Microsoft.AspNetCore.Mvc;
 using TourBooking.API.Tour.RequestObjects;
+using TourBooking.Services.Tours;
 using TourBooking.Services.Tours.DTO;
 using TourBooking.Services.Tours.Interface;
 
@@ -19,16 +20,25 @@ namespace TourBooking.API.Tour
             _service = service;
         }
 
-        // ✅ POST: api/v1/Tour
+        
+
         [HttpPost]
         public async Task<IActionResult> AddTour([FromBody] AddTourRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            // ✅ Only check CustomerId if provided
+            if (request.CustomerId != null)
+            {
+                var customer = await _service.GetAuthUserByIdAsync(request.CustomerId.Value);
+                if (customer == null)
+                    return BadRequest(new { message = "Invalid CustomerId" });
+            }
+
+            // Create DTO to pass to service
             var dto = new TourRegisterDto
             {
-
                 TourName = request.TourName,
                 TourDescription = request.TourDescription,
                 DestinationId = request.DestinationId,
@@ -36,10 +46,9 @@ namespace TourBooking.API.Tour
                 Price = request.Price,
                 DepartureDate = request.DepartureDate,
                 ArrivalDate = request.ArrivalDate,
-                CustomerId = request.CustomerId,   // ✅ optional
+                CustomerId = request.CustomerId,   // optional
                 ConsultantId = request.ConsultantId,
-                Status = request.Status,
-               
+                Status = request.Status
             };
 
             var created = await _service.CreateTourAsync(dto);
@@ -47,7 +56,9 @@ namespace TourBooking.API.Tour
             return CreatedAtAction(nameof(GetTourById), new { id = created.Id }, created);
         }
 
-       
+
+
+        // ✅ GET: api/v1/Tour/{id}
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetTourById(Guid id)
         {
@@ -95,8 +106,6 @@ namespace TourBooking.API.Tour
             if (updatedTour == null) return NotFound();
             return Ok(updatedTour);
         }
-
-
     }
 }
 
