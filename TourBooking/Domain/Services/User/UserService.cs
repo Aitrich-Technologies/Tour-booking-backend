@@ -85,6 +85,13 @@ namespace Domain.Services.User
             return _mapper.Map<IEnumerable<UserResponseDto>>(users);
         }
 
+        public async Task<IEnumerable<UserResponseDto>> GetAllCustomersAsync()
+        {
+             var user= await _userRepository.GetAllCustomersAsync();
+             var customers= _mapper.Map<IEnumerable<UserResponseDto>>(user);
+            return customers;
+        }
+
         public async Task<UserResponseDto> GetUserByIdAsync(Guid userId)
         {
             var user = await _userRepository.GetUserByIdAsync(userId);
@@ -113,37 +120,7 @@ namespace Domain.Services.User
             var updatedUser = _mapper.Map<UserResponseDto>(updated);
             return updatedUser;
         }
-        //public async Task<UserResponseDto> PatchUserAsync(Guid id, PatchUserDto dto)
-        //{
-        //    var existing = await _userRepository.GetUserByIdAsync(id);
-        //    if (existing == null) return null;
-
-        //    // Get all properties of PatchUserDto
-        //    var properties = typeof(PatchUserDto).GetProperties();
-
-        //    foreach (var prop in properties)
-        //    {
-        //        var value = prop.GetValue(dto);
-
-        //        // Skip nulls and empty strings
-        //        if (value == null) continue;
-        //        if (value is string str && string.IsNullOrWhiteSpace(str)) continue;
-
-        //        // Find corresponding property in AuthUser
-        //        var existingProp = typeof(AuthUser).GetProperty(prop.Name);
-        //        if (existingProp != null && existingProp.CanWrite)
-        //        {
-        //            existingProp.SetValue(existing, value);
-        //        }
-        //    }
-
-        //    // Save changes
-        //    var updated = await _userRepository.UpdateUserAsync(existing);
-
-        //    // Map back to response DTO
-        //    return _mapper.Map<UserResponseDto>(updated);
-        //}
-
+        
         public async Task<UserResponseDto> PatchUserAsync(Guid id, PatchUserDto request)
         {
             var existing = await _userRepository.GetUserByIdAsync(id);
@@ -159,8 +136,7 @@ namespace Domain.Services.User
             if (request.TelephoneNo != null) existing.TelephoneNo = request.TelephoneNo;
             if (request.Email != null) existing.Email = request.Email;
 
-
-         
+                    
             var updated = await _userRepository.UpdateUserAsync(existing);
 
             var updatedUser = _mapper.Map<UserResponseDto>(updated);

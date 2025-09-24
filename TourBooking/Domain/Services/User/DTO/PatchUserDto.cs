@@ -9,15 +9,14 @@ namespace Domain.Services.User.DTO
 {
     public class PatchUserDto
     {
-        public string FirstName { get; set; } = null;
-        public string LastName { get; set; }=null;
-        public string Gender { get; set; } = null;
-        public DateOnly? DateOfBirth { get; set; }=null;
-        public UserRole? Role { get; set; } = null;  
-        public string UserName { get; set; } = null;
-        public string Email { get; set; } = null ;
-        public string TelephoneNo { get; set; } = null;
-        public string Password { get; set; } = null;
+        public string? FirstName { get; set; } 
+        public string? LastName { get; set; }
+        public string? Gender { get; set; }
+        public DateOnly? DateOfBirth { get; set; }
+        public UserRole? Role { get; set; }
+        public string? UserName { get; set; } 
+        public string? Email { get; set; }
+        public string? TelephoneNo { get; set; }
 
     }
 }

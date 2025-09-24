@@ -14,6 +14,7 @@ namespace Domain.Services.User.Interface
 
         Task<AuthUser> LoginAsync(string username, string password);
         Task<IEnumerable<AuthUser>> GetAllUsersAsync();
+        Task<IEnumerable<AuthUser>> GetAllCustomersAsync();
         Task<AuthUser> GetUserByIdAsync(Guid userId);
         Task<AuthUser> UpdateUserAsync(AuthUser user);
         Task<bool> DeleteUserAsync(Guid userId);

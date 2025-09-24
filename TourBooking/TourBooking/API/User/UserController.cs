@@ -102,6 +102,16 @@ namespace TourBooking.API.User
 
             return Ok("User Deleted Successfully");
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllCustomers()
+        {
+            var users = await _userService.GetAllCustomersAsync();
+            var response = _mapper.Map<IEnumerable<UserResponse>>(users);
+
+            return Ok(response);
+        }
     }
 
 }

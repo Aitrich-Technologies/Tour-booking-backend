@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Services.User.Interface;
 using Microsoft.EntityFrameworkCore;
+using Domain.Enum;
 
 namespace Domain.Services.User
 {
@@ -36,6 +37,11 @@ namespace Domain.Services.User
             return await _context.AuthUsers.ToListAsync();
         }
 
+
+        public async Task<IEnumerable<AuthUser>> GetAllCustomersAsync()
+        {
+            return await _context.AuthUsers.Where(c => c.Role == UserRole.CUSTOMER).ToListAsync();
+        }
         public async Task<AuthUser?> GetByUserNameOrEmailAsync(string userName, string email)
         {
             return await _context.AuthUsers
