@@ -2,6 +2,10 @@ F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\n
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\appsettings.json
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\TourBooking.staticwebassets.endpoints.json
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\TourBooking.exe
+F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\TourBooking.deps.json
+F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\TourBooking.runtimeconfig.json
+F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\TourBooking.dll
+F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\TourBooking.pdb
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\AutoMapper.dll
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\Azure.Core.dll
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\Azure.Identity.dll
@@ -171,9 +175,5 @@ F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\n
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.dll
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\refint\TourBooking.dll
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.pdb
-F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\TourBooking.deps.json
-F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\TourBooking.runtimeconfig.json
-F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\TourBooking.dll
-F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\TourBooking.pdb
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.genruntimeconfig.cache
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\ref\TourBooking.dll

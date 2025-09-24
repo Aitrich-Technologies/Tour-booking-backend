@@ -38,10 +38,10 @@ public partial class AuthUser
     [MaxLength(10)]
     public string Gender { get; set; }
 
-    public DateTime DateOfBirth { get; set; }
+    public DateOnly? DateOfBirth { get; set; }
 
     [Required]
-    public string Role { get; set; }  // Customer | Consultant
+    public UserRole? Role { get; set; }
 
     [Required, MaxLength(50)]
     public string UserName { get; set; }

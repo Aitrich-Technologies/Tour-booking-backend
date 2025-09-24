@@ -20,6 +20,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,9 +28,14 @@
   </ItemGroup>
 
   <ItemGroup>
+
     <Folder Include="API\Destination\RequestObjects\" />
-    <Folder Include="API\Notes\RequestObjects\" />
     <Folder Include="API\Terms\RequestObjects\" />
+
+    <Folder Include="API\Notes\RequestObjects\" />
+
+    <Folder Include="API\TourBooking\RequestObjects\" />
+
     <Folder Include="API\Tour\RequestObjects\" />
   </ItemGroup>
 

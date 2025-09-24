@@ -59,6 +59,10 @@
               "target": "Package",
               "version": "[8.0.1, )"
             },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
             "Microsoft.AspNetCore.JsonPatch": {
               "target": "Package",
               "version": "[9.0.9, )"
@@ -76,6 +80,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.8, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.0.1, )"
             }
           },
           "imports": [

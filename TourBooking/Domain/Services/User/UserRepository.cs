@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Domain.Services.User
 {
-    internal class UserRepository:IUserRepository
+    internal class UserRepository : IUserRepository
     {
         private readonly TourBookingDbContext _context;
 
@@ -36,9 +36,14 @@ namespace Domain.Services.User
             return await _context.AuthUsers.ToListAsync();
         }
 
+        public async Task<AuthUser?> GetByUserNameOrEmailAsync(string userName, string email)
+        {
+            return await _context.AuthUsers
+                .FirstOrDefaultAsync(u => u.UserName == userName || u.Email == email);
+        }
         public async Task<AuthUser> GetUserByIdAsync(Guid userId)
         {
-            return await _context.AuthUsers.FindAsync(userId);
+            return await _context.AuthUsers.AsNoTracking().FirstOrDefaultAsync(u => u.Id == userId);
         }
 
         public async Task<AuthUser> UpdateUserAsync(AuthUser user)
@@ -58,6 +63,5 @@ namespace Domain.Services.User
             return true;
         }
     }
-    
-  
-}
+
+    }
