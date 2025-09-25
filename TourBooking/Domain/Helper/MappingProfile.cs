@@ -4,16 +4,35 @@ using Domain.Models;
 using Domain.Services.Destinations.DTO;
 using Domain.Services.Participant.DTO;
 
+using Domain.Services.TourBooking.DTO;
+
+
+using Domain.Services.TourNote.DTO;
+
+
 using Domain.Services.Terms.DTO;
 
 using Domain.Services.User.DTO;
+
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
+using System.Threading.Tasks;
+
+using Domain.Services.TourBooking.DTO;
+using Domain.Models;
+
+using Domain.Services.TourBooking.DTO;
+
+using Domain.Services.Participant.Interface;
+
 using Domain.Services.TourBooking;
 using System.Threading.Tasks; 
+
+
 
 namespace Domain.Helper
 {
@@ -24,6 +43,17 @@ namespace Domain.Helper
             // Entity → DTO
             CreateMap<ParticipantInformation, ParticipantDto>()
                 .ForMember(dest => dest.BookingId, opt => opt.MapFrom(src => src.LeadId));
+
+            // DTO → Entity
+            CreateMap<ParticipantDto, ParticipantInformation>()
+                .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.BookingId));
+                                    
+             CreateMap<TourBookingDto, TourBookingForm>();
+             CreateMap<TourBookingForm, TourBookingDto>();      
+            
+            CreateMap<UpdateTourBookingDto, TourBookingForm>()
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+           
 
 
             // DTO → Entity
@@ -39,6 +69,9 @@ namespace Domain.Helper
             CreateMap<ParticipantDto, ParticipantInformation>()
                 .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.BookingId));
 
+            CreateMap<Notes, NoteDto>().ReverseMap();
+
+
             CreateMap<TermsDto, TermsAndCondition>().ReverseMap();
 
 
@@ -47,6 +80,7 @@ namespace Domain.Helper
             CreateMap<AuthUser, UserResponseDto>().ReverseMap();
 
         }
+
         }
     }
 
