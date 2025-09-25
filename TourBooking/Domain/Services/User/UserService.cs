@@ -89,8 +89,13 @@ namespace Domain.Services.User
 
         public async Task<IEnumerable<UserResponseDto>> GetAllCustomersAsync()
         {
+<<<<<<< HEAD
             var user = await _userRepository.GetAllCustomersAsync();
             var customers = _mapper.Map<IEnumerable<UserResponseDto>>(user);
+=======
+             var user= await _userRepository.GetAllCustomersAsync();
+             var customers= _mapper.Map<IEnumerable<UserResponseDto>>(user);
+>>>>>>> 794327179f7c903688f57d5a4c6aafc35a9823c1
             return customers;
         }
 
@@ -122,7 +127,11 @@ namespace Domain.Services.User
             var updatedUser = _mapper.Map<UserResponseDto>(updated);
             return updatedUser;
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 794327179f7c903688f57d5a4c6aafc35a9823c1
         public async Task<UserResponseDto> PatchUserAsync(Guid id, PatchUserDto request)
         {
             var existing = await _userRepository.GetUserByIdAsync(id);
@@ -137,7 +146,11 @@ namespace Domain.Services.User
             if (request.TelephoneNo != null) existing.TelephoneNo = request.TelephoneNo;
             if (request.Email != null) existing.Email = request.Email;
 
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 794327179f7c903688f57d5a4c6aafc35a9823c1
             var updated = await _userRepository.UpdateUserAsync(existing);
 
             var updatedUser = _mapper.Map<UserResponseDto>(updated);

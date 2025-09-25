@@ -1746,7 +1746,6 @@
           "AutoMapper": "13.0.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.1",
           "Microsoft.AspNetCore.Http.Abstractions": "2.3.0",
-          "Microsoft.AspNetCore.JsonPatch": "9.0.9",
           "Microsoft.EntityFrameworkCore": "9.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.8",
           "System.IdentityModel.Tokens.Jwt": "8.0.1"
@@ -5153,23 +5152,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\USER\\.nuget\\packages\\": {},
+    "C:\\Users\\hp\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Aitrich\\Tour-Project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
+      "projectUniqueName": "D:\\Reeshma\\Tour Booking Project\\New folder\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
       "projectName": "TourBooking",
-      "projectPath": "F:\\Aitrich\\Tour-Project\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
-      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "F:\\Aitrich\\Tour-Project\\Tour-booking-backend\\TourBooking\\TourBooking\\obj\\",
+      "projectPath": "D:\\Reeshma\\Tour Booking Project\\New folder\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
+      "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+      "outputPath": "D:\\Reeshma\\Tour Booking Project\\New folder\\Tour-booking-backend\\TourBooking\\TourBooking\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5185,8 +5184,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "F:\\Aitrich\\Tour-Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
-              "projectPath": "F:\\Aitrich\\Tour-Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj"
+            "D:\\Reeshma\\Tour Booking Project\\New folder\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\Reeshma\\Tour Booking Project\\New folder\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj"
             }
           }
         }
@@ -5200,8 +5199,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -5261,7 +5259,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

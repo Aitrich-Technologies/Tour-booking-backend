@@ -24,8 +24,6 @@ namespace TourBooking.API.User.Helper
 
             CreateMap<PatchUserRequest, PatchUserDto>().ReverseMap();
 
-
-
         }
 
     }

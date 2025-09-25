@@ -177,3 +177,14 @@ F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\n
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.pdb
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.genruntimeconfig.cache
 F:\Aitrich\Tour-Project\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\ref\TourBooking.dll
+D:\Reeshma\Tour Booking Project\New folder\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.csproj.AssemblyReference.cache
+D:\Reeshma\Tour Booking Project\New folder\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.GeneratedMSBuildEditorConfig.editorconfig
+D:\Reeshma\Tour Booking Project\New folder\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.AssemblyInfoInputs.cache
+D:\Reeshma\Tour Booking Project\New folder\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.AssemblyInfo.cs
+D:\Reeshma\Tour Booking Project\New folder\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.csproj.CoreCompileInputs.cache
+D:\Reeshma\Tour Booking Project\New folder\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.MvcApplicationPartsAssemblyInfo.cs
+D:\Reeshma\Tour Booking Project\New folder\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.MvcApplicationPartsAssemblyInfo.cache
+D:\Reeshma\Tour Booking Project\New folder\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.sourcelink.json
+D:\Reeshma\Tour Booking Project\New folder\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.dll
+D:\Reeshma\Tour Booking Project\New folder\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\refint\TourBooking.dll
+D:\Reeshma\Tour Booking Project\New folder\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.pdb
