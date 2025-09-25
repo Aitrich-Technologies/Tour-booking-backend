@@ -56,4 +56,9 @@ public partial class AuthUser
     public string Password { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+
+
 }
+
+

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Aitrich\\Tour-Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {}
+    "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "F:\\Aitrich\\Tour-Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
+    "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Aitrich\\Tour-Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "F:\\Aitrich\\Tour-Project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "F:\\Aitrich\\Tour-Project\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\afraa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\afraa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,8 +44,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -102,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

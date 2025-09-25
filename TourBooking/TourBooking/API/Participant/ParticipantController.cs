@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using TourBooking.API.Participant.RequestObjects;
 using TourBooking.Controllers;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 namespace TourBooking.API.Participant
 {
     [ApiController]
@@ -17,7 +19,7 @@ namespace TourBooking.API.Participant
         {
             _service = service;
         }
-
+        [Authorize(Roles="CONSULTANT")]
         [HttpGet]
         public async Task<IActionResult> GetParticipants(Guid bookingId)
         {

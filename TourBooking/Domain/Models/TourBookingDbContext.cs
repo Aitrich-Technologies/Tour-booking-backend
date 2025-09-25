@@ -45,6 +45,7 @@ public partial class TourBookingDbContext : DbContext
             .WithMany()
             .HasForeignKey(t => t.ConsultantId)
             .OnDelete(DeleteBehavior.Restrict);
+       
 
         // Tour → TermsAndConditions
         modelBuilder.Entity<TermsAndCondition>()
