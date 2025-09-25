@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "HIV07OBOkNk8E8yNZNsWtw2WOqMEAGqB9OoqHW4ll8E=",
+  "Hash": "HNhlJiX7Er7CZgQwtGKZzdHnWxRaC+Soz7bcUt8qvMk=",
   "Source": "TourBooking",
   "BasePath": "_content/TourBooking",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }
