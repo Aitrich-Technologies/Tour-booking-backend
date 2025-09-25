@@ -13,7 +13,7 @@ namespace TourBooking.API.User.Helper
         {
             // Request ↔ DTO
             CreateMap<AddUserRequest, AddUserDto>().ReverseMap();
-            CreateMap<UserResponse,UserResponseDto>().ReverseMap();
+            CreateMap<UserResponse, UserResponseDto>().ReverseMap();
 
             CreateMap<LoginRequest, LoginDto>().ReverseMap();
             // DTO → Model
@@ -23,8 +23,6 @@ namespace TourBooking.API.User.Helper
             CreateMap<AuthUser, UserResponseDto>().ReverseMap();
 
             CreateMap<PatchUserRequest, PatchUserDto>().ReverseMap();
-
-
 
         }
 

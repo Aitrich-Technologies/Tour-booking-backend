@@ -5,14 +5,14 @@
 *.userosscache
 *.sln.docstates
 
-# Build artifacts
-bin/
-obj/
+# Build results
+[Bb]in/
+[Oo]bj/
 *.dll
 *.pdb
 *.cache
-*.log
 
-# NuGet
-*.nupkg
-packages/
+# Others
+*.log
+*.json.user
+

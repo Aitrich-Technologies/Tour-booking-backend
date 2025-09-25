@@ -13,6 +13,7 @@ namespace Domain.Services.User.Interface
         Task<UserResponseDto> AddUserAsync(AddUserDto user);
         Task<string> LoginAsync(LoginDto user);
         Task<IEnumerable<UserResponseDto>> GetAllUsersAsync();
+        Task<IEnumerable<UserResponseDto>> GetAllCustomersAsync();
         Task<UserResponseDto> GetUserByIdAsync(Guid userId);
         Task<UserResponseDto> UpdateUserAsync(Guid userId, AddUserDto user);
         Task<UserResponseDto> PatchUserAsync(Guid userId, PatchUserDto user);
