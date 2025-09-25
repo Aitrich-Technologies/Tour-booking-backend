@@ -42,8 +42,6 @@
     <Folder Include="Services\Notes\Interface\" />
 
     <Folder Include="Services\Terms\Interface\" />
-    <Folder Include="Services\TourBooking\DTO\" />
-    <Folder Include="Services\TourBooking\Interface\" />
     <Folder Include="Services\Tour\DTO\" />
     <Folder Include="Services\Tour\Interface\" />
   </ItemGroup>
