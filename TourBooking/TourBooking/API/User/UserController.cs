@@ -50,8 +50,8 @@ namespace TourBooking.API.User
             return Ok(new { token });
         }
 
-        [Authorize]
-        [HttpGet]
+        //[Authorize]
+        [HttpGet("All")]
         public async Task<IActionResult> GetAll()
         {
             var users = await _userService.GetAllUsersAsync();
@@ -104,7 +104,8 @@ namespace TourBooking.API.User
         }
 
 
-        [HttpGet]
+        //[Authorize]
+        [HttpGet("Customers")]
         public async Task<IActionResult> GetAllCustomers()
         {
             var users = await _userService.GetAllCustomersAsync();

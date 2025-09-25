@@ -125,7 +125,6 @@ namespace Domain.Services.User
         {
             var existing = await _userRepository.GetUserByIdAsync(id);
             if (existing == null) return null;
-            var properties = typeof(PatchUserDto).GetProperties();
 
             if (request.FirstName != null) existing.FirstName = request.FirstName;
             if (request.LastName != null) existing.LastName = request.LastName;
