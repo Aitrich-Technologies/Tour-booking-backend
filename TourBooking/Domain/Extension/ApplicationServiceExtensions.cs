@@ -13,8 +13,16 @@ using Domain.Services.Participant;
 
 using Domain.Services.Destinations.Interface;
 using Domain.Services.Destinations;
+
 using Domain.Services.User.Interface;
 using Domain.Services.User;
+
+
+using Domain.Services.User.Interface;
+using Domain.Services.User;
+using Domain.Services.Terms.Interface;
+using Domain.Services.Terms;
+
 
 
 namespace Domain.Extension
@@ -33,8 +41,20 @@ namespace Domain.Extension
             services.AddScoped<IDestinationService, DestinationService>();
             services.AddScoped<IDestinationRepository, DestinationRepository>();
 
+
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+
+
+
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<ITermsAndConditionRepository, TermsRepository>();
+            services.AddScoped<ITermsAndConditionService, TermsService>();
+
+
 
             return services;
         }
