@@ -1,5 +1,16 @@
-﻿using Domain.Models;
-using Domain.Helper;
+﻿using Domain.Helper;
+using Domain.Models;
+using Domain.Services.Destinations;
+using Domain.Services.Destinations.Interface;
+using Domain.Services.Participant;
+using Domain.Services.Participant.Interface;
+using Domain.Services.Terms;
+using Domain.Services.Terms.Interface;
+using Domain.Services.TourNote;
+using Domain.Services.TourNote.Interface;
+using Domain.Services.Tours.Interface;
+using Domain.Services.User;
+using Domain.Services.User.Interface;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,18 +19,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Services.Participant.Interface;
-using Domain.Services.Participant;
-
-using Domain.Services.Destinations.Interface;
-using Domain.Services.Destinations;
-
-using Domain.Services.User.Interface;
-using Domain.Services.User;
-using Domain.Services.Terms.Interface;
-using Domain.Services.Terms;
-using Domain.Services.TourNote.Interface;
-using Domain.Services.TourNote;
+using TourBooking.Services.Tours;
+using TourBooking.Services.Tours.Interface;
 
 
 namespace Domain.Extension
@@ -41,6 +42,9 @@ namespace Domain.Extension
 
             services.AddScoped<IDestinationService, DestinationService>();
             services.AddScoped<IDestinationRepository, DestinationRepository>();
+
+            services.AddScoped<ITourRepository, TourRepository>();
+            services.AddScoped<ITourService, TourService>();
 
 
 
