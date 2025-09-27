@@ -23,6 +23,7 @@ namespace TourBooking.API.User
             _mapper = mapper;
         }
 
+
         [HttpPost]
         public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)
         {
@@ -50,8 +51,8 @@ namespace TourBooking.API.User
             return Ok(new { token });
         }
 
-        [Authorize]
-        [HttpGet]
+        //[Authorize]
+        [HttpGet("All")]
         public async Task<IActionResult> GetAll()
         {
             var users = await _userService.GetAllUsersAsync();
@@ -101,6 +102,17 @@ namespace TourBooking.API.User
             if (!deleted) return NotFound();
 
             return Ok("User Deleted Successfully");
+        }
+
+
+        //[Authorize]
+        [HttpGet("Customers")]
+        public async Task<IActionResult> GetAllCustomers()
+        {
+            var users = await _userService.GetAllCustomersAsync();
+            var response = _mapper.Map<IEnumerable<UserResponse>>(users);
+
+            return Ok(response);
         }
     }
 

@@ -4,6 +4,9 @@ using Domain.Models;
 using Domain.Services.Destinations.DTO;
 using Domain.Services.Participant.DTO;
 
+using Domain.Services.TourBooking.DTO;
+
+
 using Domain.Services.TourNote.DTO;
 
 
@@ -18,21 +21,39 @@ using System.Linq;
 using System.Text;
 
 using System.Threading.Tasks;
+
+using Domain.Services.TourBooking.DTO;
+using Domain.Models;
+
+using Domain.Services.TourBooking.DTO;
+
 using Domain.Services.Participant.Interface;
 
 using Domain.Services.TourBooking;
 using System.Threading.Tasks; 
 
 
+
 namespace Domain.Helper
 {
     public class MappingProfile:Profile
-    { 
-             public MappingProfile()
-            {
-                // Entity → DTO
-                CreateMap<ParticipantInformation, ParticipantDto>()
-                    .ForMember(dest => dest.BookingId, opt => opt.MapFrom(src => src.LeadId));
+    {
+        public MappingProfile()
+        {
+            // Entity → DTO
+            CreateMap<ParticipantInformation, ParticipantDto>()
+                .ForMember(dest => dest.BookingId, opt => opt.MapFrom(src => src.LeadId));
+
+            // DTO → Entity
+            CreateMap<ParticipantDto, ParticipantInformation>()
+                .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.BookingId));
+                                    
+             CreateMap<TourBookingDto, TourBookingForm>();
+             CreateMap<TourBookingForm, TourBookingDto>();      
+            
+            CreateMap<UpdateTourBookingDto, TourBookingForm>()
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+           
 
 
             // DTO → Entity
@@ -44,9 +65,9 @@ namespace Domain.Helper
 
 
 
-                // DTO → Entity
-                CreateMap<ParticipantDto, ParticipantInformation>()
-                    .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.BookingId));
+            // DTO → Entity
+            CreateMap<ParticipantDto, ParticipantInformation>()
+                .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.BookingId));
 
             CreateMap<Notes, NoteDto>().ReverseMap();
 
@@ -54,12 +75,11 @@ namespace Domain.Helper
             CreateMap<TermsDto, TermsAndCondition>().ReverseMap();
 
 
-            CreateMap<AddUserDto, AuthUser>() .ReverseMap(); 
+            CreateMap<AddUserDto, AuthUser>().ReverseMap();
 
-            CreateMap<AuthUser, UserResponseDto>().ReverseMap(); 
+            CreateMap<AuthUser, UserResponseDto>().ReverseMap();
 
         }
-
 
         }
     }

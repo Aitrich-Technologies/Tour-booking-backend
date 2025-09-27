@@ -40,8 +40,10 @@ namespace Domain.Services.User
         {
             var existingUser = await _userRepository.GetByUserNameOrEmailAsync(dto.UserName, dto.Email);
             if (existingUser != null)
+            {
                 throw new Exception("User with the same username or email already exists.");
-
+                return null;
+            }
             var user = _mapper.Map<AuthUser>(dto);
             user.Id = Guid.NewGuid();
             user.CreatedAt = DateTime.UtcNow;
@@ -85,6 +87,17 @@ namespace Domain.Services.User
             return _mapper.Map<IEnumerable<UserResponseDto>>(users);
         }
 
+        public async Task<IEnumerable<UserResponseDto>> GetAllCustomersAsync()
+        {
+
+            var user = await _userRepository.GetAllCustomersAsync();
+            var customers = _mapper.Map<IEnumerable<UserResponseDto>>(user);
+
+          
+
+            return customers;
+        }
+
         public async Task<UserResponseDto> GetUserByIdAsync(Guid userId)
         {
             var user = await _userRepository.GetUserByIdAsync(userId);
@@ -113,42 +126,11 @@ namespace Domain.Services.User
             var updatedUser = _mapper.Map<UserResponseDto>(updated);
             return updatedUser;
         }
-        //public async Task<UserResponseDto> PatchUserAsync(Guid id, PatchUserDto dto)
-        //{
-        //    var existing = await _userRepository.GetUserByIdAsync(id);
-        //    if (existing == null) return null;
-
-        //    // Get all properties of PatchUserDto
-        //    var properties = typeof(PatchUserDto).GetProperties();
-
-        //    foreach (var prop in properties)
-        //    {
-        //        var value = prop.GetValue(dto);
-
-        //        // Skip nulls and empty strings
-        //        if (value == null) continue;
-        //        if (value is string str && string.IsNullOrWhiteSpace(str)) continue;
-
-        //        // Find corresponding property in AuthUser
-        //        var existingProp = typeof(AuthUser).GetProperty(prop.Name);
-        //        if (existingProp != null && existingProp.CanWrite)
-        //        {
-        //            existingProp.SetValue(existing, value);
-        //        }
-        //    }
-
-        //    // Save changes
-        //    var updated = await _userRepository.UpdateUserAsync(existing);
-
-        //    // Map back to response DTO
-        //    return _mapper.Map<UserResponseDto>(updated);
-        //}
 
         public async Task<UserResponseDto> PatchUserAsync(Guid id, PatchUserDto request)
         {
             var existing = await _userRepository.GetUserByIdAsync(id);
             if (existing == null) return null;
-            var properties = typeof(PatchUserDto).GetProperties();
 
             if (request.FirstName != null) existing.FirstName = request.FirstName;
             if (request.LastName != null) existing.LastName = request.LastName;
@@ -160,7 +142,6 @@ namespace Domain.Services.User
             if (request.Email != null) existing.Email = request.Email;
 
 
-         
             var updated = await _userRepository.UpdateUserAsync(existing);
 
             var updatedUser = _mapper.Map<UserResponseDto>(updated);

@@ -22,6 +22,13 @@ using System.Threading.Tasks;
 using TourBooking.Services.Tours;
 using TourBooking.Services.Tours.Interface;
 
+using Domain.Services.TourBooking.Interface;
+using Domain.Services.TourBooking;
+
+
+
+
+
 
 namespace Domain.Extension
 {
@@ -36,6 +43,11 @@ namespace Domain.Extension
             services.AddScoped<IParticipantRepository, ParticipantRepository>();
             services.AddScoped<IParticipantService, ParticipantService>();
 
+
+           services. AddScoped<ITourBookingRepository, TourBookingRepository>();
+           services.AddScoped<ITourBookingService, TourBookingService>();
+           
+
             services.AddScoped<INoteRepository, NoteRepository>();
             services.AddScoped<INoteService, NoteService>();
 
@@ -47,9 +59,16 @@ namespace Domain.Extension
             services.AddScoped<ITourService, TourService>();
 
 
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+
+
+
+
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+
 
             services.AddScoped<ITermsAndConditionRepository, TermsRepository>();
             services.AddScoped<ITermsAndConditionService, TermsService>();
