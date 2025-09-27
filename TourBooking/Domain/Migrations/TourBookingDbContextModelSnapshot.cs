@@ -28,9 +28,10 @@ namespace Domain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly?>("Dob")
+                        .HasColumnType("date");
 
+<<<<<<< HEAD
                     b.Property<DateOnly?>("DateOfBirth")
                         .HasColumnType("date");
 
@@ -38,39 +39,43 @@ namespace Domain.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+=======
+                    b.Property<string>("EmailId")
+                        .HasColumnType("nvarchar(max)");
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .IsRequired()
+<<<<<<< HEAD
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<int>("Role")
                         .HasColumnType("int");
+=======
+                        .HasColumnType("nvarchar(max)");
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
 
                     b.Property<string>("TelephoneNo")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -250,7 +255,7 @@ namespace Domain.Migrations
                     b.Property<Guid>("ConsultantId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid?>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateOnly?>("DepartureDate")
@@ -341,8 +346,7 @@ namespace Domain.Migrations
                     b.HasOne("Domain.Models.AuthUser", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Domain.Models.Destination", "Destination")
                         .WithMany("Tours")

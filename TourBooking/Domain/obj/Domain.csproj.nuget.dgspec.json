@@ -2,40 +2,36 @@
   "format": 1,
   "restore": {
 <<<<<<< HEAD
-    "D:\\Reeshma\\Tour Booking Project\\New folder\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {}
+    "F:\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "D:\\Reeshma\\Tour Booking Project\\New folder\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
+    "F:\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Reeshma\\Tour Booking Project\\New folder\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "projectUniqueName": "F:\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\Reeshma\\Tour Booking Project\\New folder\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "D:\\Reeshma\\Tour Booking Project\\New folder\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
+        "projectPath": "F:\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\KDN\\.nuget\\packages\\",
+        "outputPath": "F:\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
 =======
-    "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {}
+    "D:\\Tour_project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
+    "D:\\Tour_project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\Tour_project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\afraa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
->>>>>>> 83d2416a4a918671fb8397a8a119ddfdb92b651d
+        "projectPath": "D:\\Tour_project\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\KDN\\.nuget\\packages\\",
+        "outputPath": "D:\\Tour_project\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\afraa\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 83d2416a4a918671fb8397a8a119ddfdb92b651d
+          "C:\\Users\\KDN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -62,7 +58,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -72,6 +69,7 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+<<<<<<< HEAD
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.1, )"
@@ -80,6 +78,8 @@
               "target": "Package",
               "version": "[2.3.0, )"
             },
+=======
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.8, )"
@@ -115,11 +115,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
->>>>>>> 83d2416a4a918671fb8397a8a119ddfdb92b651d
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

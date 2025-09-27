@@ -17,9 +17,11 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Domain
 <<<<<<< HEAD
-build_property.ProjectDir = D:\Reeshma\Tour Booking Project\New folder\Tour-booking-backend\TourBooking\Domain\
+build_property.ProjectDir = F:\Tour-booking-backend\TourBooking\Domain\
 =======
-build_property.ProjectDir = C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\Domain\
->>>>>>> 83d2416a4a918671fb8397a8a119ddfdb92b651d
+build_property.ProjectDir = D:\Tour_project\Tour-booking-backend\TourBooking\Domain\
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
