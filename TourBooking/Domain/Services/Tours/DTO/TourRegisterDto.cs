@@ -24,7 +24,11 @@ namespace TourBooking.Services.Tours.DTO
         //public List<Guid> TermsAndConditionIds { get; set; } = new();
         //public List<Guid> NoteIds { get; set; } = new();
     }
+<<<<<<< HEAD
 }
+=======
+    }
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 
 
 

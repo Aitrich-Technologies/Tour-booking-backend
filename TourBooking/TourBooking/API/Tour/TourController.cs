@@ -20,7 +20,11 @@ namespace TourBooking.API.Tour
             _service = service;
         }
 
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 
         [HttpPost]
         public async Task<IActionResult> AddTour([FromBody] AddTourRequest request)
@@ -59,7 +63,11 @@ namespace TourBooking.API.Tour
 
 
         // ✅ GET: api/v1/Tour/{id}
+<<<<<<< HEAD
         [HttpGet("{id}")]
+=======
+        [HttpGet("{id:guid}")]
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
         public async Task<IActionResult> GetTourById(Guid id)
         {
             var tour = await _service.GetTourByIdAsync(id);

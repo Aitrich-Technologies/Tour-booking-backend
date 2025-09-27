@@ -5,6 +5,7 @@
     "version": "1.0"
   },
   "paths": {
+<<<<<<< HEAD
     "/api/v1/Destination": {
       "get": {
         "tags": [
@@ -341,6 +342,8 @@
         }
       }
     },
+=======
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
     "/api/v1/TourBooking/{bookingId}/Participant": {
       "get": {
         "tags": [
@@ -484,6 +487,7 @@
           }
         }
       },
+<<<<<<< HEAD
       "patch": {
         "tags": [
           "Participant"
@@ -533,6 +537,8 @@
           }
         }
       },
+=======
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
       "delete": {
         "tags": [
           "Participant"
@@ -564,6 +570,7 @@
         }
       }
     },
+<<<<<<< HEAD
     "/api/v1/Tour/{tourId}/terms": {
       "get": {
         "tags": [
@@ -580,12 +587,39 @@
             }
           }
         ],
+=======
+    "/api/v1/Tour": {
+      "post": {
+        "tags": [
+          "Tour"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddTourRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddTourRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddTourRequest"
+              }
+            }
+          }
+        },
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
         "responses": {
           "200": {
             "description": "OK"
           }
         }
       },
+<<<<<<< HEAD
       "post": {
         "tags": [
           "Terms"
@@ -620,6 +654,12 @@
             }
           }
         },
+=======
+      "get": {
+        "tags": [
+          "Tour"
+        ],
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
         "responses": {
           "200": {
             "description": "OK"
@@ -630,7 +670,11 @@
     "/api/v1/Tour/{id}": {
       "get": {
         "tags": [
+<<<<<<< HEAD
           "Terms"
+=======
+          "Tour"
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
         ],
         "parameters": [
           {
@@ -648,6 +692,7 @@
             "description": "OK"
           }
         }
+<<<<<<< HEAD
       }
     },
     "/api/v1/Tour/tourId/terms/{id}": {
@@ -694,6 +739,12 @@
       "delete": {
         "tags": [
           "Terms"
+=======
+      },
+      "delete": {
+        "tags": [
+          "Tour"
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
         ],
         "parameters": [
           {
@@ -711,6 +762,7 @@
             "description": "OK"
           }
         }
+<<<<<<< HEAD
       }
     },
     "/api/v1/tourbookings": {
@@ -819,6 +871,12 @@
       "patch": {
         "tags": [
           "TourBooking"
+=======
+      },
+      "patch": {
+        "tags": [
+          "Tour"
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
         ],
         "parameters": [
           {
@@ -835,17 +893,29 @@
           "content": {
             "application/json": {
               "schema": {
+<<<<<<< HEAD
                 "$ref": "#/components/schemas/PatchTourBookingDto"
+=======
+                "$ref": "#/components/schemas/UpdateTourDto"
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
               }
             },
             "text/json": {
               "schema": {
+<<<<<<< HEAD
                 "$ref": "#/components/schemas/PatchTourBookingDto"
+=======
+                "$ref": "#/components/schemas/UpdateTourDto"
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
               }
             },
             "application/*+json": {
               "schema": {
+<<<<<<< HEAD
                 "$ref": "#/components/schemas/PatchTourBookingDto"
+=======
+                "$ref": "#/components/schemas/UpdateTourDto"
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
               }
             }
           }
@@ -856,6 +926,7 @@
           }
         }
       },
+<<<<<<< HEAD
       "delete": {
         "tags": [
           "TourBooking"
@@ -1061,6 +1132,11 @@
       "patch": {
         "tags": [
           "User"
+=======
+      "put": {
+        "tags": [
+          "Tour"
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
         ],
         "parameters": [
           {
@@ -1077,17 +1153,29 @@
           "content": {
             "application/json": {
               "schema": {
+<<<<<<< HEAD
                 "$ref": "#/components/schemas/PatchUserRequest"
+=======
+                "$ref": "#/components/schemas/TourPutDto"
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
               }
             },
             "text/json": {
               "schema": {
+<<<<<<< HEAD
                 "$ref": "#/components/schemas/PatchUserRequest"
+=======
+                "$ref": "#/components/schemas/TourPutDto"
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
               }
             },
             "application/*+json": {
               "schema": {
+<<<<<<< HEAD
                 "$ref": "#/components/schemas/PatchUserRequest"
+=======
+                "$ref": "#/components/schemas/TourPutDto"
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
               }
             }
           }
@@ -1141,6 +1229,7 @@
   },
   "components": {
     "schemas": {
+<<<<<<< HEAD
       "AddNoteRequest": {
         "required": [
           "status",
@@ -1163,6 +1252,8 @@
         },
         "additionalProperties": false
       },
+=======
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
       "AddParticipantRequest": {
         "type": "object",
         "properties": {
@@ -1207,6 +1298,7 @@
         },
         "additionalProperties": false
       },
+<<<<<<< HEAD
       "AddTerms": {
         "type": "object",
         "properties": {
@@ -1241,10 +1333,38 @@
             "nullable": true
           },
           "dob": {
+=======
+      "AddTourRequest": {
+        "type": "object",
+        "properties": {
+          "tourName": {
+            "type": "string",
+            "nullable": true
+          },
+          "tourDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "destinationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "noOfNights": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "departureDate": {
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
             "type": "string",
             "format": "date",
             "nullable": true
           },
+<<<<<<< HEAD
           "citizenship": {
             "type": "string",
             "nullable": true
@@ -1254,10 +1374,14 @@
             "nullable": true
           },
           "issueDate": {
+=======
+          "arrivalDate": {
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
             "type": "string",
             "format": "date",
             "nullable": true
           },
+<<<<<<< HEAD
           "expiryDate": {
             "type": "string",
             "format": "date",
@@ -1423,10 +1547,14 @@
             "format": "uuid"
           },
           "tourId": {
+=======
+          "customerId": {
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
             "type": "string",
             "format": "uuid",
             "nullable": true
           },
+<<<<<<< HEAD
           "firstName": {
             "type": "string",
             "nullable": true
@@ -1472,6 +1600,11 @@
           },
           "participantType": {
             "$ref": "#/components/schemas/ParticipantType"
+=======
+          "consultantId": {
+            "type": "string",
+            "format": "uuid"
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
           },
           "status": {
             "$ref": "#/components/schemas/TourStatus"
@@ -1479,6 +1612,7 @@
         },
         "additionalProperties": false
       },
+<<<<<<< HEAD
       "PatchUserRequest": {
         "type": "object",
         "properties": {
@@ -1517,6 +1651,53 @@
           "password": {
             "type": "string",
             "nullable": true
+=======
+      "TourPutDto": {
+        "type": "object",
+        "properties": {
+          "tourName": {
+            "type": "string",
+            "nullable": true
+          },
+          "tourDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "destinationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "noOfNights": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "departureDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "arrivalDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "consultantId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TourStatus"
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
           }
         },
         "additionalProperties": false
@@ -1533,6 +1714,7 @@
         "type": "integer",
         "format": "int32"
       },
+<<<<<<< HEAD
       "UpdateNoteRequest": {
         "required": [
           "id",
@@ -1560,6 +1742,8 @@
         },
         "additionalProperties": false
       },
+=======
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
       "UpdateParticipantRequest": {
         "type": "object",
         "properties": {
@@ -1600,6 +1784,7 @@
         },
         "additionalProperties": false
       },
+<<<<<<< HEAD
       "UpdateTerms": {
         "type": "object",
         "properties": {
@@ -1634,10 +1819,40 @@
             "nullable": true
           },
           "dob": {
+=======
+      "UpdateTourDto": {
+        "type": "object",
+        "properties": {
+          "tourName": {
+            "type": "string",
+            "nullable": true
+          },
+          "tourDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "destinationId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "noOfNights": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "departureDate": {
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
             "type": "string",
             "format": "date",
             "nullable": true
           },
+<<<<<<< HEAD
           "citizenship": {
             "type": "string",
             "nullable": true
@@ -1647,10 +1862,14 @@
             "nullable": true
           },
           "issueDate": {
+=======
+          "arrivalDate": {
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
             "type": "string",
             "format": "date",
             "nullable": true
           },
+<<<<<<< HEAD
           "expiryDate": {
             "type": "string",
             "format": "date",
@@ -1667,12 +1886,25 @@
           "participantType": {
             "$ref": "#/components/schemas/ParticipantType"
           },
+=======
+          "customerId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "consultantId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
           "status": {
             "$ref": "#/components/schemas/TourStatus"
           }
         },
         "additionalProperties": false
       },
+<<<<<<< HEAD
       "UserRole": {
         "enum": [
           0,
@@ -1681,6 +1913,8 @@
         "type": "integer",
         "format": "int32"
       },
+=======
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
       "WeatherForecast": {
         "type": "object",
         "properties": {
@@ -1704,6 +1938,7 @@
         },
         "additionalProperties": false
       }
+<<<<<<< HEAD
     },
     "securitySchemes": {
       "Bearer": {
@@ -1719,4 +1954,8 @@
       "Bearer": [ ]
     }
   ]
+=======
+    }
+  }
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 }

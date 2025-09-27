@@ -4,6 +4,7 @@ using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(TourBookingDbContext))]
-    partial class TourBookingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250918110254_UpdateTourEntity")]
+    partial class UpdateTourEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,18 +34,8 @@ namespace Domain.Migrations
                     b.Property<DateOnly?>("Dob")
                         .HasColumnType("date");
 
-<<<<<<< HEAD
-                    b.Property<DateOnly?>("DateOfBirth")
-                        .HasColumnType("date");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-=======
                     b.Property<string>("EmailId")
                         .HasColumnType("nvarchar(max)");
->>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -57,15 +50,7 @@ namespace Domain.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-<<<<<<< HEAD
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
-=======
                         .HasColumnType("nvarchar(max)");
->>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 
                     b.Property<int>("Role")
                         .HasColumnType("int");
@@ -89,12 +74,14 @@ namespace Domain.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("City")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("ImageData")
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

@@ -1,5 +1,15 @@
+<<<<<<< HEAD
 ﻿using Domain.Models;
 using Domain.Services.Tours.Interface;
+=======
+﻿
+
+
+using Domain.Enum;
+using Domain.Models;
+using Domain.Services.Tours.Interface;
+//using Infrastructure.Data;
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 using Microsoft.EntityFrameworkCore;
 
 namespace TourBooking.Services.Tours
@@ -51,17 +61,58 @@ namespace TourBooking.Services.Tours
             return tour;
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
         public async Task<Tour> TourPutAsync(Tour tour)
         {
             _context.Tours.Update(tour);
             await _context.SaveChangesAsync();
             return tour;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
         public async Task<AuthUser?> GetAuthUserByIdAsync(Guid id)
         {
             return await _context.AuthUsers
                 .FirstOrDefaultAsync(u => u.Id == id);
         }
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+        //public async Task<Tour?> UpdateTourAsync(Tour tour)
+        //{
+        //    _context.Tours.Update(tour);
+        //    await _context.SaveChangesAsync();
+        //    return tour;
+        //}
+
+        //public async Task DeleteTourAsync(Tour tour)
+        //{
+        //    _context.Tours.Remove(tour);
+        //    await _context.SaveChangesAsync();
+        //}
+
+        //public async Task<IEnumerable<Tour>> GetToursByStatusAsync(string status)
+        //{
+        //    if (!Enum.TryParse<TourStatus>(status, out var tourStatus))
+        //        return new List<Tour>();
+
+        //    return await _context.Tours
+        //        .Where(t => t.Status == tourStatus)
+        //        .Include(t => t.Destination)
+        //        .Include(t => t.Customer)
+        //        .Include(t => t.Consultant)
+        //        .ToListAsync();
+        //}
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
     }
 }

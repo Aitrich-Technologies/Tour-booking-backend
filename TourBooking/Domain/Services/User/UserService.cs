@@ -1,14 +1,9 @@
-﻿using Domain.Services.User.Interface;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 using Domain.Models;
 using AutoMapper;
 using Domain.Services.User.DTO;
@@ -20,11 +15,14 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Azure.Core;
 
+=======
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 
 namespace Domain.Services.User
 {
-    internal class UserService : IUserService
+    internal class UserService
     {
+<<<<<<< HEAD
         private readonly IUserRepository _userRepository;
         private readonly IConfiguration _config;
         private readonly IMapper _mapper;
@@ -151,5 +149,7 @@ namespace Domain.Services.User
         {
             return await _userRepository.DeleteUserAsync(userId);
         }
+=======
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
     }
 }

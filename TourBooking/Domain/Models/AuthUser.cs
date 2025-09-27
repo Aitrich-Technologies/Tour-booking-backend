@@ -1,57 +1,37 @@
 ﻿using Domain.Enum;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Models;
 
 public partial class AuthUser
 {
-    //public Guid Id { get; set; }
-
-    //public string FirstName { get; set; } = null!;
-
-    //public string LastName { get; set; } = null!;
-
-    //public string? Gender { get; set; }
-
-    //public DateOnly? Dob { get; set; }
-
-    //public UserRole Role { get; set; }
-
-    //public string UserName { get; set; } = null!;
-
-    //public string Password { get; set; } = null!;
-
-    //public string? EmailId { get; set; }
-
-    //public string? TelephoneNo { get; set; }
-    [Key]
     public Guid Id { get; set; }
 
-    [Required, MaxLength(50)]
-    public string FirstName { get; set; }
+    public string FirstName { get; set; } = null!;
 
-    [Required, MaxLength(50)]
-    public string LastName { get; set; }
+    public string LastName { get; set; } = null!;
 
-    [MaxLength(10)]
-    public string Gender { get; set; }
+    public string? Gender { get; set; }
 
+<<<<<<< HEAD
     public DateOnly? DateOfBirth { get; set; }
 
     [Required]
     public UserRole? Role { get; set; }
+=======
+    public DateOnly? Dob { get; set; }
 
-    [Required, MaxLength(50)]
-    public string UserName { get; set; }
+    public UserRole Role { get; set; }
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 
-    [Required, MaxLength(100)]
-    public string Email { get; set; }
+    public string UserName { get; set; } = null!;
 
-    [MaxLength(20)]
-    public string TelephoneNo { get; set; }
+    public string Password { get; set; } = null!;
 
+    public string? EmailId { get; set; }
+
+<<<<<<< HEAD
     [Required, MaxLength(200)]
     public string Password { get; set; }
 
@@ -59,6 +39,9 @@ public partial class AuthUser
 
 
 
+=======
+    public string? TelephoneNo { get; set; }
+>>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 }
 
 
