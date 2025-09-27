@@ -1,4 +1,4 @@
-﻿using Domain.Enum;
+﻿using Domain.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -36,5 +36,5 @@ public partial class TourBookingForm
 
     public virtual ICollection<ParticipantInformation> ParticipantInformations { get; set; } = new List<ParticipantInformation>();
 
-    public virtual Tour Tour { get; set; } = null!;
+    public virtual Tourss Tour { get; set; } = null!;
 }

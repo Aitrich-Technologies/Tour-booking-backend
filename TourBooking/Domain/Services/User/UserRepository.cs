@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Services.User.Interface;
 using Microsoft.EntityFrameworkCore;
-using Domain.Enum;
+using Domain.Enums;
 
 namespace Domain.Services.User
 {

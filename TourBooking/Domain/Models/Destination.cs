@@ -14,5 +14,5 @@ public partial class Destination
     // New property for storing image binary
     public byte[]? ImageData { get; set; }
 
-    public virtual ICollection<Tour> Tours { get; set; } = new List<Tour>();
+    public virtual ICollection<Tourss> Tours { get; set; } = new List<Tourss>();
 }

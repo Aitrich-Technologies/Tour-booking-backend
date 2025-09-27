@@ -1,6 +1,4 @@
-﻿using Domain.Enum;
-using System;
-using System.Collections.Generic;
+﻿using Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Models;
@@ -56,8 +54,6 @@ public partial class AuthUser
     public string Password { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
-
 
 }
 

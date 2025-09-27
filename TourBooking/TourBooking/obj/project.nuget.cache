@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hFmsNEt+ur8=",
+  "dgSpecHash": "RwCDTMSuiqs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
+  "projectFilePath": "C:\\Users\\afraa\\Desktop\\New folder\\TourBooking\\TourBooking\\TourBooking.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\afraa\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\afraa\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",

@@ -91,6 +91,7 @@ namespace Domain.Services.User
         {
             var user = await _userRepository.GetAllCustomersAsync();
             var customers = _mapper.Map<IEnumerable<UserResponseDto>>(user);
+            
             return customers;
         }
 
@@ -122,7 +123,6 @@ namespace Domain.Services.User
             var updatedUser = _mapper.Map<UserResponseDto>(updated);
             return updatedUser;
         }
-        
 
         public async Task<UserResponseDto> PatchUserAsync(Guid id, PatchUserDto request)
         {

@@ -1,7 +1,7 @@
-﻿using Domain.Enum;
+﻿using Domain.Enums;
 using Domain.Models;
 
-public partial class Tour
+public partial class Tourss
 {
     public Guid Id { get; set; }
 
@@ -15,14 +15,14 @@ public partial class Tour
     public DateOnly? ArrivalDate { get; set; }
 
     // Foreign keys for AuthUser
-    public Guid CustomerId { get; set; }
+    public Guid? CustomerId { get; set; }
     public Guid ConsultantId { get; set; }
 
     public TourStatus Status { get; set; }
 
     // Navigation properties
     public virtual Destination Destination { get; set; } = null!;
-    public virtual AuthUser Customer { get; set; } = null!;
+    public virtual AuthUser? Customer { get; set; } 
     public virtual AuthUser Consultant { get; set; } = null!;
 
     public virtual ICollection<TermsAndCondition> TermsAndConditions { get; set; } = new List<TermsAndCondition>();

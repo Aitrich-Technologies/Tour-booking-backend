@@ -1,38 +1,12 @@
 ﻿using AutoMapper;
-using Domain.Enum;
 using Domain.Models;
 using Domain.Services.Destinations.DTO;
 using Domain.Services.Participant.DTO;
-
 using Domain.Services.TourBooking.DTO;
-
-
 using Domain.Services.TourNote.DTO;
-
-
 using Domain.Services.Terms.DTO;
-
 using Domain.Services.User.DTO;
-
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using System.Threading.Tasks;
-
-using Domain.Services.TourBooking.DTO;
-using Domain.Models;
-
-using Domain.Services.TourBooking.DTO;
-
-using Domain.Services.Participant.Interface;
-
-using Domain.Services.TourBooking;
-using System.Threading.Tasks; 
-
-
+using Domain.Services.Tour.DTO;
 
 namespace Domain.Helper
 {
@@ -73,7 +47,7 @@ namespace Domain.Helper
 
 
             CreateMap<TermsDto, TermsAndCondition>().ReverseMap();
-
+            CreateMap<TourDto,Tourss>().ReverseMap();
 
             CreateMap<AddUserDto, AuthUser>().ReverseMap();
 

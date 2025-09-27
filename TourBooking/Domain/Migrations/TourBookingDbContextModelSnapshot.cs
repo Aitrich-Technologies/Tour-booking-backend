@@ -238,7 +238,7 @@ namespace Domain.Migrations
                     b.ToTable("ParticipantInformations");
                 });
 
-            modelBuilder.Entity("Tour", b =>
+            modelBuilder.Entity("Tourss", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -250,7 +250,7 @@ namespace Domain.Migrations
                     b.Property<Guid>("ConsultantId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid?>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateOnly?>("DepartureDate")
@@ -288,7 +288,7 @@ namespace Domain.Migrations
 
             modelBuilder.Entity("Domain.Models.TermsAndCondition", b =>
                 {
-                    b.HasOne("Tour", "Tour")
+                    b.HasOne("Tourss", "Tour")
                         .WithMany("TermsAndConditions")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -299,7 +299,7 @@ namespace Domain.Migrations
 
             modelBuilder.Entity("Domain.Models.TourBookingForm", b =>
                 {
-                    b.HasOne("Tour", "Tour")
+                    b.HasOne("Tourss", "Tour")
                         .WithMany("TourBookingForms")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -310,7 +310,7 @@ namespace Domain.Migrations
 
             modelBuilder.Entity("Notes", b =>
                 {
-                    b.HasOne("Tour", "Tour")
+                    b.HasOne("Tourss", "Tour")
                         .WithMany("Notes")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -330,7 +330,7 @@ namespace Domain.Migrations
                     b.Navigation("Lead");
                 });
 
-            modelBuilder.Entity("Tour", b =>
+            modelBuilder.Entity("Tourss", b =>
                 {
                     b.HasOne("Domain.Models.AuthUser", "Consultant")
                         .WithMany()
@@ -341,8 +341,7 @@ namespace Domain.Migrations
                     b.HasOne("Domain.Models.AuthUser", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Domain.Models.Destination", "Destination")
                         .WithMany("Tours")
@@ -367,7 +366,7 @@ namespace Domain.Migrations
                     b.Navigation("ParticipantInformations");
                 });
 
-            modelBuilder.Entity("Tour", b =>
+            modelBuilder.Entity("Tourss", b =>
                 {
                     b.Navigation("Notes");
 

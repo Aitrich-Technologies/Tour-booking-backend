@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper;
-using Domain.Enum;
+using Domain.Enums;
 using Domain.Models;
 using Domain.Services.TourBooking.DTO;
 using Domain.Services.TourBooking.Interface;

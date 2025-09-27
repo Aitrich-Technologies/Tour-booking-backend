@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj": {}
+    "C:\\Users\\afraa\\Desktop\\New folder\\TourBooking\\TourBooking\\TourBooking.csproj": {}
   },
   "projects": {
-    "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
+    "C:\\Users\\afraa\\Desktop\\New folder\\TourBooking\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\afraa\\Desktop\\New folder\\TourBooking\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\afraa\\Desktop\\New folder\\TourBooking\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\afraa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\afraa\\Desktop\\New folder\\TourBooking\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -62,6 +62,10 @@
               "target": "Package",
               "version": "[2.3.0, )"
             },
+            "Microsoft.AspNetCore.JsonPatch": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.8, )"
@@ -101,14 +105,14 @@
         }
       }
     },
-    "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj": {
+    "C:\\Users\\afraa\\Desktop\\New folder\\TourBooking\\TourBooking\\TourBooking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
+        "projectUniqueName": "C:\\Users\\afraa\\Desktop\\New folder\\TourBooking\\TourBooking\\TourBooking.csproj",
         "projectName": "TourBooking",
-        "projectPath": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\TourBooking.csproj",
+        "projectPath": "C:\\Users\\afraa\\Desktop\\New folder\\TourBooking\\TourBooking\\TourBooking.csproj",
         "packagesPath": "C:\\Users\\afraa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\obj\\",
+        "outputPath": "C:\\Users\\afraa\\Desktop\\New folder\\TourBooking\\TourBooking\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -130,8 +134,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Domain.csproj"
+              "C:\\Users\\afraa\\Desktop\\New folder\\TourBooking\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\afraa\\Desktop\\New folder\\TourBooking\\Domain\\Domain.csproj"
               }
             }
           }

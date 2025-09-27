@@ -17,6 +17,9 @@
 
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
 
+
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="9.0.9" />
+
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
 
 
@@ -30,17 +33,11 @@
   </ItemGroup>
 
   <ItemGroup>
-
-    <Folder Include="Services\Destination\DTO\" />
-    <Folder Include="Services\Destination\Interface\" />
-    <Folder Include="Services\Terms\DTO\" />
-
     <Folder Include="Services\Notes\DTO\" />
     <Folder Include="Services\Notes\Interface\" />
-
     <Folder Include="Services\Terms\Interface\" />
-    <Folder Include="Services\Tour\DTO\" />
-    <Folder Include="Services\Tour\Interface\" />
+    <Folder Include="Services\TourBooking\DTO\" />
+    <Folder Include="Services\TourBooking\Interface\" />
   </ItemGroup>
 
 </Project>
