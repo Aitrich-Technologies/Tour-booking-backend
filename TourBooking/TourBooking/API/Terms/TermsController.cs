@@ -9,7 +9,7 @@ namespace TourBooking.API.Terms
 {
   
     [ApiController]
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/Tour")]
     public class TermsController : BaseApiController<TermsController>
     {
         private readonly ITermsAndConditionService _service;
@@ -21,7 +21,7 @@ namespace TourBooking.API.Terms
             _service = service;
         }
 
-        [HttpGet("{tourId}/terms")]
+        [HttpGet("{tourId:guid}/terms")]
         public async Task<IActionResult> GetTermsByTourIdAsync([FromRoute] Guid tourId)
         {
             var result = await _service.GetTermsByTourIdAsync(tourId);
@@ -63,7 +63,7 @@ namespace TourBooking.API.Terms
 
 
         // ✅ Update existing term
-        [HttpPut("tourId/terms/{id}")]
+        [HttpPut("tourId/terms/{id:guid}")]
         public async Task<IActionResult> UpdateTermAsync([FromRoute] Guid id, [FromBody] UpdateTerms request)
         {
             if (request == null)
@@ -96,7 +96,7 @@ namespace TourBooking.API.Terms
             });
         }
 
-        [HttpDelete("tourId/terms/{id}")]
+        [HttpDelete("tourId/terms/{id:guid}")]
         public async Task<IActionResult> DeleteTermAsync([FromRoute] Guid id)
         {
             var existing = await _service.GetTermByIdAsync(id);

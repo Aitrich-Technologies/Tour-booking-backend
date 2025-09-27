@@ -1,4 +1,4 @@
-﻿using Domain.Enum;
+﻿using Domain.Enums;
 
 public partial class Notes
 {
@@ -8,5 +8,5 @@ public partial class Notes
     public string? TourNotes { get; set; }
     public NotesStatus Status { get; set; }
 
-    public virtual Tour Tour { get; set; } = null!;
+    public virtual Tourss Tour { get; set; } = null!;
 }

@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-<<<<<<< HEAD
 using Domain.Services.User.Interface;
 using Microsoft.EntityFrameworkCore;
-using Domain.Enum;
+using Domain.Enums;
 
 namespace Domain.Services.User
 {
@@ -70,12 +70,4 @@ namespace Domain.Services.User
         }
     }
 
-=======
-
-namespace Domain.Services.User
-{
-    internal class UserRepository
-    {
-    }
->>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 }

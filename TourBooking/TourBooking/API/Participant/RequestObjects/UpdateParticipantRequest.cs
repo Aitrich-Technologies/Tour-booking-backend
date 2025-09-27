@@ -10,6 +10,5 @@
         public DateOnly? IssueDate { get; set; }
         public DateOnly? ExpiryDate { get; set; }
         public string? PlaceOfBirth { get; set; }
-
     }
 }

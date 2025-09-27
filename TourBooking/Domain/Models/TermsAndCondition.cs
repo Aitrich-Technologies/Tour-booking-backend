@@ -11,5 +11,5 @@ public partial class TermsAndCondition
 
     public string? Terms { get; set; }
 
-    public virtual Tour Tour { get; set; } = null!;
+    public virtual Tourss Tour { get; set; } = null!;
 }

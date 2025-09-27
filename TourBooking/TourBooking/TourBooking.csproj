@@ -8,14 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
-<<<<<<< HEAD
 
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="9.0.9" />
 
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.1" />
 
-=======
->>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
@@ -31,19 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-
-    <Folder Include="API\Destination\RequestObjects\" />
-    <Folder Include="API\Terms\RequestObjects\" />
-
     <Folder Include="API\Notes\RequestObjects\" />
-
     <Folder Include="API\TourBooking\RequestObjects\" />
-<<<<<<< HEAD
-
-    <Folder Include="API\Tour\RequestObjects\" />
-=======
-    <Folder Include="API\User\RequestObjects\" />
->>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
   </ItemGroup>
 
 </Project>

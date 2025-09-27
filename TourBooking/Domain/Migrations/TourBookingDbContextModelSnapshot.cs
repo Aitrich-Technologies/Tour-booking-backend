@@ -28,10 +28,9 @@ namespace Domain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateOnly?>("Dob")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
-<<<<<<< HEAD
                     b.Property<DateOnly?>("DateOfBirth")
                         .HasColumnType("date");
 
@@ -39,43 +38,39 @@ namespace Domain.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-=======
-                    b.Property<string>("EmailId")
-                        .HasColumnType("nvarchar(max)");
->>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-<<<<<<< HEAD
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<int>("Role")
                         .HasColumnType("int");
-=======
-                        .HasColumnType("nvarchar(max)");
->>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
-
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
 
                     b.Property<string>("TelephoneNo")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -243,7 +238,7 @@ namespace Domain.Migrations
                     b.ToTable("ParticipantInformations");
                 });
 
-            modelBuilder.Entity("Tour", b =>
+            modelBuilder.Entity("Tourss", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -293,7 +288,7 @@ namespace Domain.Migrations
 
             modelBuilder.Entity("Domain.Models.TermsAndCondition", b =>
                 {
-                    b.HasOne("Tour", "Tour")
+                    b.HasOne("Tourss", "Tour")
                         .WithMany("TermsAndConditions")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -304,7 +299,7 @@ namespace Domain.Migrations
 
             modelBuilder.Entity("Domain.Models.TourBookingForm", b =>
                 {
-                    b.HasOne("Tour", "Tour")
+                    b.HasOne("Tourss", "Tour")
                         .WithMany("TourBookingForms")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -315,7 +310,7 @@ namespace Domain.Migrations
 
             modelBuilder.Entity("Notes", b =>
                 {
-                    b.HasOne("Tour", "Tour")
+                    b.HasOne("Tourss", "Tour")
                         .WithMany("Notes")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -335,7 +330,7 @@ namespace Domain.Migrations
                     b.Navigation("Lead");
                 });
 
-            modelBuilder.Entity("Tour", b =>
+            modelBuilder.Entity("Tourss", b =>
                 {
                     b.HasOne("Domain.Models.AuthUser", "Consultant")
                         .WithMany()
@@ -371,7 +366,7 @@ namespace Domain.Migrations
                     b.Navigation("ParticipantInformations");
                 });
 
-            modelBuilder.Entity("Tour", b =>
+            modelBuilder.Entity("Tourss", b =>
                 {
                     b.Navigation("Notes");
 

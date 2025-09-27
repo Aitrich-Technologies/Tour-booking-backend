@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TourBooking.Controllers;
-<<<<<<< HEAD
 using Domain.Models;
 using Domain.Services.User.Interface;
 using Domain.Services.User.DTO;
 using AutoMapper;
 using TourBooking.API.User.RequestObjects;
-=======
->>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
 
 namespace TourBooking.API.User
 {
@@ -16,7 +14,6 @@ namespace TourBooking.API.User
     [ApiController]
     public class UserController : BaseApiController<UserController>
     {
-<<<<<<< HEAD
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
@@ -117,7 +114,7 @@ namespace TourBooking.API.User
 
             return Ok(response);
         }
-=======
->>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
     }
+
 }
+

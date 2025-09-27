@@ -23,7 +23,7 @@ public partial class TourBookingDbContext : DbContext
 
     public virtual DbSet<TermsAndCondition> TermsAndConditions { get; set; }
 
-    public virtual DbSet<Tour> Tours { get; set; }
+    public virtual DbSet<Tourss> Tours { get; set; }
     public virtual DbSet<Notes> Notes { get; set; }
     public virtual DbSet<TourBookingForm> TourBookingForms { get; set; }
 
@@ -31,16 +31,19 @@ public partial class TourBookingDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Tourss>()
+    .Property(t => t.Id)
+    .ValueGeneratedOnAdd(); // auto-generate Guid
 
         // Tour → Customer (AuthUser)
-        modelBuilder.Entity<Tour>()
+        modelBuilder.Entity<Tourss>()
             .HasOne(t => t.Customer)
             .WithMany()
             .HasForeignKey(t => t.CustomerId)
             .OnDelete(DeleteBehavior.Restrict);
 
         // Tour → Consultant (AuthUser)
-        modelBuilder.Entity<Tour>()
+        modelBuilder.Entity<Tourss>()
             .HasOne(t => t.Consultant)
             .WithMany()
             .HasForeignKey(t => t.ConsultantId)

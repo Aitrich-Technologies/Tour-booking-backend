@@ -1,121 +1,77 @@
-﻿using Domain.Models;
-using Domain.Services.Tours.DTO;
+﻿using AutoMapper;
+using Domain.Services.Tour.DTO;
+using Domain.Services.Tour.Interface;
 using Microsoft.AspNetCore.Mvc;
 using TourBooking.API.Tour.RequestObjects;
-using TourBooking.Services.Tours;
-using TourBooking.Services.Tours.DTO;
-using TourBooking.Services.Tours.Interface;
-
+using TourBooking.Controllers;
 
 namespace TourBooking.API.Tour
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class TourController : ControllerBase
+    public class TourController : BaseApiController<TourController>
     {
-        private readonly ITourService _service;
+        private readonly ITourService _tourService;
+        private readonly IMapper _mapper;
 
-        public TourController(ITourService service)
+        public TourController(ITourService tourService, IMapper mapper)
         {
-            _service = service;
-        }
-
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
-
-        [HttpPost]
-        public async Task<IActionResult> AddTour([FromBody] AddTourRequest request)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            // ✅ Only check CustomerId if provided
-            if (request.CustomerId != null)
-            {
-                var customer = await _service.GetAuthUserByIdAsync(request.CustomerId.Value);
-                if (customer == null)
-                    return BadRequest(new { message = "Invalid CustomerId" });
-            }
-
-            // Create DTO to pass to service
-            var dto = new TourRegisterDto
-            {
-                TourName = request.TourName,
-                TourDescription = request.TourDescription,
-                DestinationId = request.DestinationId,
-                NoOfNights = request.NoOfNights,
-                Price = request.Price,
-                DepartureDate = request.DepartureDate,
-                ArrivalDate = request.ArrivalDate,
-                CustomerId = request.CustomerId,   // optional
-                ConsultantId = request.ConsultantId,
-                Status = request.Status
-            };
-
-            var created = await _service.CreateTourAsync(dto);
-
-            return CreatedAtAction(nameof(GetTourById), new { id = created.Id }, created);
-        }
-
-
-
-        // ✅ GET: api/v1/Tour/{id}
-<<<<<<< HEAD
-        [HttpGet("{id}")]
-=======
-        [HttpGet("{id:guid}")]
->>>>>>> 13c5b6126e0674dde3e9af550c03a6f6092bade8
-        public async Task<IActionResult> GetTourById(Guid id)
-        {
-            var tour = await _service.GetTourByIdAsync(id);
-            if (tour == null)
-                return NotFound();
-
-            return Ok(tour);
+            _tourService = tourService;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllTours()
+        public async Task<IActionResult> GetAll([FromQuery] Guid? destination, [FromQuery] string? status, [FromQuery] DateOnly? departureDate)
         {
-            var tours = await _service.GetAllToursAsync();
+            var tours = await _tourService.GetAllToursAsync(destination, status, departureDate);
             return Ok(tours);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTour(Guid id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
         {
-            var success = await _service.DeleteTourAsync(id);
-            if (!success)
-                return NotFound(new { message = "Tour not found" });
-
-            return NoContent(); // 204
+            var tour = await _tourService.GetTourByIdAsync(id);
+            return tour != null ? Ok(tour) : NotFound();
         }
 
-
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchTour(Guid id, [FromBody] UpdateTourDto dto)
+        [HttpGet("customer/{customerId}")]
+        public async Task<IActionResult> GetByCustomer(Guid customerId)
         {
-            var updated = await _service.PatchTourAsync(id, dto);
-            if (updated == null)
-                return NotFound(new { message = "Tour not found" });
-
-            return Ok(updated);
+            var tours = await _tourService.GetToursByCustomerAsync(customerId);
+            return Ok(tours);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateTourRequest request)
+        {
+            var dto = _mapper.Map<TourDto>(request);
+            var created = await _tourService.CreateTourAsync(dto);
+            return Ok(created);
+        }
 
-        // PUT: api/v1/tour/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTour(Guid id, TourPutDto dto)
+        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateTourRequest request)
         {
-            var updatedTour = await _service.PutTourAsync(id, dto);
-            if (updatedTour == null) return NotFound();
-            return Ok(updatedTour);
+            if (id != request.Id) return BadRequest("Id mismatch");
+
+            var dto = _mapper.Map<TourDto>(request);
+            await _tourService.UpdateTourAsync(dto);
+            return Ok(new { message = "Tour Updated successfully" });
+        }
+
+        [HttpPatch("{id}/status")]
+        public async Task<IActionResult> UpdateStatus(Guid id, [FromBody] UpdateTourStatusRequest request)
+        {
+            var dto = _mapper.Map<UpdateTourStatusDto>(request);
+            await _tourService.UpdateTourStatusAsync(id, dto);
+            return Ok(new { message = "Status Changed" });
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _tourService.DeleteTourAsync(id);
+            return Ok(new { message = "Tour Deleted successfully" });
         }
     }
 }
-
-
-

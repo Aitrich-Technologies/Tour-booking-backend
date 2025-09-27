@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using Domain.Enum;
+using Domain.Enums;
 using Domain.Models;
 using Domain.Services.Participant.DTO;
 using Domain.Services.TourBooking.DTO;
