@@ -7,8 +7,9 @@ using TourBooking.Controllers;
 
 namespace TourBooking.API.Tour
 {
-    [Route("api/[controller]")]
+   
     [ApiController]
+    [Route("api/v1/[controller]")]
     public class TourController : BaseApiController<TourController>
     {
         private readonly ITourService _tourService;
@@ -34,7 +35,7 @@ namespace TourBooking.API.Tour
             return tour != null ? Ok(tour) : NotFound();
         }
 
-        [HttpGet("customer/{customerId}")]
+        [HttpGet("{customerId}")]
         public async Task<IActionResult> GetByCustomer(Guid customerId)
         {
             var tours = await _tourService.GetToursByCustomerAsync(customerId);
@@ -59,7 +60,7 @@ namespace TourBooking.API.Tour
             return Ok(new { message = "Tour Updated successfully" });
         }
 
-        [HttpPatch("{id}/status")]
+        [HttpPatch("UpdateStatus/{id}")]
         public async Task<IActionResult> UpdateStatus(Guid id, [FromBody] UpdateTourStatusRequest request)
         {
             var dto = _mapper.Map<UpdateTourStatusDto>(request);

@@ -1,16 +1,16 @@
 ﻿using Domain.Services.Participant.DTO;
 using Domain.Services.Participant.Interface;
-using Microsoft.AspNetCore.JsonPatch;
+
 using Microsoft.AspNetCore.Mvc;
 using TourBooking.API.Participant.RequestObjects;
 using TourBooking.Controllers;
-using Microsoft.AspNetCore.JsonPatch;
+
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 namespace TourBooking.API.Participant
 {
     [ApiController]
-    [Route("api/v1/TourBooking/{bookingId}/Participant")]
+    [Route("api/v1/[controller]")]
     public class ParticipantController : BaseApiController<ParticipantController>
     {
         private readonly IParticipantService _service;
@@ -19,8 +19,8 @@ namespace TourBooking.API.Participant
         {
             _service = service;
         }
-        [Authorize(Roles="CONSULTANT")]
-        [HttpGet]
+        //[Authorize(Roles="CONSULTANT")]
+        [HttpGet("{bookingId}")]
         public async Task<IActionResult> GetParticipants(Guid bookingId)
         {
             var result = await _service.GetParticipantsAsync(bookingId);
@@ -35,7 +35,7 @@ namespace TourBooking.API.Participant
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPost("{bookingId}")]
         public async Task<IActionResult> AddParticipant(Guid bookingId, [FromBody] AddParticipantRequest request)
         {
             var dto = new ParticipantDto

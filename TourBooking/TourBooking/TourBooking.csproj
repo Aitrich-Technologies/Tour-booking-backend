@@ -30,6 +30,7 @@
   <ItemGroup>
     <Folder Include="API\Notes\RequestObjects\" />
     <Folder Include="API\TourBooking\RequestObjects\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

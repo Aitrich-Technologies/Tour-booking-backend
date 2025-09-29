@@ -12,6 +12,6 @@ namespace TourBooking.API.Notes.RequestObjects
         public string? TourNotes { get; set; }
 
         [Required]
-        public NotesStatus Status { get; set; }
+        public string Status { get; set; }
     }
 }

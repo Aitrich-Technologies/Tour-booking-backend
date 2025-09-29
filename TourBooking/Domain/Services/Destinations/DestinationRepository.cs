@@ -41,7 +41,7 @@ namespace Domain.Services.Destinations
 
             existing.Name = destination.Name;
             existing.City = destination.City;
-            existing.ImageData = destination.ImageData;
+            existing.ImageUrl = destination.ImageUrl;
 
             _context.Destinations.Update(existing);
             await _context.SaveChangesAsync();

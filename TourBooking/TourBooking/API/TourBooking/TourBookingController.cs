@@ -13,8 +13,9 @@ using TourBooking.Controllers;
 
 namespace TourBooking.API.TourBooking
 {
-    [Route("api/v1/tourbookings")]
+   
     [ApiController]
+    [Route("api/v1/[controller]")]
     public class TourBookingController : BaseApiController<TourBookingController>
     {
         private readonly ITourBookingService _service;
@@ -58,7 +59,7 @@ namespace TourBooking.API.TourBooking
         }
 
         // ✅ Get By Id
-        [HttpGet("{id:guid}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetTourBookingById(Guid id)
         {
             var booking = await _service.GetTourBookingByIdAsync(id);
@@ -66,7 +67,7 @@ namespace TourBooking.API.TourBooking
         }
 
         // ✅ Get By TourId
-        [HttpGet("by-tour/{tourId:guid}")]
+        [HttpGet("{tourId}")]
         public async Task<IActionResult> GetByTourId(Guid tourId)
             => Ok(await _service.GetTourBookingsByTourIdAsync(tourId));
         //✅ GetAll
@@ -77,14 +78,14 @@ namespace TourBooking.API.TourBooking
             return Ok(result);
         }
         // ✅ Update
-        [HttpPut("{id:guid}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTourBooking(Guid id, [FromBody] UpdateTourBookingDto dto)
         {
             var updated = await _service.UpdateTourBookingAsync(id, dto);
             return updated == null ? NotFound() : Ok(updated);
         }
         // ✅ Patch
-        [HttpPatch("{id:guid}")]
+        [HttpPatch("{id}")]
         public async Task<IActionResult> PatchTourBooking(Guid id,
             [FromBody] PatchTourBookingDto dto)
         {
@@ -93,7 +94,7 @@ namespace TourBooking.API.TourBooking
         }
               
         // ✅ Delete
-        [HttpDelete("{id:guid}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var success = await _service.DeleteTourBookingAsync(id);

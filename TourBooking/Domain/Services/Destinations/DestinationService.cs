@@ -2,14 +2,8 @@
 using Domain.Models;
 using Domain.Services.Destinations.DTO;
 using Domain.Services.Destinations.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-
 
 namespace Domain.Services.Destinations
 {
@@ -17,76 +11,75 @@ namespace Domain.Services.Destinations
     {
         private readonly IDestinationRepository _repository;
         private readonly IMapper _mapper;
+        private readonly IWebHostEnvironment _env;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public DestinationService(IDestinationRepository repository, IMapper mapper)
+        public DestinationService(
+            IDestinationRepository repository,
+            IMapper mapper,
+            IWebHostEnvironment env,
+            IHttpContextAccessor httpContextAccessor)
         {
             _repository = repository;
             _mapper = mapper;
+            _env = env;
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        private string SaveFile(IFormFile file)
+        {
+            var uploadsFolder = Path.Combine(_env.WebRootPath, "images");
+            if (!Directory.Exists(uploadsFolder))
+                Directory.CreateDirectory(uploadsFolder);
+
+            var uniqueFileName = $"{Guid.NewGuid()}_{file.FileName}";
+            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            var baseUrl = $"{_httpContextAccessor.HttpContext.Request.Scheme}://{_httpContextAccessor.HttpContext.Request.Host}";
+            return $"{baseUrl}/images/{uniqueFileName}";
         }
 
         public async Task<IEnumerable<DestinationResponseDto>> GetAllAsync()
         {
-            var destinations = await _repository.GetAllAsync();
-            return _mapper.Map<IEnumerable<DestinationResponseDto>>(destinations);
+            var entities = await _repository.GetAllAsync();
+            return _mapper.Map<IEnumerable<DestinationResponseDto>>(entities);
         }
 
         public async Task<DestinationResponseDto?> GetByIdAsync(Guid id)
         {
-            var dest = await _repository.GetByIdAsync(id);
-            return dest == null ? null : _mapper.Map<DestinationResponseDto>(dest);
+            var entity = await _repository.GetByIdAsync(id);
+            return _mapper.Map<DestinationResponseDto>(entity);
         }
 
         public async Task<DestinationResponseDto> AddAsync(DestinationDto dto)
         {
-            var dest = new Destination
-            {
-                Id = Guid.NewGuid(),
-                Name = dto.Name,
-                City = dto.City
-            };
+            var entity = _mapper.Map<Destination>(dto);
 
             if (dto.ImageFile != null)
-            {
-                using var ms = new MemoryStream();
-                await dto.ImageFile.CopyToAsync(ms);
-                dest.ImageData = ms.ToArray();
-            }
+                entity.ImageUrl = SaveFile(dto.ImageFile);
 
-            await _repository.AddAsync(dest);
-            return _mapper.Map<DestinationResponseDto>(dest);
-        }
-        private bool IsValidField(string? value)
-        {
-            // Only update if value is not null, not empty, and not the Swagger default placeholder "string"
-            return !string.IsNullOrWhiteSpace(value) && value != "string";
+            await _repository.AddAsync(entity);
+
+            return _mapper.Map<DestinationResponseDto>(entity);
         }
 
         public async Task<bool> UpdateAsync(Guid id, DestinationDto dto)
         {
-            var existing = await _repository.GetByIdAsync(id);
-            if (existing == null) return false;
+            var entity = await _repository.GetByIdAsync(id);
+            if (entity == null) return false;
 
-            // Update only if valid (not null, not empty, not "string")
-            if (IsValidField(dto.Name))
-                existing.Name = dto.Name;
-
-            if (IsValidField(dto.City))
-                existing.City = dto.City;
+            entity.Name = dto.Name;
+            entity.City = dto.City;
 
             if (dto.ImageFile != null)
-            {
-                using var ms = new MemoryStream();
-                await dto.ImageFile.CopyToAsync(ms);
-                existing.ImageData = ms.ToArray();
-            }
+                entity.ImageUrl = SaveFile(dto.ImageFile);
 
-            return await _repository.UpdateAsync(existing);
-        }
-
-
-        public async Task<bool> DeleteAsync(Guid id)
-        {
-            return await _repository.DeleteAsync(id);
+            return await _repository.UpdateAsync(entity);
         }
 
         public async Task<bool> PatchAsync(Guid id, DestinationPatchDto dto)
@@ -94,22 +87,21 @@ namespace Domain.Services.Destinations
             var entity = await _repository.GetByIdAsync(id);
             if (entity == null) return false;
 
-            if (IsValidField(dto.Name))
+            if (!string.IsNullOrEmpty(dto.Name))
                 entity.Name = dto.Name;
 
-            if (IsValidField(dto.City))
+            if (!string.IsNullOrEmpty(dto.City))
                 entity.City = dto.City;
 
             if (dto.ImageFile != null)
-            {
-                using var ms = new MemoryStream();
-                await dto.ImageFile.CopyToAsync(ms);
-                entity.ImageData = ms.ToArray();
-            }
+                entity.ImageUrl = SaveFile(dto.ImageFile);
 
             return await _repository.UpdateAsync(entity);
         }
 
-
+        public async Task<bool> DeleteAsync(Guid id)
+        {
+            return await _repository.DeleteAsync(id);
+        }
     }
 }

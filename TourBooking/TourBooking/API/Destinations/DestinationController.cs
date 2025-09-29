@@ -1,76 +1,89 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Domain.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using Domain.Services.Destinations.DTO;
 using Domain.Services.Destinations.Interface;
-using TourBooking.API.Destination.RequestObjects;
-using TourBooking.API.Destinations.RequestObjects;
-using Domain.Services.Destinations;
-using Microsoft.AspNetCore.Http;
+using System;
+using System.Threading.Tasks;
+using TourBooking.Controllers;
 
-
-
-namespace API.Controllers
+namespace TourBooking.API.Controllers
 {
-    [ApiController]
     [Route("api/v1/[controller]")]
-    public class DestinationController : ControllerBase
+    [ApiController]
+    public class DestinationController : BaseApiController<DestinationController>
     {
-        private readonly IDestinationService _service;
+        private readonly IDestinationService _destinationService;
 
-        public DestinationController(IDestinationService service)
+        public DestinationController(IDestinationService destinationService)
         {
-            _service = service;
+            _destinationService = destinationService;
         }
 
+        // GET: api/destination
         [HttpGet]
-        public async Task<IActionResult> GetAllDestinations()
+        public async Task<IActionResult> GetAll()
         {
-            var result = await _service.GetAllAsync();
-            return Ok(result);
+            var destinations = await _destinationService.GetAllAsync();
+            return Ok(destinations);
         }
 
+        // GET: api/destination/{id}
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetDestinationById(Guid id)
+        public async Task<IActionResult> GetById(Guid id)
         {
-            var result = await _service.GetByIdAsync(id);
-            if (result == null) return NotFound();
-            return Ok(result);
+            var destination = await _destinationService.GetByIdAsync(id);
+            if (destination == null)
+                return NotFound();
+            return Ok(destination);
         }
 
+        // POST: api/destination
         [HttpPost]
-        public async Task<ActionResult<DestinationResponseDto>> PostDestination([FromForm] DestinationDto dto)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> Create([FromForm] DestinationDto dto)
         {
-            var result = await _service.AddAsync(dto);
-            return Ok(result);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var createdDestination = await _destinationService.AddAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id = createdDestination.Id }, createdDestination);
         }
 
+        // PUT: api/destination/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateDestination(Guid id, [FromForm] DestinationDto dto)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> Update(Guid id, [FromForm] DestinationDto dto)
         {
-            var updated = await _service.UpdateAsync(id, dto);
-            if (!updated) return NotFound();
-            return Ok(new { Id = id, dto.Name, dto.City });
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var updated = await _destinationService.UpdateAsync(id, dto);
+            if (!updated)
+                return NotFound();
+
+            return NoContent();
         }
 
+        // PATCH: api/destination/{id}
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchDestination(Guid id, [FromForm] DestinationPatchDto dto)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> Patch(Guid id, [FromForm] DestinationPatchDto dto)
         {
-            var success = await _service.PatchAsync(id, dto);
-            if (!success) return NotFound();
-            return Ok(new { message = "Destination updated successfully" });
+            var patched = await _destinationService.PatchAsync(id, dto);
+            if (!patched)
+                return NotFound();
+
+            return NoContent();
         }
 
-
+        // DELETE: api/destination/{id}
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDestination(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            var deleted = await _service.DeleteAsync(id);
-            if (!deleted) return NotFound();
-            return Ok(new { message = "Destination deleted successfully" });
+            var deleted = await _destinationService.DeleteAsync(id);
+            if (!deleted)
+                return NotFound();
+
+            return NoContent();
         }
-
-
     }
 }

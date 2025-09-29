@@ -13,6 +13,7 @@ namespace Domain.Services.Tour.DTO
         public string TourName { get; set; } = string.Empty;
         public string? TourDescription { get; set; }
         public Guid DestinationId { get; set; }
+        public string? DestinationName { get; set; }
         public int? NoOfNights { get; set; }
         public int Price { get; set; }
         public DateOnly? DepartureDate { get; set; }

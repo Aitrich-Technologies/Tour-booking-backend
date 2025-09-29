@@ -18,5 +18,6 @@ namespace Domain.Services.User.Interface
         Task<UserResponseDto> UpdateUserAsync(Guid userId, AddUserDto user);
         Task<UserResponseDto> PatchUserAsync(Guid userId, PatchUserDto user);
         Task<bool> DeleteUserAsync(Guid userId);
+        Task<UserResponseDto> AddConsultantAsync(AddUserDto dto);
     }
 }
