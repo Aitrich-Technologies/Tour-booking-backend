@@ -10,8 +10,9 @@ using TourBooking.API.User.RequestObjects;
 
 namespace TourBooking.API.User
 {
-    [Route("api/[controller]")]
+ 
     [ApiController]
+    [Route("api/v1/[controller]")]
     public class UserController : BaseApiController<UserController>
     {
         private readonly IUserService _userService;
@@ -24,7 +25,7 @@ namespace TourBooking.API.User
         }
 
 
-        [HttpPost]
+        [HttpPost("Registration")]
         public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)
         {
             try
@@ -40,8 +41,27 @@ namespace TourBooking.API.User
                 return BadRequest(new { message = ex.Message });
             }
         }
+        //[Authorize(Roles = "AGENCY")]
+        [HttpPost("AddConsultant")]
+        public async Task<IActionResult> AddConsultant([FromBody] AddUserRequest request)
+        {
+            try
+            {
+         
+                var dto = _mapper.Map<AddUserDto>(request);
+                var result = await _userService.AddConsultantAsync(dto);
 
-        [HttpPost("login")]
+                var response = _mapper.Map<UserResponse>(result);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+
+        [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
             var dto = _mapper.Map<LoginDto>(request);
@@ -52,7 +72,7 @@ namespace TourBooking.API.User
         }
 
         //[Authorize]
-        [HttpGet("All")]
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var users = await _userService.GetAllUsersAsync();
@@ -61,7 +81,7 @@ namespace TourBooking.API.User
             return Ok(response);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetById(Guid userId)
         {
@@ -71,7 +91,7 @@ namespace TourBooking.API.User
             return Ok(response);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPut("{userId}")]
         public async Task<IActionResult> Update(Guid userId, [FromBody] AddUserRequest request)
         {
@@ -94,7 +114,7 @@ namespace TourBooking.API.User
         }
 
 
-        [Authorize]
+        //[Authorize]
         [HttpDelete("{userId}")]
         public async Task<IActionResult> Delete(Guid userId)
         {
@@ -106,7 +126,7 @@ namespace TourBooking.API.User
 
 
         //[Authorize]
-        [HttpGet("Customers")]
+        [HttpGet("GetAllCustomers")]
         public async Task<IActionResult> GetAllCustomers()
         {
             var users = await _userService.GetAllCustomersAsync();

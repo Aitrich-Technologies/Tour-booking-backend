@@ -19,6 +19,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Azure.Core;
+using Domain.Enums;
 
 
 namespace Domain.Services.User
@@ -42,12 +43,27 @@ namespace Domain.Services.User
             if (existingUser != null)
             {
                 throw new Exception("User with the same username or email already exists.");
-                return null;
+               
             }
             var user = _mapper.Map<AuthUser>(dto);
             user.Id = Guid.NewGuid();
             user.CreatedAt = DateTime.UtcNow;
+            user.Role = UserRole.CUSTOMER;
             var saved = await _userRepository.AddUserAsync(user);
+            return _mapper.Map<UserResponseDto>(saved);
+        }
+        public async Task<UserResponseDto> AddConsultantAsync(AddUserDto dto)
+        {
+            var existingUser = await _userRepository.GetByUserNameOrEmailAsync(dto.UserName, dto.Email);
+            if (existingUser != null)
+                throw new Exception("User with the same username or email already exists.");
+
+            var consultant = _mapper.Map<AuthUser>(dto);
+            consultant.Id = Guid.NewGuid();
+            consultant.CreatedAt = DateTime.UtcNow;
+            consultant.Role = UserRole.CONSULTANT; //  consultant role
+
+            var saved = await _userRepository.AddUserAsync(consultant);
             return _mapper.Map<UserResponseDto>(saved);
         }
 
@@ -112,8 +128,8 @@ namespace Domain.Services.User
             existingUser.FirstName = user.FirstName;
             existingUser.LastName = user.LastName;
             existingUser.Gender = user.Gender;
-            existingUser.DateOfBirth = user.DateOfBirth;
-            existingUser.Role = user.Role;
+            existingUser.DateOfBirth = user.DateOfBirth; 
+            //existingUser.Role = Enum.Parse < UserRole >(user.Role);
             existingUser.UserName = user.UserName;
             existingUser.Email = user.Email;
             existingUser.TelephoneNo = user.TelephoneNo;
@@ -132,7 +148,7 @@ namespace Domain.Services.User
             if (request.FirstName != null) existing.FirstName = request.FirstName;
             if (request.LastName != null) existing.LastName = request.LastName;
             if (request.Gender != null) existing.Gender = request.Gender;
-            if (request.Role != null) existing.Role = request.Role;
+            if (request.Role != null) existing.Role = Enum.Parse<UserRole>(request.Role);
             if (request.UserName != null) existing.UserName = request.UserName;
             if (request.DateOfBirth != null) existing.DateOfBirth = request.DateOfBirth;
             if (request.TelephoneNo != null) existing.TelephoneNo = request.TelephoneNo;

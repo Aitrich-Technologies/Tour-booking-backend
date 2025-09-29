@@ -11,10 +11,9 @@ namespace Domain.Services.Destinations.Interface
     {
         Task<IEnumerable<Destination>> GetAllAsync();
         Task<Destination?> GetByIdAsync(Guid id);
-        Task AddAsync(Destination destination);
-        Task<bool> UpdateAsync(Destination destination);
+        Task AddAsync(Destination entity);
+        Task<bool> UpdateAsync(Destination entity);
         Task<bool> DeleteAsync(Guid id);
-
 
     }
 }

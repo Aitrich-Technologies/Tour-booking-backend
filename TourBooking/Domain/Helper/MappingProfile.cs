@@ -7,6 +7,7 @@ using Domain.Services.TourNote.DTO;
 using Domain.Services.Terms.DTO;
 using Domain.Services.User.DTO;
 using Domain.Services.Tour.DTO;
+using Domain.Enums;
 
 namespace Domain.Helper
 {
@@ -47,6 +48,13 @@ namespace Domain.Helper
 
 
             CreateMap<TermsDto, TermsAndCondition>().ReverseMap();
+            CreateMap<Tourss, TourDto>()
+           .ForMember(dest => dest.DestinationName,
+                      opt => opt.MapFrom(src => src.Destination.Name)) // ✅ flatten Destination.Name
+           .ForMember(dest => dest.Status,
+                      opt => opt.MapFrom(src => src.Status.ToString()));// enum → string
+           
+
             CreateMap<TourDto,Tourss>().ReverseMap();
 
             CreateMap<AddUserDto, AuthUser>().ReverseMap();

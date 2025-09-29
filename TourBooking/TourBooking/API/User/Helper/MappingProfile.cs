@@ -24,6 +24,16 @@ namespace TourBooking.API.User.Helper
 
             CreateMap<PatchUserRequest, PatchUserDto>().ReverseMap();
 
+            // RequestDto -> Entity (string to enum)
+            CreateMap<UserResponseDto, AuthUser>()
+                .ForMember(dest => dest.Role,
+                           opt => opt.MapFrom(src => Enum.Parse<UserRole>(src.Role, true)));
+
+            // Entity -> ResponseDto (enum to string)
+            CreateMap<AuthUser, UserResponseDto>()
+                .ForMember(dest => dest.Role,
+                           opt => opt.MapFrom(src => src.Role.ToString()));
+
         }
 
     }

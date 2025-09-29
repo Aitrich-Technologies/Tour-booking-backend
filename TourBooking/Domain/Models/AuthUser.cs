@@ -39,7 +39,7 @@ public partial class AuthUser
     public DateOnly? DateOfBirth { get; set; }
 
     [Required]
-    public UserRole? Role { get; set; }
+    public UserRole? Role { get; set; } = UserRole.CUSTOMER;
 
     [Required, MaxLength(50)]
     public string UserName { get; set; }

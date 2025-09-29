@@ -6,9 +6,9 @@ using TourBooking.API.Notes.RequestObjects;
 using TourBooking.Controllers;
 
 namespace TourBooking.API.Notes
-{
-    [Route("api/[controller]")]
+{ 
     [ApiController]
+    [Route("api/v1/[controller]")]
     public class NotesController : BaseApiController<NotesController>
     {
         private readonly INoteService _noteService;
@@ -18,7 +18,7 @@ namespace TourBooking.API.Notes
             _noteService = noteService;
         }
 
-        // POST: api/Notes
+     
         [HttpPost]
         public async Task<IActionResult> NotesAdd([FromBody] AddNoteRequest request)
         {
@@ -30,15 +30,14 @@ namespace TourBooking.API.Notes
                 Id = Guid.NewGuid(),
                 TourId = request.TourId,
                 TourNotes = request.TourNotes,
-                Status = request.Status.ToString()
+                Status = request.Status
             };
 
             var createdNote = await _noteService.AddNotesAsync(noteDto);
             return CreatedAtAction(nameof(GetById), new { id = createdNote.Id }, createdNote);
         }
 
-        // GET: api/Notes/{id}
-        [HttpGet("{id:guid}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
             var note = await _noteService.GetNotesByIdAsync(id);
@@ -48,8 +47,8 @@ namespace TourBooking.API.Notes
             return Ok(note);
         }
 
-        // PUT: api/Notes/{id}
-        [HttpPut("{id:guid}")]
+       
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] UpdateNoteRequest request)
         {
             if (!ModelState.IsValid)
@@ -63,7 +62,7 @@ namespace TourBooking.API.Notes
                 Id = request.Id,
                 TourId = request.TourId,
                 TourNotes = request.TourNotes,
-                Status = request.Status.ToString()
+                Status = request.Status
             };
 
             var updatedNote = await _noteService.UpdateNotesAsync(noteDto);
@@ -73,8 +72,8 @@ namespace TourBooking.API.Notes
             return Ok(updatedNote);
         }
 
-        // DELETE: api/Notes/{id}
-        [HttpDelete("{id:guid}")]
+        
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var deleted = await _noteService.DeleteNotesAsync(id);

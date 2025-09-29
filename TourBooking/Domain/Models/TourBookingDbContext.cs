@@ -1,93 +1,74 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 
-namespace Domain.Models;
-
-public partial class TourBookingDbContext : DbContext
+namespace Domain.Models
 {
-    public TourBookingDbContext()
+    public partial class TourBookingDbContext : DbContext
     {
-    }
-
-    public TourBookingDbContext(DbContextOptions<TourBookingDbContext> options)
-        : base(options)
-    {
-    }
-
-    public virtual DbSet<AuthUser> AuthUsers { get; set; }
-
-    public virtual DbSet<Destination> Destinations { get; set; }
-
-    public virtual DbSet<ParticipantInformation> ParticipantInformations { get; set; }
-
-    public virtual DbSet<TermsAndCondition> TermsAndConditions { get; set; }
-
-    public virtual DbSet<Tourss> Tours { get; set; }
-    public virtual DbSet<Notes> Notes { get; set; }
-    public virtual DbSet<TourBookingForm> TourBookingForms { get; set; }
-
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Tourss>()
-    .Property(t => t.Id)
-    .ValueGeneratedOnAdd(); // auto-generate Guid
-
-        // Tour → Customer (AuthUser)
-        modelBuilder.Entity<Tourss>()
-            .HasOne(t => t.Customer)
-            .WithMany()
-            .HasForeignKey(t => t.CustomerId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        // Tour → Consultant (AuthUser)
-        modelBuilder.Entity<Tourss>()
-            .HasOne(t => t.Consultant)
-            .WithMany()
-            .HasForeignKey(t => t.ConsultantId)
-            .OnDelete(DeleteBehavior.Restrict);
-       
-
-        // Tour → TermsAndConditions
-        modelBuilder.Entity<TermsAndCondition>()
-            .HasOne(tc => tc.Tour)
-            .WithMany(t => t.TermsAndConditions)
-            .HasForeignKey(tc => tc.TourId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        // Tour → Notes
-        modelBuilder.Entity<Notes>()
-            .HasOne(n => n.Tour)
-            .WithMany(t => t.Notes)
-            .HasForeignKey(n => n.TourId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        // TourBookingForm → Tour
-        modelBuilder.Entity<TourBookingForm>()
-            .HasOne(tbf => tbf.Tour)
-            .WithMany(t => t.TourBookingForms)
-            .HasForeignKey(tbf => tbf.TourId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        // ParticipantInformation → TourBookingForm
-        modelBuilder.Entity<ParticipantInformation>()
-            .HasOne(pi => pi.Lead)
-            .WithMany(tbf => tbf.ParticipantInformations)
-            .HasForeignKey(pi => pi.LeadId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-
-        modelBuilder.Entity<ParticipantInformation>(entity =>
+        public TourBookingDbContext(DbContextOptions<TourBookingDbContext> options)
+            : base(options)
         {
-            entity.HasKey(e => e.Id);
+        }
 
-            // Make database generate the Id
-            entity.Property(e => e.Id)
-                  .HasDefaultValueSql("NEWSEQUENTIALID()");
-        });
+        public virtual DbSet<AuthUser> AuthUsers { get; set; }
+        public virtual DbSet<Destination> Destinations { get; set; }
+        public virtual DbSet<ParticipantInformation> ParticipantInformations { get; set; }
+        public virtual DbSet<TermsAndCondition> TermsAndConditions { get; set; }
+        public virtual DbSet<Tourss> Tours { get; set; }
+        public virtual DbSet<Notes> Notes { get; set; }
+        public virtual DbSet<TourBookingForm> TourBookingForms { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Auto-generate GUIDs for Tourss
+            modelBuilder.Entity<Tourss>()
+                .Property(t => t.Id)
+                .ValueGeneratedOnAdd();
+
+            // Relations
+            modelBuilder.Entity<Tourss>()
+                .HasOne(t => t.Customer)
+                .WithMany()
+                .HasForeignKey(t => t.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Tourss>()
+                .HasOne(t => t.Consultant)
+                .WithMany()
+                .HasForeignKey(t => t.ConsultantId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<TermsAndCondition>()
+                .HasOne(tc => tc.Tour)
+                .WithMany(t => t.TermsAndConditions)
+                .HasForeignKey(tc => tc.TourId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Notes>()
+                .HasOne(n => n.Tour)
+                .WithMany(t => t.Notes)
+                .HasForeignKey(n => n.TourId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<TourBookingForm>()
+                .HasOne(tbf => tbf.Tour)
+                .WithMany(t => t.TourBookingForms)
+                .HasForeignKey(tbf => tbf.TourId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<ParticipantInformation>()
+                .HasOne(pi => pi.Lead)
+                .WithMany(tbf => tbf.ParticipantInformations)
+                .HasForeignKey(pi => pi.LeadId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // ParticipantInformation Id auto-generation
+            modelBuilder.Entity<ParticipantInformation>()
+                .Property(e => e.Id)
+                .HasDefaultValueSql("NEWSEQUENTIALID()");
+        }
     }
 }
-
-

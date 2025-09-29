@@ -347,3 +347,4 @@ C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\
 C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.pdb
 C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\TourBooking.genruntimeconfig.cache
 C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\obj\Debug\net8.0\ref\TourBooking.dll
+C:\Users\afraa\Desktop\TourBooking\Tour-booking-backend\TourBooking\TourBooking\bin\Debug\net8.0\TourBooking.staticwebassets.runtime.json

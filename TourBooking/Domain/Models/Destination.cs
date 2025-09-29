@@ -11,8 +11,11 @@ public partial class Destination
 
     public string? City { get; set; } 
 
-    // New property for storing image binary
-    public byte[]? ImageData { get; set; }
+    //// New property for storing image binary
+    //public byte[]? ImageData { get; set; }
+
+    // Replace ImageData with ImageUrl
+    public string? ImageUrl { get; set; }
 
     public virtual ICollection<Tourss> Tours { get; set; } = new List<Tourss>();
 }
