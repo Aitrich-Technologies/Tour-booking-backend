@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Services.Participant.DTO;
 using Domain.Services.Participant.Interface;
+using Domain.Services.Tour.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TourBooking.API.Participant.RequestObjects;
@@ -42,6 +43,19 @@ namespace TourBooking.API.Participant
         [HttpPost("{bookingId}")]
         public async Task<IActionResult> AddParticipant(Guid bookingId, [FromBody] AddParticipantRequest request)
         {
+            var userId = User.FindFirst("UserId")?.Value;
+
+            // Make sure userId is not null before parsing
+            if (!string.IsNullOrEmpty(userId))
+            {
+                request.LeadId = Guid.Parse(userId);
+            }
+            else
+            {
+                // Handle missing claim
+                throw new Exception("UserId claim is missing.");
+            }
+
             var dto = _mapper.Map<ParticipantDto>(request);
             var result = await _service.AddParticipantAsync(bookingId, dto);
 
