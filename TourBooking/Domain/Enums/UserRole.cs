@@ -8,6 +8,6 @@ namespace Domain.Enums
 {
     public enum UserRole
     {
-        CONSULTANT,CUSTOMER
+        CONSULTANT,CUSTOMER,AGENCY
     }
 }

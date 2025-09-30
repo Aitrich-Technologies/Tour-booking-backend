@@ -1,5 +1,6 @@
 ﻿using Domain.Services.Terms.DTO;
 using Domain.Services.Terms.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TourBooking.API.Terms.RequestObjects;
@@ -21,12 +22,15 @@ namespace TourBooking.API.Terms
             _service = service;
         }
 
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpGet("{tourId}")]
         public async Task<IActionResult> GetTermsByTourIdAsync([FromRoute] Guid tourId)
         {
             var result = await _service.GetTermsByTourIdAsync(tourId);
             return Ok(result);
         }
+
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTermByIdAsync(Guid id)
         {
@@ -34,6 +38,8 @@ namespace TourBooking.API.Terms
             if (term == null) return NotFound();
             return Ok(term);
         }
+
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpPost("{tourId}")]
         public async Task<IActionResult> AddTermAsync([FromRoute] Guid tourId, [FromBody] AddTerms request)
         {
@@ -62,7 +68,7 @@ namespace TourBooking.API.Terms
 
 
 
-        // ✅ Update existing term
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTermAsync([FromRoute] Guid id, [FromBody] UpdateTerms request)
         {
@@ -96,6 +102,7 @@ namespace TourBooking.API.Terms
             });
         }
 
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTermAsync([FromRoute] Guid id)
         {

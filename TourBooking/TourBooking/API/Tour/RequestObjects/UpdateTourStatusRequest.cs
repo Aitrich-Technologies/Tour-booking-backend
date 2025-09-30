@@ -4,6 +4,6 @@ namespace TourBooking.API.Tour.RequestObjects
 {
     public class UpdateTourStatusRequest
     {
-        public TourStatus Status { get; set; }
+        public string Status { get; set; }
     }
 }

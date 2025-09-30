@@ -3,6 +3,7 @@ using Domain.Models;
 using Domain.Services.Tour.DTO;
 
 using Domain.Services.Tour.Interface;
+using System.Security.Claims;
 
 
 namespace Domain.Services.Tour.Services
@@ -38,6 +39,7 @@ namespace Domain.Services.Tour.Services
 
         public async Task<TourDto> CreateTourAsync(TourDto tourDto)
         {
+          
             var tour = _mapper.Map<Tourss>(tourDto);
             var created = await _repository.AddAsync(tour);
             return _mapper.Map<TourDto>(created);

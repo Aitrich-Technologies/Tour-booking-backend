@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Domain.Services.Tour.DTO
@@ -19,7 +20,8 @@ namespace Domain.Services.Tour.DTO
         public DateOnly? DepartureDate { get; set; }
         public DateOnly? ArrivalDate { get; set; }
         public Guid? CustomerId { get; set; }
+        [JsonIgnore]
         public Guid ConsultantId { get; set; }
-        public TourStatus Status { get; set; } 
+        public string Status { get; set; } 
     }
 }

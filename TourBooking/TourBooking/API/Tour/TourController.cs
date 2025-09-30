@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using Domain.Enums;
 using Domain.Services.Tour.DTO;
 using Domain.Services.Tour.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TourBooking.API.Tour.RequestObjects;
 using TourBooking.Controllers;
 
@@ -21,6 +24,7 @@ namespace TourBooking.API.Tour
             _mapper = mapper;
         }
 
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] Guid? destination, [FromQuery] string? status, [FromQuery] DateOnly? departureDate)
         {
@@ -28,6 +32,7 @@ namespace TourBooking.API.Tour
             return Ok(tours);
         }
 
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
@@ -35,6 +40,7 @@ namespace TourBooking.API.Tour
             return tour != null ? Ok(tour) : NotFound();
         }
 
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpGet("{customerId}")]
         public async Task<IActionResult> GetByCustomer(Guid customerId)
         {
@@ -42,14 +48,22 @@ namespace TourBooking.API.Tour
             return Ok(tours);
         }
 
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateTourRequest request)
         {
-            var dto = _mapper.Map<TourDto>(request);
+           
+          
+            request.ConsultantId = Guid.Parse(User.FindFirst("UserId")!.Value);
+            
+          
+
+             var dto = _mapper.Map<TourDto>(request);
             var created = await _tourService.CreateTourAsync(dto);
             return Ok(created);
         }
 
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] UpdateTourRequest request)
         {
@@ -60,6 +74,7 @@ namespace TourBooking.API.Tour
             return Ok(new { message = "Tour Updated successfully" });
         }
 
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpPatch("UpdateStatus/{id}")]
         public async Task<IActionResult> UpdateStatus(Guid id, [FromBody] UpdateTourStatusRequest request)
         {
@@ -68,6 +83,7 @@ namespace TourBooking.API.Tour
             return Ok(new { message = "Status Changed" });
         }
 
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {

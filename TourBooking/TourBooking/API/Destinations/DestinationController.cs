@@ -4,6 +4,7 @@ using Domain.Services.Destinations.Interface;
 using System;
 using System.Threading.Tasks;
 using TourBooking.Controllers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TourBooking.API.Controllers
 {
@@ -18,7 +19,8 @@ namespace TourBooking.API.Controllers
             _destinationService = destinationService;
         }
 
-        // GET: api/destination
+  
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -26,7 +28,8 @@ namespace TourBooking.API.Controllers
             return Ok(destinations);
         }
 
-        // GET: api/destination/{id}
+    
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
@@ -36,7 +39,8 @@ namespace TourBooking.API.Controllers
             return Ok(destination);
         }
 
-        // POST: api/destination
+   
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpPost]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> Create([FromForm] DestinationDto dto)
@@ -48,7 +52,8 @@ namespace TourBooking.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = createdDestination.Id }, createdDestination);
         }
 
-        // PUT: api/destination/{id}
+      
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpPut("{id}")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> Update(Guid id, [FromForm] DestinationDto dto)
@@ -63,7 +68,8 @@ namespace TourBooking.API.Controllers
             return NoContent();
         }
 
-        // PATCH: api/destination/{id}
+        
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpPatch("{id}")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> Patch(Guid id, [FromForm] DestinationPatchDto dto)
@@ -75,7 +81,7 @@ namespace TourBooking.API.Controllers
             return NoContent();
         }
 
-        // DELETE: api/destination/{id}
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {

@@ -4,6 +4,7 @@ using Domain.Enums;
 using Domain.Models;
 using Domain.Services.TourBooking.DTO;
 using Domain.Services.TourBooking.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TourBooking.API.TourBooking.RequestObjects;
 using TourBooking.Controllers;
@@ -27,10 +28,9 @@ namespace TourBooking.API.TourBooking
             _mapper = mapper;
         }
 
-        // ✅ Create
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpPost]
-     
-        public async Task<IActionResult> AddTourBooking([FromBody] AddTourBookingRequest request)
+       public async Task<IActionResult> AddTourBooking([FromBody] AddTourBookingRequest request)
         {
             
             var dto = new TourBookingDto
@@ -58,7 +58,7 @@ namespace TourBooking.API.TourBooking
                 new { id = result.Id }, result);
         }
 
-        // ✅ Get By Id
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTourBookingById(Guid id)
         {
@@ -66,25 +66,28 @@ namespace TourBooking.API.TourBooking
             return booking == null ? NotFound() : Ok(booking);
         }
 
-        // ✅ Get By TourId
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpGet("{tourId}")]
         public async Task<IActionResult> GetByTourId(Guid tourId)
             => Ok(await _service.GetTourBookingsByTourIdAsync(tourId));
-        //✅ GetAll
+
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpGet]
         public async Task<IActionResult> GetAllTourBookings()
         {
             var result = await _service.GetAllTourBookingsAsync();
             return Ok(result);
         }
-        // ✅ Update
+
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTourBooking(Guid id, [FromBody] UpdateTourBookingDto dto)
         {
             var updated = await _service.UpdateTourBookingAsync(id, dto);
             return updated == null ? NotFound() : Ok(updated);
         }
-        // ✅ Patch
+
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpPatch("{id}")]
         public async Task<IActionResult> PatchTourBooking(Guid id,
             [FromBody] PatchTourBookingDto dto)
@@ -92,8 +95,8 @@ namespace TourBooking.API.TourBooking
             var patched = await _service.PatchTourBookingAsync(id, dto);
             return patched == null ? NotFound() : Ok(patched);
         }
-              
-        // ✅ Delete
+
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
