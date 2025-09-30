@@ -15,8 +15,8 @@ namespace TourBooking.API.TourBooking.RequestObjects
             public DateOnly? ExpiryDate { get; set; }
             public string? PlaceOfBirth { get; set; }
             public bool? LeadPassenger { get; set; }
-            public ParticipantType ParticipantType { get; set; }
-            public TourStatus Status { get; set; }
+            public string? ParticipantType { get; set; }
+            public string? Status { get; set; }
         }
     }
 

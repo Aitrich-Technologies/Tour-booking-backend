@@ -32,9 +32,9 @@ namespace Domain.Services.TourBooking.DTO
 
         public bool? LeadPassenger { get; set; }
 
-        public ParticipantType ParticipantType { get; set; }
+        public string ParticipantType { get; set; }
 
-        public TourStatus Status { get; set; }
+        public string? Status { get; set; }
 
     }
 }

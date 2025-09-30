@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
+using Domain.Enums;
+using Domain.Models;
 using Domain.Services.TourBooking.DTO;
+using Domain.Services.User.DTO;
 using TourBooking.API.TourBooking.RequestObjects;
 
 namespace TourBooking.API.TourBooking
@@ -10,6 +13,19 @@ namespace TourBooking.API.TourBooking
         {
             CreateMap<AddTourBookingRequest, TourBookingDto>();
             CreateMap<TourBookingDto, AddTourBookingRequest>();
+            // RequestDto -> Entity (string to enum)
+            CreateMap<TourBookingDto, TourBookingForm>()
+                .ForMember(dest => dest.Status,
+                           opt => opt.MapFrom(src => Enum.Parse<TourStatus>(src.Status, true)))
+                           .ForMember(dest => dest.ParticipantType,
+                           opt => opt.MapFrom(src => Enum.Parse<ParticipantType>(src.ParticipantType, true)));
+
+            // Entity -> ResponseDto (enum to string)
+            CreateMap<TourBookingForm, TourBookingDto>()
+                .ForMember(dest => dest.Status,
+                           opt => opt.MapFrom(src => src.Status.ToString()))
+            .ForMember(dest => dest.ParticipantType,
+                           opt => opt.MapFrom(src => src.ParticipantType.ToString()));
         }
     }
 }

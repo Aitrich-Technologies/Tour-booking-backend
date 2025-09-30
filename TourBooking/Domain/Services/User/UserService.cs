@@ -80,6 +80,7 @@ namespace Domain.Services.User
         new Claim(JwtRegisteredClaimNames.Sub, username),
         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
         new Claim(ClaimTypes.Email, user.Email ?? string.Empty),
+        new Claim("UserId",user.Id.ToString()),
         new Claim(ClaimTypes.Role, user.Role.ToString())
     };
 

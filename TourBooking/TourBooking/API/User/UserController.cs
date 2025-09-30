@@ -7,6 +7,7 @@ using Domain.Services.User.Interface;
 using Domain.Services.User.DTO;
 using AutoMapper;
 using TourBooking.API.User.RequestObjects;
+using System.Data;
 
 namespace TourBooking.API.User
 {
@@ -41,7 +42,7 @@ namespace TourBooking.API.User
                 return BadRequest(new { message = ex.Message });
             }
         }
-        //[Authorize(Roles = "AGENCY")]
+        [Authorize(Roles = "AGENCY")]
         [HttpPost("AddConsultant")]
         public async Task<IActionResult> AddConsultant([FromBody] AddUserRequest request)
         {
@@ -71,7 +72,7 @@ namespace TourBooking.API.User
             return Ok(new { token });
         }
 
-        //[Authorize]
+        [Authorize(Roles = "AGENCY")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -81,7 +82,7 @@ namespace TourBooking.API.User
             return Ok(response);
         }
 
-        //[Authorize]
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpGet("{userId}")]
         public async Task<IActionResult> GetById(Guid userId)
         {
@@ -91,7 +92,7 @@ namespace TourBooking.API.User
             return Ok(response);
         }
 
-        //[Authorize]
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpPut("{userId}")]
         public async Task<IActionResult> Update(Guid userId, [FromBody] AddUserRequest request)
         {
@@ -103,7 +104,7 @@ namespace TourBooking.API.User
             var response = _mapper.Map<UserResponse>(updated);
             return Ok(response);
         }
-        //[Authorize]
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpPatch("{id}")]
         public async Task<IActionResult> PatchUser(Guid id, [FromBody] PatchUserRequest request)
         {
@@ -114,7 +115,7 @@ namespace TourBooking.API.User
         }
 
 
-        //[Authorize]
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpDelete("{userId}")]
         public async Task<IActionResult> Delete(Guid userId)
         {
@@ -125,7 +126,7 @@ namespace TourBooking.API.User
         }
 
 
-        //[Authorize]
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpGet("GetAllCustomers")]
         public async Task<IActionResult> GetAllCustomers()
         {

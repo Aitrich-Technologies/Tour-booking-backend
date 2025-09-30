@@ -1,16 +1,12 @@
 ﻿using AutoMapper;
-using Domain.Enums;
 using Domain.Services.TourNote.DTO;
-using Domain.Services.User.DTO;
+using TourBooking.API.Notes.RequestObjects;
 
-namespace TourBooking.API.Notes.Helper
+public class NoteProfile : Profile
 {
-    public class MappingProfile:Profile
+    public NoteProfile()
     {
-        public MappingProfile()
-        {
-
-
-        }
+        CreateMap<AddNoteRequest, NoteDto>();
+        CreateMap<UpdateNoteRequest, NoteDto>();
     }
 }

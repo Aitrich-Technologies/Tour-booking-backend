@@ -18,7 +18,7 @@ namespace TourBooking.API.TourBooking.RequestObjects
         public string? PlaceOfBirth { get; set; }
 
 
-        public ParticipantType ParticipantType { get; set; }
+        public string? ParticipantType { get; set; }
 
     }
 }

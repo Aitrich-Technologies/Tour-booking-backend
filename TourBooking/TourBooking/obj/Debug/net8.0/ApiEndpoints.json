@@ -238,7 +238,7 @@
   {
     "ContainingType": "TourBooking.API.Participant.ParticipantController",
     "Method": "GetParticipantById",
-    "RelativePath": "api/v1/Participant/{id}",
+    "RelativePath": "api/v1/Participant/{bookingId}/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -246,7 +246,7 @@
       {
         "Name": "bookingId",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "id",
@@ -259,7 +259,7 @@
   {
     "ContainingType": "TourBooking.API.Participant.ParticipantController",
     "Method": "UpdateParticipant",
-    "RelativePath": "api/v1/Participant/{id}",
+    "RelativePath": "api/v1/Participant/{bookingId}/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -267,7 +267,7 @@
       {
         "Name": "bookingId",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "id",
@@ -285,7 +285,7 @@
   {
     "ContainingType": "TourBooking.API.Participant.ParticipantController",
     "Method": "PatchParticipant",
-    "RelativePath": "api/v1/Participant/{id}",
+    "RelativePath": "api/v1/Participant/{bookingId}/{id}",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -293,7 +293,7 @@
       {
         "Name": "bookingId",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "id",
@@ -311,7 +311,7 @@
   {
     "ContainingType": "TourBooking.API.Participant.ParticipantController",
     "Method": "DeleteParticipant",
-    "RelativePath": "api/v1/Participant/{id}",
+    "RelativePath": "api/v1/Participant/{bookingId}/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -319,7 +319,7 @@
       {
         "Name": "bookingId",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "id",

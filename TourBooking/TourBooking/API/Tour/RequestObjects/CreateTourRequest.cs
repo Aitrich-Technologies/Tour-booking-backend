@@ -13,6 +13,6 @@ namespace TourBooking.API.Tour.RequestObjects
         public DateOnly? ArrivalDate { get; set; }
         public Guid? CustomerId { get; set; }
         public Guid ConsultantId { get; set; }
-        public TourStatus Status { get; set; }
+        public string Status { get; set; }
     }
 }
