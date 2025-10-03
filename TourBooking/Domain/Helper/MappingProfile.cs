@@ -48,9 +48,11 @@ namespace Domain.Helper
 
 
             CreateMap<TermsDto, TermsAndCondition>().ReverseMap();
+
             CreateMap<Tourss, TourDto>()
            .ForMember(dest => dest.DestinationName,
                       opt => opt.MapFrom(src => src.Destination.Name)) // ✅ flatten Destination.Name
+           .ForMember(dest=>dest.ImageFile,opt=>opt.MapFrom(src=>src.Destination.ImageUrl))
            .ForMember(dest => dest.Status,
                       opt => opt.MapFrom(src => src.Status.ToString()));// enum → string
            

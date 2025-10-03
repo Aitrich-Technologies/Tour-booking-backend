@@ -779,6 +779,16 @@
   },
   {
     "ContainingType": "TourBooking.API.User.UserController",
+    "Method": "GetLoggedUser",
+    "RelativePath": "api/v1/User/LoggedUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.User.UserController",
     "Method": "Login",
     "RelativePath": "api/v1/User/Login",
     "HttpMethod": "POST",

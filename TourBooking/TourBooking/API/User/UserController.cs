@@ -135,6 +135,29 @@ namespace TourBooking.API.User
 
             return Ok(response);
         }
+
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
+        [HttpGet("LoggedUser")]
+        public async Task<IActionResult> GetLoggedUser()
+        {
+            try
+            {
+                // Extract userId from JWT claims
+                var userId = User.FindFirst("UserId")?.Value;
+                if (string.IsNullOrEmpty(userId)) return Unauthorized("User ID not found in token.");
+
+                var user = await _userService.GetUserByIdAsync(Guid.Parse(userId));
+                if (user == null) return NotFound("User not found.");
+
+                var response = _mapper.Map<UserResponse>(user);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
     }
 
 }
