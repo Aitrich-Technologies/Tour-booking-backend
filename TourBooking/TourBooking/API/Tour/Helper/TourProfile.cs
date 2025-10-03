@@ -21,7 +21,16 @@ namespace TourBooking.API.Tour.Helper
             // Entity -> ResponseDto (enum to string)
             CreateMap<Tourss, TourDto>()
                 .ForMember(dest => dest.Status,
-                           opt => opt.MapFrom(src => src.Status.ToString()));
+                           opt => opt.MapFrom(src => src.Status.ToString()))
+         
+        .ForMember(dest => dest.DestinationName,
+                   opt => opt.MapFrom(src => src.Destination.Name)) // ✅ flatten Destination.Name
+         .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Destination.ImageUrl))
+        .ForMember(dest => dest.Status,
+                   opt => opt.MapFrom(src => src.Status.ToString()));// enum → string
+
+
+            //CreateMap<TourDto, Tourss>().ReverseMap();
         }
     }
 }
