@@ -22,7 +22,6 @@ namespace Domain.Services.Tour.DTO
         public DateOnly? DepartureDate { get; set; }
         public DateOnly? ArrivalDate { get; set; }
         public Guid? CustomerId { get; set; }
-        [JsonIgnore]
         public Guid ConsultantId { get; set; }
         public string Status { get; set; } 
     }

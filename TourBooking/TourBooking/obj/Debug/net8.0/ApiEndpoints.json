@@ -463,22 +463,6 @@
   },
   {
     "ContainingType": "TourBooking.API.Tour.TourController",
-    "Method": "GetByCustomer",
-    "RelativePath": "api/v1/Tour/{customerId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "customerId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TourBooking.API.Tour.TourController",
     "Method": "GetById",
     "RelativePath": "api/v1/Tour/{id}",
     "HttpMethod": "GET",
@@ -524,6 +508,22 @@
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.Tour.TourController",
+    "Method": "GetByCustomer",
+    "RelativePath": "api/v1/Tour/customer/{customerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerId",
         "Type": "System.Guid",
         "IsRequired": true
       }
