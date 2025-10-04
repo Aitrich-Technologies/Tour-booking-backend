@@ -49,7 +49,21 @@ namespace Domain.Helper
 
             CreateMap<TermsDto, TermsAndCondition>().ReverseMap();
 
-         
+            //// DTO ↔ Entity
+            //CreateMap<TourDto, Tourss>()
+            //    .ForMember(dest => dest.Status,
+            //               opt => opt.MapFrom(src => Enum.Parse<TourStatus>(src.Status, true)))
+            //    .ReverseMap();
+            //CreateMap<Tourss, TourDto>()
+            //.ForMember(dest => dest.Status,
+            //           opt => opt.MapFrom(src => src.Status.ToString()));
+            ////.ForMember(dest => dest.DestinationName,
+            ////           opt => opt.MapFrom(src => src.Destination != null ? src.Destination.Name : null))
+            ////.ForMember(dest => dest.ImageUrl,
+            ////           opt => opt.MapFrom(src => src.Destination != null ? src.Destination.ImageUrl : "default-image-url.jpg"));
+
+            //CreateMap<Tourss, TourDto>().ReverseMap();
+
 
             CreateMap<AddUserDto, AuthUser>().ReverseMap();
 

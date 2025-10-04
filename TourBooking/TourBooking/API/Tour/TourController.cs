@@ -33,7 +33,7 @@ namespace TourBooking.API.Tour
         }
 
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetById(Guid id)
         {
             var tour = await _tourService.GetTourByIdAsync(id);
@@ -41,7 +41,7 @@ namespace TourBooking.API.Tour
         }
 
         [Authorize(Roles = "AGENCY,CONSULTANT")]
-        [HttpGet("{customerId}")]
+        [HttpGet("customer/{customerId:guid}")]
         public async Task<IActionResult> GetByCustomer(Guid customerId)
         {
             var tours = await _tourService.GetToursByCustomerAsync(customerId);
@@ -60,7 +60,7 @@ namespace TourBooking.API.Tour
 
              var dto = _mapper.Map<TourDto>(request);
             var created = await _tourService.CreateTourAsync(dto);
-            return Ok(created);
+            return Ok("Tour added successfully");
         }
 
         [Authorize(Roles = "AGENCY,CONSULTANT")]
