@@ -31,6 +31,10 @@ namespace Domain.Services.User
             return await _context.AuthUsers
                 .FirstOrDefaultAsync(u => u.UserName == username && u.Password == password);
         }
+        public async Task<AuthUser> GetByEmailAsync(string email)
+        {
+            return await _context.AuthUsers.FirstOrDefaultAsync(u => u.Email == email);
+        }
 
         public async Task<IEnumerable<AuthUser>> GetAllUsersAsync()
         {

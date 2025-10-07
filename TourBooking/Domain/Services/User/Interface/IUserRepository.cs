@@ -13,6 +13,7 @@ namespace Domain.Services.User.Interface
         Task<AuthUser?> GetByUserNameOrEmailAsync(string userName, string email);
 
         Task<AuthUser> LoginAsync(string username, string password);
+        Task<AuthUser> GetByEmailAsync(string email);
         Task<IEnumerable<AuthUser>> GetAllUsersAsync();
         Task<IEnumerable<AuthUser>> GetAllCustomersAsync();
         Task<AuthUser> GetUserByIdAsync(Guid userId);
