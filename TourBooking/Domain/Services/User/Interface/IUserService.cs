@@ -12,6 +12,9 @@ namespace Domain.Services.User.Interface
     {
         Task<UserResponseDto> AddUserAsync(AddUserDto user);
         Task<string> LoginAsync(LoginDto user);
+        Task<bool> ForgotPasswordAsync(ForgotPasswordDto dto);
+        Task<bool> ResetPasswordAsync(ResetPasswordDto dto);
+
         Task<IEnumerable<UserResponseDto>> GetAllUsersAsync();
         Task<IEnumerable<UserResponseDto>> GetAllCustomersAsync();
         Task<UserResponseDto> GetUserByIdAsync(Guid userId);
@@ -19,5 +22,6 @@ namespace Domain.Services.User.Interface
         Task<UserResponseDto> PatchUserAsync(Guid userId, PatchUserDto user);
         Task<bool> DeleteUserAsync(Guid userId);
         Task<UserResponseDto> AddConsultantAsync(AddUserDto dto);
+        Task SendEmailAsync(string toEmail, string subject, string body);
     }
 }

@@ -20,6 +20,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Azure.Core;
 using Domain.Enums;
+using System.Net.Mail;
+using System.Net;
 
 
 namespace Domain.Services.User
@@ -45,7 +47,9 @@ namespace Domain.Services.User
                 throw new Exception("User with the same username or email already exists.");
                
             }
+            
             var user = _mapper.Map<AuthUser>(dto);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             user.Id = Guid.NewGuid();
             user.CreatedAt = DateTime.UtcNow;
             user.Role = UserRole.CUSTOMER;
@@ -59,6 +63,7 @@ namespace Domain.Services.User
                 throw new Exception("User with the same username or email already exists.");
 
             var consultant = _mapper.Map<AuthUser>(dto);
+            consultant.Password = BCrypt.Net.BCrypt.HashPassword(consultant.Password);
             consultant.Id = Guid.NewGuid();
             consultant.CreatedAt = DateTime.UtcNow;
             consultant.Role = UserRole.CONSULTANT; //  consultant role
@@ -69,18 +74,21 @@ namespace Domain.Services.User
 
         public async Task<string> LoginAsync(LoginDto dto)
         {
-            var username = dto.UserName;
-            var password = dto.Password;
-            var user = await _userRepository.LoginAsync(username, password);
+            var user = await _userRepository.LoginAsync(dto.UserName, dto.Password);
             if (user == null) return null;
 
-            // Generate JWT Token
+            // Generate JWT Token using the separate method
+            return GenerateJwtToken(user);
+        }
+
+        private string GenerateJwtToken(AuthUser user)
+        {
             var claims = new[]
-     {
-        new Claim(JwtRegisteredClaimNames.Sub, username),
+            {
+        new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
         new Claim(ClaimTypes.Email, user.Email ?? string.Empty),
-        new Claim("UserId",user.Id.ToString()),
+        new Claim("UserId", user.Id.ToString()),
         new Claim(ClaimTypes.Role, user.Role.ToString())
     };
 
@@ -96,6 +104,40 @@ namespace Domain.Services.User
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+        public async Task<bool> ForgotPasswordAsync(ForgotPasswordDto dto)
+        {
+            var user = await _userRepository.GetByEmailAsync(dto.Email);
+            if (user == null) return false;
+
+            // Generate a reset token (for demo use Guid, in real use JWT or Identity's Token)
+            var resetToken = GenerateJwtToken(user);
+
+            // Save token in DB
+            //user.PasswordResetToken = resetToken;
+            //user.TokenExpiry = DateTime.UtcNow.AddHours(1);
+
+            await _userRepository.UpdateUserAsync(user);
+
+            // Send Email (or log for now)
+            await SendEmailAsync(user.Email, "Password Reset",
+                $"Use this token to reset your password: {resetToken}");
+
+
+            return true;
+        }
+
+        public async Task<bool> ResetPasswordAsync(ResetPasswordDto dto)
+        {
+            var user = await _userRepository.GetByEmailAsync(dto.Email);
+            if (user == null ) return false;
+
+            user.Password = BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
+            //user.PasswordResetToken = null;
+            //user.TokenExpiry = null;
+
+            await _userRepository.UpdateUserAsync(user);
+            return true;
         }
 
         public async Task<IEnumerable<UserResponseDto>> GetAllUsersAsync()
@@ -165,5 +207,49 @@ namespace Domain.Services.User
         {
             return await _userRepository.DeleteUserAsync(userId);
         }
+
+
+        public async Task SendEmailAsync(string toEmail, string subject, string body)
+        {
+            try
+            {
+                var host = _config["Email:SmtpHost"];
+                var portString = _config["Email:SmtpPort"];
+                var user = _config["Email:SmtpUser"];
+                var pass = _config["Email:SmtpPass"];
+                var enableSslString = _config["Email:EnableSSL"];
+
+                if (string.IsNullOrEmpty(host) || string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
+                    throw new Exception("Email configuration is missing in appsettings.json.");
+
+                int port = 587; // default
+                if (!string.IsNullOrEmpty(portString))
+                    int.TryParse(portString, out port);
+
+                bool enableSsl = true;
+                if (!string.IsNullOrEmpty(enableSslString))
+                    bool.TryParse(enableSslString, out enableSsl);
+
+                using var client = new SmtpClient(host, port)
+                {
+                    Credentials = new NetworkCredential(user, pass),
+                    EnableSsl = enableSsl
+                };
+
+                using var message = new MailMessage(user, toEmail, subject, body)
+                {
+                    IsBodyHtml = true
+                };
+
+                await client.SendMailAsync(message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Email send failed: {ex.Message}", ex);
+            }
+        }
+
+
     }
 }
+
