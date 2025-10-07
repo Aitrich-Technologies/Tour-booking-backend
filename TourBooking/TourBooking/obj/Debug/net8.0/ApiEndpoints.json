@@ -199,6 +199,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TourBooking.API.Notes.NotesController",
+    "Method": "GetNotesByTourIdAsync",
+    "RelativePath": "api/v1/Notes/tour/{tourId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tourId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TourBooking.API.Participant.ParticipantController",
     "Method": "GetParticipants",
     "RelativePath": "api/v1/Participant/{bookingId}",
@@ -384,22 +400,6 @@
   },
   {
     "ContainingType": "TourBooking.API.Terms.TermsController",
-    "Method": "GetTermsByTourIdAsync",
-    "RelativePath": "api/v1/Terms/{tourId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "tourId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TourBooking.API.Terms.TermsController",
     "Method": "AddTermAsync",
     "RelativePath": "api/v1/Terms/{tourId}",
     "HttpMethod": "POST",
@@ -414,6 +414,22 @@
       {
         "Name": "request",
         "Type": "TourBooking.API.Terms.RequestObjects.AddTerms",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TourBooking.API.Terms.TermsController",
+    "Method": "GetTermsByTourIdAsync",
+    "RelativePath": "api/v1/Terms/tour/{tourId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tourId",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],

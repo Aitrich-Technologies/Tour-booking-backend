@@ -22,7 +22,11 @@ namespace Domain.Services.TourNote
             _noteRepository = noteRepository;
             _mapper = mapper;
         }
-
+        public async Task<IEnumerable<NoteDto>> GetNotesByTourIdAsync(Guid tourId)
+        {
+            var notes = await _noteRepository.GetNotesByTourIdAsync(tourId);
+            return _mapper.Map<IEnumerable<NoteDto>>(notes);
+        }
         public async Task<NoteDto> AddNotesAsync(NoteDto noteDto)
         {
             var noteEntity = _mapper.Map<Notes>(noteDto);

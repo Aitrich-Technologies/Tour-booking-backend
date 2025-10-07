@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Models;
+using Domain.Services.TourNote.DTO;
 
 
 namespace Domain.Services.TourNote.Interface
@@ -15,6 +16,7 @@ namespace Domain.Services.TourNote.Interface
         Task<Notes?> GetNotesByIdAsync(Guid id);
         Task<Notes?> UpdateNotesAsync(Notes note);
         Task<bool> DeleteNotesAsync(Guid id);
+        Task<IEnumerable<Notes>> GetNotesByTourIdAsync(Guid tourId);
 
     }
 }

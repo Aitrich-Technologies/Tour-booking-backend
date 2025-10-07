@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Xupec9yHVmoOqDkQRTv4o9dhfSTYUISu2H2VWjHoKsc=",
+  "Hash": "hirBY8DIHyAAq1AtvFaMl96OCf6I6UwT30uasNZrWoo=",
   "Source": "TourBooking",
   "BasePath": "_content/TourBooking",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\wwwroot\\images\\2b952efd-7fb1-4c61-b503-b7c07cadb3df_blazor-featured.png",
+      "SourceId": "TourBooking",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\wwwroot\\",
+      "BasePath": "_content/TourBooking",
+      "RelativePath": "images/2b952efd-7fb1-4c61-b503-b7c07cadb3df_blazor-featured.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\2b952efd-7fb1-4c61-b503-b7c07cadb3df_blazor-featured.png"
+    },
     {
       "Identity": "C:\\Users\\afraa\\Desktop\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\wwwroot\\images\\7e8e1f8d-ec30-4f74-b9bf-77baeef4bae6_blazor-in-net-development.webp",
       "SourceId": "TourBooking",

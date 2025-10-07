@@ -23,7 +23,7 @@ namespace TourBooking.API.Terms
         }
 
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
-        [HttpGet("{tourId}")]
+        [HttpGet("tour/{tourId}")]
         public async Task<IActionResult> GetTermsByTourIdAsync([FromRoute] Guid tourId)
         {
             var result = await _service.GetTermsByTourIdAsync(tourId);
