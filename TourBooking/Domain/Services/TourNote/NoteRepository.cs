@@ -19,7 +19,12 @@ namespace Domain.Services.TourNote
         {
             _context = context;
         }
-
+        public async Task<IEnumerable<Notes>> GetNotesByTourIdAsync(Guid tourId)
+        {
+            return await _context.Notes
+                .Where(n => n.TourId == tourId)
+                .ToListAsync();
+        }
         public async Task<Notes> AddNotesAsync(Notes note)
         {
             _context.Notes.Add(note);

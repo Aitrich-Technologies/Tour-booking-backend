@@ -21,6 +21,14 @@ namespace TourBooking.API.Notes
             _mapper = mapper;
         }
 
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
+        [HttpGet("tour/{tourId}")]
+        public async Task<IActionResult> GetNotesByTourIdAsync([FromRoute] Guid tourId)
+        {
+            var notes = await _noteService.GetNotesByTourIdAsync(tourId);
+            return Ok(notes);
+        }
+
         [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpPost]
         public async Task<IActionResult> NotesAdd([FromBody] AddNoteRequest request)
