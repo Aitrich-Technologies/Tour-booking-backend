@@ -72,6 +72,24 @@ namespace TourBooking.API.User
             return Ok(new { token });
         }
 
+        [HttpPost("ForgotPassword")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request)
+        {
+            var dto = _mapper.Map<ForgotPasswordDto>(request);
+            var result = await _userService.ForgotPasswordAsync(dto);
+            if (!result) return NotFound("User not found with this email.");
+            return Ok("Password reset token has been sent to your email.");
+        }
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
+        [HttpPost("ResetPassword")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest request)
+        {
+            var dto = _mapper.Map<ResetPasswordDto>(request);
+            var result = await _userService.ResetPasswordAsync(dto);
+            if (!result) return BadRequest("Invalid or expired token.");
+            return Ok("Password has been reset successfully.");
+        }
+
         [Authorize(Roles = "AGENCY")]
         [HttpGet]
         public async Task<IActionResult> GetAll()

@@ -52,7 +52,7 @@ public partial class AuthUser
 
     [Required, MaxLength(200)]
     public string Password { get; set; }
-
+   
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
 }
