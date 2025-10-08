@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Models;
+using Domain.Services.Tour.DTO;
+using Domain.Services.Tour.Interface;
 using Domain.Services.TourBooking.DTO;
 using Domain.Services.TourBooking.Interface;
 
@@ -8,21 +10,30 @@ namespace Domain.Services.TourBooking
     public class TourBookingService : ITourBookingService
     {
         private readonly ITourBookingRepository _repository;
+        private readonly ITourRepository _tourRepository;
         private readonly IMapper _mapper;
 
-        public TourBookingService(ITourBookingRepository repository, IMapper mapper)
+        public TourBookingService(ITourBookingRepository repository, IMapper mapper,ITourRepository tourRepository)
         {
             _repository = repository;
             _mapper = mapper;
+            _tourRepository = tourRepository;
         }
 
         public async Task<TourBookingDto> AddTourBookingAsync(TourBookingDto dto)
         {
-            var entity = _mapper.Map<TourBookingForm>(dto);
-            entity.Id = Guid.NewGuid(); // ensure new ID
+           var getTour= await _tourRepository.GetByIdAsync(dto.TourId);
+            dto.TourName = getTour.TourName;
 
-            var saved = await _repository.AddTourBookingAsync(entity);
-            return _mapper.Map<TourBookingDto>(saved);
+
+
+                var entity = _mapper.Map<TourBookingForm>(dto);
+                entity.Id = Guid.NewGuid(); // ensure new ID
+
+
+                var saved = await _repository.AddTourBookingAsync(entity);
+                return _mapper.Map<TourBookingDto>(saved);
+            
         }
 
         public async Task<IEnumerable<TourBookingDto>> GetAllTourBookingsAsync()

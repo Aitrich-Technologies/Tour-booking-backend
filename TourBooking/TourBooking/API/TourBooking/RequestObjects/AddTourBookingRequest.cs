@@ -1,11 +1,14 @@
 ﻿using Domain.Enums;
+using System.Text.Json.Serialization;
 
 namespace TourBooking.API.TourBooking.RequestObjects
 {
     public class AddTourBookingRequest
     {
-            public Guid TourId { get; set; }        
-            public string FirstName { get; set; } = null!;
+            public Guid TourId { get; set; }
+        [JsonIgnore]
+        public string TourName { get; set; }
+        public string FirstName { get; set; } = null!;
             public string LastName { get; set; } = null!;
             public string? Gender { get; set; }
             public DateOnly? Dob { get; set; }
