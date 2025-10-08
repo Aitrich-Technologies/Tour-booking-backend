@@ -35,6 +35,7 @@ namespace Domain.Services.TourBooking.DTO
         public string ParticipantType { get; set; }
 
         public string? Status { get; set; }
+        public string? TourName { get; set; }
 
     }
 }

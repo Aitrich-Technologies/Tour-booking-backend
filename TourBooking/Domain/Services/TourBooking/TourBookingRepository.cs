@@ -27,9 +27,12 @@ namespace Domain.Services.TourBooking
        
         public async Task<IEnumerable<TourBookingForm>> GetAllAsync()
         {
+
+
             return await _context.TourBookingForms
-                                 .AsNoTracking()
-                                 .ToListAsync();
+                          .Include(tb => tb.Tour) // 👈 include related Tour
+                          .AsNoTracking()
+                          .ToListAsync();
         }
 
         public async Task<TourBookingForm?> GetTourBookingByIdAsync(Guid id)
