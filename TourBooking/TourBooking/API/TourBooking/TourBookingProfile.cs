@@ -22,8 +22,7 @@ namespace TourBooking.API.TourBooking
 
             // Entity -> ResponseDto (enum to string)
             CreateMap<TourBookingForm, TourBookingDto>()
-                .ForMember(dest => dest.TourName,
-                       opt => opt.MapFrom(src => src.Tour.TourName))
+               
                 .ForMember(dest => dest.Status,
                            opt => opt.MapFrom(src => src.Status.ToString()))
             .ForMember(dest => dest.ParticipantType,

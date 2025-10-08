@@ -59,7 +59,7 @@ namespace TourBooking.API.TourBooking
         }
 
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
-        [HttpGet("{id}")]
+        [HttpGet("booking/{id}")]
         public async Task<IActionResult> GetTourBookingById(Guid id)
         {
             var booking = await _service.GetTourBookingByIdAsync(id);
@@ -67,7 +67,7 @@ namespace TourBooking.API.TourBooking
         }
 
         [Authorize(Roles = "AGENCY,CONSULTANT")]
-        [HttpGet("{tourId}")]
+        [HttpGet("tour/{tourId}")]
         public async Task<IActionResult> GetByTourId(Guid tourId)
             => Ok(await _service.GetTourBookingsByTourIdAsync(tourId));
 
