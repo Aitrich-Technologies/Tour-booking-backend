@@ -22,9 +22,7 @@ namespace Domain.Services.TourBooking
 
         public async Task<TourBookingDto> AddTourBookingAsync(TourBookingDto dto)
         {
-           var getTour= await _tourRepository.GetByIdAsync(dto.TourId);
-            dto.TourName = getTour.TourName;
-
+          
 
 
                 var entity = _mapper.Map<TourBookingForm>(dto);

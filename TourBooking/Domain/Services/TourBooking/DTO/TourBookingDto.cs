@@ -11,8 +11,7 @@ namespace Domain.Services.TourBooking.DTO
     {
         public Guid Id { get; set; }
         public Guid TourId { get; set; }
-        public string TourName { get; set; }
-
+       
         public string FirstName { get; set; } = null!;
 
         public string LastName { get; set; } = null!;
