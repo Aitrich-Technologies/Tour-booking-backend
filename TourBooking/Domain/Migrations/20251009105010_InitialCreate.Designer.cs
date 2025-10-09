@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(TourBookingDbContext))]
-    [Migration("20250926105751_newguidgen")]
-    partial class newguidgen
+    [Migration("20251009105010_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -89,8 +89,8 @@ namespace Domain.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("ImageData")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -166,9 +166,14 @@ namespace Domain.Migrations
                     b.Property<Guid>("TourId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TourId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("TourBookingForms");
                 });
@@ -308,7 +313,14 @@ namespace Domain.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Domain.Models.AuthUser", "User")
+                        .WithMany("TourBookingForms")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.Navigation("Tour");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Notes", b =>
@@ -357,6 +369,11 @@ namespace Domain.Migrations
                     b.Navigation("Customer");
 
                     b.Navigation("Destination");
+                });
+
+            modelBuilder.Entity("Domain.Models.AuthUser", b =>
+                {
+                    b.Navigation("TourBookingForms");
                 });
 
             modelBuilder.Entity("Domain.Models.Destination", b =>

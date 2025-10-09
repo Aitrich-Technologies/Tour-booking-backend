@@ -104,6 +104,16 @@ namespace TourBooking.API.TourBooking
             if (!success) return NotFound();
             return Ok(new { message = "Booking deleted successfully" });
         }
+
+        [Authorize(Roles = "CUSTOMER,AGENCY,CONSULTANT")]
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetByUserId(Guid userId)
+        {
+            var result = await _service.GetTourBookingsByUserIdAsync(userId);
+            if (!result.Any()) return NotFound(new { message = "No bookings found for this user." });
+            return Ok(result);
+        }
+
     }
 }
 

@@ -24,7 +24,7 @@ public partial class AuthUser
     //public string? EmailId { get; set; }
 
     //public string? TelephoneNo { get; set; }
-    [Key]
+    
     public Guid Id { get; set; }
 
     [Required, MaxLength(50)]
@@ -54,6 +54,7 @@ public partial class AuthUser
     public string Password { get; set; }
    
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public virtual ICollection<TourBookingForm> TourBookingForms { get; set; } = new List<TourBookingForm>();
 
 }
 

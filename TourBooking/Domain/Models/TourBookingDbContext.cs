@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 
@@ -53,11 +54,21 @@ namespace Domain.Models
                 .HasForeignKey(n => n.TourId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<TourBookingForm>()
-                .HasOne(tbf => tbf.Tour)
-                .WithMany(t => t.TourBookingForms)
-                .HasForeignKey(tbf => tbf.TourId)
-                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<TourBookingForm>(entity =>
+            {
+                entity.HasOne(tbf => tbf.Tour)
+                      .WithMany(t => t.TourBookingForms)
+                      .HasForeignKey(tbf => tbf.TourId)
+                      .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(tbf => tbf.User)
+                      .WithMany(u => u.TourBookingForms)
+                      .HasForeignKey(tbf => tbf.UserId)
+                      .OnDelete(DeleteBehavior.Restrict)
+                      .IsRequired(false); // ✅ optional FK
+            });
+
+
 
             modelBuilder.Entity<ParticipantInformation>()
                 .HasOne(pi => pi.Lead)

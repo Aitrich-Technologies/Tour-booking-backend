@@ -78,5 +78,12 @@ namespace Domain.Services.TourBooking
 
         public async Task<bool> DeleteTourBookingAsync(Guid id)
             => await _repository.DeleteTourBookingAsync(id);
+
+        public async Task<IEnumerable<TourBookingDto>> GetTourBookingsByUserIdAsync(Guid userId)
+        {
+            var entities = await _repository.GetTourBookingsByUserIdAsync(userId);
+            return _mapper.Map<IEnumerable<TourBookingDto>>(entities);
+        }
+
     }
 }
