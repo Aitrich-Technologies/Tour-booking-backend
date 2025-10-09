@@ -17,5 +17,6 @@ namespace Domain.Services.TourBooking.Interface
         Task<TourBookingDto?> UpdateTourBookingAsync(Guid id, UpdateTourBookingDto dto);
         Task<TourBookingDto?> PatchTourBookingAsync(Guid id, PatchTourBookingDto dto);
         Task<bool> DeleteTourBookingAsync(Guid id);
+        Task<IEnumerable<TourBookingDto>> GetTourBookingsByUserIdAsync(Guid userId);
     }
 }

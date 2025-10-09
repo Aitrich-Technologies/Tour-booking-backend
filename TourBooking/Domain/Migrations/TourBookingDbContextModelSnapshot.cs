@@ -163,9 +163,14 @@ namespace Domain.Migrations
                     b.Property<Guid>("TourId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TourId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("TourBookingForms");
                 });
@@ -305,7 +310,14 @@ namespace Domain.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Domain.Models.AuthUser", "User")
+                        .WithMany("TourBookingForms")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.Navigation("Tour");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Notes", b =>
@@ -354,6 +366,11 @@ namespace Domain.Migrations
                     b.Navigation("Customer");
 
                     b.Navigation("Destination");
+                });
+
+            modelBuilder.Entity("Domain.Models.AuthUser", b =>
+                {
+                    b.Navigation("TourBookingForms");
                 });
 
             modelBuilder.Entity("Domain.Models.Destination", b =>

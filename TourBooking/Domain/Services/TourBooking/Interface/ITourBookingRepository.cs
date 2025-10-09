@@ -16,5 +16,6 @@ namespace Domain.Services.TourBooking.Interface
         Task<IEnumerable<TourBookingForm>> GetTourBookingsByTourIdAsync(Guid tourId);
         Task<TourBookingForm?> UpdateAsync(TourBookingForm booking);
         Task<bool> DeleteTourBookingAsync(Guid id);
+        Task<IEnumerable<TourBookingForm>> GetTourBookingsByUserIdAsync(Guid userId);
     }
 }

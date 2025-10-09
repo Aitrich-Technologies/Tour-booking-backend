@@ -13,8 +13,7 @@ using Domain.Models;
 using AutoMapper;
 using Domain.Services.User.DTO;
 using Azure.Identity;
-using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
-using Domain.Migrations;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
