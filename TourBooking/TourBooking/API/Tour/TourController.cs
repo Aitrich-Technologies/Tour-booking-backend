@@ -60,7 +60,7 @@ namespace TourBooking.API.Tour
 
              var dto = _mapper.Map<TourDto>(request);
             var created = await _tourService.CreateTourAsync(dto);
-            return Ok("Tour added successfully");
+            return Ok();
         }
 
         [Authorize(Roles = "AGENCY,CONSULTANT")]
