@@ -26,11 +26,27 @@ namespace Domain.Services.User
             return user;
         }
 
+        //public async Task<AuthUser> LoginAsync(string username, string password)
+        //{
+        //    return await _context.AuthUsers
+        //        .FirstOrDefaultAsync(u => u.UserName == username && u.Password == password);
+        //}
         public async Task<AuthUser> LoginAsync(string username, string password)
         {
-            return await _context.AuthUsers
-                .FirstOrDefaultAsync(u => u.UserName == username && u.Password == password);
+            var user = await _context.AuthUsers
+                .FirstOrDefaultAsync(u => u.UserName == username);
+
+            if (user == null)
+                return null;
+
+            // Compare the plain password with the hashed password
+            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(password, user.Password);
+            if (!isPasswordValid)
+                return null;
+
+            return user;
         }
+
         public async Task<AuthUser> GetByEmailAsync(string email)
         {
             return await _context.AuthUsers.FirstOrDefaultAsync(u => u.Email == email);
