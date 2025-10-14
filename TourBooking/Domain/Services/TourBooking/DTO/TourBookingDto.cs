@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Domain.Enums;
+using Domain.Services.Tour.DTO;
 
 namespace Domain.Services.TourBooking.DTO
 {
@@ -32,9 +34,12 @@ namespace Domain.Services.TourBooking.DTO
 
         public bool? LeadPassenger { get; set; }
 
-        public string ParticipantType { get; set; }
+        public string? ParticipantType { get; set; }
 
         public string? Status { get; set; }
+       
+        public TourDto? Tour { get; set; }
+    
      
 
     }

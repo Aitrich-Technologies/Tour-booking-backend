@@ -64,12 +64,14 @@ namespace Domain.Services.TourBooking
             return true;
         }
         public async Task<IEnumerable<TourBookingForm>> GetTourBookingsByUserIdAsync(Guid userId)
-    => await _context.TourBookingForms
+        {
+            var tours = await _context.TourBookingForms
                      .Where(x => x.UserId == userId)
                      .Include(x => x.Tour)
                      .AsNoTracking()
                      .ToListAsync();
-
+            return tours;
+        }
     }
 }
 

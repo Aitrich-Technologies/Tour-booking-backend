@@ -1,4 +1,5 @@
 ﻿using Domain.Enums;
+using Domain.Services.TourBooking.DTO;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace Domain.Services.Tour.DTO
         public DateOnly? ArrivalDate { get; set; }
         public Guid? CustomerId { get; set; }
         public Guid ConsultantId { get; set; }
-        public string Status { get; set; } 
+        public string Status { get; set; }
+       
     }
 }

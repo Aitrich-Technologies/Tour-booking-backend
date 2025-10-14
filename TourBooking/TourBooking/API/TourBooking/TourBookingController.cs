@@ -114,20 +114,13 @@ namespace TourBooking.API.TourBooking
         public async Task<IActionResult> GetByUserId(Guid userId)
         {
             var result = await _service.GetTourBookingsByUserIdAsync(userId);
-            Guid Tourid=new Guid();
-            foreach (var booking in result) 
-            {
-                Tourid = booking.TourId;
-            }
-
-            var TourDetails = await _tourService.GetTourByIdAsync(Tourid);
+           
+            
             if (!result.Any()) return NotFound(new { message = "No bookings found for this user." });
-            var response = new
-            {
-                Bookings = result,
-                Tours = TourDetails
-            };
-            return Ok(response);
+
+            
+            return Ok(result);
+
         }
 
     }
