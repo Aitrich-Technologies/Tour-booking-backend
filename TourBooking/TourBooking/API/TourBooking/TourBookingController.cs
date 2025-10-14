@@ -2,6 +2,7 @@
 using AutoMapper;
 using Domain.Enums;
 using Domain.Models;
+using Domain.Services.Tour.Interface;
 using Domain.Services.TourBooking.DTO;
 using Domain.Services.TourBooking.Interface;
 using Microsoft.AspNetCore.Authorization;
@@ -20,12 +21,14 @@ namespace TourBooking.API.TourBooking
     public class TourBookingController : BaseApiController<TourBookingController>
     {
         private readonly ITourBookingService _service;
+        private readonly ITourService _tourService;
         private readonly IMapper _mapper;
 
-        public TourBookingController(ITourBookingService service, IMapper mapper)
+        public TourBookingController(ITourBookingService service, IMapper mapper,ITourService tourService)
         {
             _service = service;
             _mapper = mapper;
+            _tourService = tourService;
         }
 
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
@@ -111,8 +114,20 @@ namespace TourBooking.API.TourBooking
         public async Task<IActionResult> GetByUserId(Guid userId)
         {
             var result = await _service.GetTourBookingsByUserIdAsync(userId);
+            Guid Tourid=new Guid();
+            foreach (var booking in result) 
+            {
+                Tourid = booking.TourId;
+            }
+
+            var TourDetails = await _tourService.GetTourByIdAsync(Tourid);
             if (!result.Any()) return NotFound(new { message = "No bookings found for this user." });
-            return Ok(result);
+            var response = new
+            {
+                Bookings = result,
+                Tours = TourDetails
+            };
+            return Ok(response);
         }
 
     }
