@@ -1,18 +1,16 @@
-﻿using System;
+﻿using Domain.Services.Tour.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Domain.Enums;
-using Domain.Services.Tour.DTO;
 
 namespace Domain.Services.TourBooking.DTO
 {
-  public class TourBookingDto
+    public class GetBookingDto
     {
         public Guid Id { get; set; }
-        public Guid TourId { get; set; }
+        //public Guid TourId { get; set; }
         public Guid UserId { get; set; }
         public string FirstName { get; set; } = null!;
 
@@ -37,10 +35,9 @@ namespace Domain.Services.TourBooking.DTO
         public string? ParticipantType { get; set; }
 
         public string? Status { get; set; }
-       
+
         public TourDto? Tour { get; set; }
 
         public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
-
     }
 }

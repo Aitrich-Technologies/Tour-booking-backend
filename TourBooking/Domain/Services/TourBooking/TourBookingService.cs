@@ -34,22 +34,22 @@ namespace Domain.Services.TourBooking
             
         }
 
-        public async Task<IEnumerable<TourBookingDto>> GetAllTourBookingsAsync()
+        public async Task<IEnumerable<GetBookingDto>> GetAllTourBookingsAsync()
         {
             var entities = await _repository.GetAllAsync();
-            return _mapper.Map<IEnumerable<TourBookingDto>>(entities);
+            return _mapper.Map<IEnumerable<GetBookingDto>>(entities);
         }
 
-        public async Task<TourBookingDto?> GetTourBookingByIdAsync(Guid id)
+        public async Task<GetBookingDto?> GetTourBookingByIdAsync(Guid id)
         {
             var entity = await _repository.GetTourBookingByIdAsync(id);
-            return entity == null ? null : _mapper.Map<TourBookingDto>(entity);
+            return entity == null ? null : _mapper.Map<GetBookingDto>(entity);
         }
 
-        public async Task<IEnumerable<TourBookingDto>> GetTourBookingsByTourIdAsync(Guid tourId)
+        public async Task<IEnumerable<GetBookingDto>> GetTourBookingsByTourIdAsync(Guid tourId)
         {
             var entities = await _repository.GetTourBookingsByTourIdAsync(tourId);
-            return _mapper.Map<IEnumerable<TourBookingDto>>(entities);
+            return _mapper.Map<IEnumerable<GetBookingDto>>(entities);
         }
 
         public async Task<TourBookingDto?> UpdateTourBookingAsync(Guid id, UpdateTourBookingDto dto)
@@ -79,10 +79,10 @@ namespace Domain.Services.TourBooking
         public async Task<bool> DeleteTourBookingAsync(Guid id)
             => await _repository.DeleteTourBookingAsync(id);
 
-        public async Task<IEnumerable<TourBookingDto>> GetTourBookingsByUserIdAsync(Guid userId)
+        public async Task<IEnumerable<GetBookingDto>> GetTourBookingsByUserIdAsync(Guid userId)
         {
             var entities = await _repository.GetTourBookingsByUserIdAsync(userId);
-            return _mapper.Map<IEnumerable<TourBookingDto>>(entities);
+            return _mapper.Map<IEnumerable<GetBookingDto>>(entities);
         }
 
     }

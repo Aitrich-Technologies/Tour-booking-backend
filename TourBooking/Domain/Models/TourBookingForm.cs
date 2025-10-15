@@ -30,6 +30,7 @@ public partial class TourBookingForm
     public string? PlaceOfBirth { get; set; }
 
     public bool? LeadPassenger { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public ParticipantType ParticipantType { get; set; }
 

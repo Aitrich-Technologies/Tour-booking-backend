@@ -7,7 +7,7 @@ using TourBooking.API.TourBooking.RequestObjects;
 
 namespace TourBooking.API.TourBooking
 {
-    public class TourBookingProfile:Profile
+    public class TourBookingProfile : Profile
     {
         public TourBookingProfile()
         {
@@ -22,11 +22,21 @@ namespace TourBooking.API.TourBooking
 
             // Entity -> ResponseDto (enum to string)
             CreateMap<TourBookingForm, TourBookingDto>()
-               
+
                 .ForMember(dest => dest.Status,
                            opt => opt.MapFrom(src => src.Status.ToString()))
             .ForMember(dest => dest.ParticipantType,
                            opt => opt.MapFrom(src => src.ParticipantType.ToString()));
+
+
+            // Entity -> ResponseDto (enum to string)
+            CreateMap<TourBookingForm, GetBookingDto>()
+
+                        .ForMember(dest => dest.Status,
+                                   opt => opt.MapFrom(src => src.Status.ToString()))
+                    .ForMember(dest => dest.ParticipantType,
+                                   opt => opt.MapFrom(src => src.ParticipantType.ToString()));
         }
     }
 }
+

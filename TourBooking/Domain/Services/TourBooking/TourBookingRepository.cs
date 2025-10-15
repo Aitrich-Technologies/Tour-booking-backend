@@ -30,7 +30,7 @@ namespace Domain.Services.TourBooking
 
 
             return await _context.TourBookingForms
-                          .Include(tb => tb.Tour) // 👈 include related Tour
+                          .Include(tb => tb.Tour).ThenInclude(t => t.Destination)
                           .AsNoTracking()
                           .ToListAsync();
         }
@@ -38,12 +38,16 @@ namespace Domain.Services.TourBooking
         public async Task<TourBookingForm?> GetTourBookingByIdAsync(Guid id)
         {
             return await _context.TourBookingForms
-                                 .FirstOrDefaultAsync(x => x.Id == id);
+                        .Include(x => x.Tour).ThenInclude(t => t.Destination)
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(x => x.Id == id); ;
         }
         public async Task<IEnumerable<TourBookingForm>> GetTourBookingsByTourIdAsync(Guid tourId)
             => await _context.TourBookingForms
                              .Where(x => x.TourId == tourId)
-                             .ToListAsync();
+                            .Include(x => x.Tour).ThenInclude(t => t.Destination)
+                            .AsNoTracking()
+                            .ToListAsync();
 
 
        
@@ -67,7 +71,7 @@ namespace Domain.Services.TourBooking
         {
             var tours = await _context.TourBookingForms
                      .Where(x => x.UserId == userId)
-                     .Include(x => x.Tour)
+                     .Include(x => x.Tour).ThenInclude(t => t.Destination)
                      .AsNoTracking()
                      .ToListAsync();
             return tours;
