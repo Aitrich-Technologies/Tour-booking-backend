@@ -34,6 +34,8 @@ namespace TourBooking.API.TourBooking
 
                         .ForMember(dest => dest.Status,
                                    opt => opt.MapFrom(src => src.Status.ToString()))
+                        .ForMember(dest => dest.Participants,
+                       opt => opt.MapFrom(src => src.ParticipantInformations))
                     .ForMember(dest => dest.ParticipantType,
                                    opt => opt.MapFrom(src => src.ParticipantType.ToString()));
         }

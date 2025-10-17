@@ -1,4 +1,5 @@
-﻿using Domain.Services.Tour.DTO;
+﻿using Domain.Services.Participant.DTO;
+using Domain.Services.Tour.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,5 +40,6 @@ namespace Domain.Services.TourBooking.DTO
         public TourDto? Tour { get; set; }
 
         public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
+        public List<ParticipantDto>? Participants { get; set; }
     }
 }
