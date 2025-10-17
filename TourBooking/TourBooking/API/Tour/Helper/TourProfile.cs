@@ -27,6 +27,12 @@ namespace TourBooking.API.Tour.Helper
                opt => opt.MapFrom(src => src.Destination != null ? src.Destination.Name : null))
     .ForMember(dest => dest.ImageUrl,
                opt => opt.MapFrom(src => src.Destination != null ? src.Destination.ImageUrl : null))
+     .ForMember(dest => dest.CustomerName,
+                opt => opt.MapFrom(src => src.Customer != null
+                    ? src.Customer.FirstName + " " + src.Customer.LastName
+                    : null))
+            .ForMember(dest => dest.ConsultantName,
+                opt => opt.MapFrom(src => src.Consultant.FirstName + " " + src.Consultant.LastName))
     .ForMember(dest => dest.Status,
                opt => opt.MapFrom(src => src.Status.ToString()))
     .ReverseMap()   // <-- this adds TourDto -> Tourss
