@@ -7,6 +7,7 @@ namespace TourBooking.API.Tour.RequestObjects
         public Guid Id { get; set; }
         public string TourName { get; set; } = string.Empty;
         public string? TourDescription { get; set; }
+        public int Price { get; set; }
         public Guid DestinationId { get; set; }
         public int? NoOfNights { get; set; }
         public DateOnly? DepartureDate { get; set; }
