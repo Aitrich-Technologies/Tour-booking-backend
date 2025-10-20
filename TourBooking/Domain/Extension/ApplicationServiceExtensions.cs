@@ -18,6 +18,10 @@ using Domain.Services.TourNote;
 using Domain.Services.Tour.Interface;
 using Domain.Services.Tour;
 using Domain.Services.Tour.Services;
+using Domain.Services.Notification.Interface;
+using Domain.Services.Notification;
+
+
 
 namespace Domain.Extension
 {
@@ -58,6 +62,7 @@ namespace Domain.Extension
 
             services.AddScoped<ITermsAndConditionRepository, TermsRepository>();
             services.AddScoped<ITermsAndConditionService, TermsService>();
+           
 
 
 
