@@ -1,14 +1,20 @@
-using Domain.Extension;
+﻿using Domain.Extension;
 using TourBooking.API.User.Helper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using TourBooking.API.Hubs;
+using Domain.Services.Notification.Interface;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddSignalR();
+builder.Services.AddScoped<INotificationService, NotificationService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -64,12 +70,19 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll",
-        policy => policy
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
+    options.AddPolicy("AllowSpecificOrigins", policy =>
+    {
+        policy.WithOrigins(
+            "https://localhost:5001",   // Blazor Server or WebAssembly frontend
+            "http://localhost:4200",    // Angular/React frontend
+            "https://localhost:7173"    // Another local frontend if needed
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
+    });
 });
+
 
 
 var app = builder.Build();
@@ -84,7 +97,9 @@ app.UseSwaggerUI();
 app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseCors("AllowAll");
-app.MapControllers();
-
+app.UseCors("AllowSpecificOrigins");
+app.MapControllers()
+   .RequireCors("AllowSpecificOrigins");
+app.MapHub<NotificationHub>("/hubs/notifications")
+   .RequireCors("AllowSpecificOrigins");
 app.Run();

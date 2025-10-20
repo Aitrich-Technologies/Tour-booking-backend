@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+
 using Domain.Services.TourNote.DTO;
 using Domain.Services.TourNote.Interface;
 using Microsoft.AspNetCore.Authorization;
@@ -13,12 +14,14 @@ namespace TourBooking.API.Notes
     public class NotesController : BaseApiController<NotesController>
     {
         private readonly INoteService _noteService;
+       
         private readonly IMapper _mapper;
 
         public NotesController(INoteService noteService, IMapper mapper)
         {
             _noteService = noteService;
             _mapper = mapper;
+            
         }
 
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
@@ -43,6 +46,8 @@ namespace TourBooking.API.Notes
             var createdNote = await _noteService.AddNotesAsync(noteDto);
             return CreatedAtAction(nameof(GetById), new { id = createdNote.Id }, createdNote);
         }
+
+
 
         [Authorize(Roles = "AGENCY,CONSULTANT,CUSTOMER")]
         [HttpGet("{id}")]

@@ -7,6 +7,8 @@ using AutoMapper;
 using Domain.Services.TourNote.DTO;
 using Domain.Services.TourNote.Interface;
 using Domain.Models;
+using Domain.Services.Notification.Interface;
+using Domain.Enums;
 
 
 namespace Domain.Services.TourNote
@@ -16,23 +18,56 @@ namespace Domain.Services.TourNote
 
         private readonly INoteRepository _noteRepository;
         private readonly IMapper _mapper;
+        private readonly INotificationService _notificationService;
 
-        public NoteService(INoteRepository noteRepository, IMapper mapper)
+        public NoteService(INoteRepository noteRepository, IMapper mapper,INotificationService notificationService)
         {
             _noteRepository = noteRepository;
             _mapper = mapper;
+            _notificationService = notificationService;
         }
         public async Task<IEnumerable<NoteDto>> GetNotesByTourIdAsync(Guid tourId)
         {
             var notes = await _noteRepository.GetNotesByTourIdAsync(tourId);
             return _mapper.Map<IEnumerable<NoteDto>>(notes);
         }
+        //public async Task<NoteDto> AddNotesAsync(NoteDto noteDto)
+        //{
+        //    var noteEntity = _mapper.Map<Notes>(noteDto);
+        //    var createdNote = await _noteRepository.AddNotesAsync(noteEntity);
+        //    return _mapper.Map<NoteDto>(createdNote);
+        //}
+        //public async Task<NoteDto> AddNotesAsync(NoteDto noteDto)
+        //{
+        //    var noteEntity = _mapper.Map<Notes>(noteDto);
+        //    var createdNote = await _noteRepository.AddNotesAsync(noteEntity);
+
+        //    // ✅ Send notifications if NOT_TO_BE_PRINTED
+        //    if (createdNote.Status == NotesStatus.NOT_TO_BE_PRINTED)
+        //    {
+        //        var message = $"New Note (ID: {createdNote.Id}) is marked as NOT_TO_BE_PRINTED for Tour {createdNote.TourId}.";
+        //        await _notificationService.SendNotificationAsync("AGENCY", message);
+        //        await _notificationService.SendNotificationAsync("CONSULTANT", message);
+        //    }
+
+        //    return _mapper.Map<NoteDto>(createdNote);
+        //}
         public async Task<NoteDto> AddNotesAsync(NoteDto noteDto)
         {
             var noteEntity = _mapper.Map<Notes>(noteDto);
             var createdNote = await _noteRepository.AddNotesAsync(noteEntity);
+
+            // ✅ Send real-time notifications if NOT_TO_BE_PRINTED
+            if (createdNote.Status == NotesStatus.NOT_TO_BE_PRINTED)
+            {
+                var message = $"A new Note (ID: {createdNote.Id}) is marked as NOT_TO_BE_PRINTED for Tour {createdNote.TourId}.";
+                await _notificationService.SendNotificationAsync("AGENCY", message);
+                await _notificationService.SendNotificationAsync("CONSULTANT", message);
+            }
+
             return _mapper.Map<NoteDto>(createdNote);
         }
+
 
         public async Task<NoteDto?> GetNotesByIdAsync(Guid id)
         {
