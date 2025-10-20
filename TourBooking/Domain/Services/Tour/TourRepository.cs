@@ -1,5 +1,6 @@
 ﻿using Domain.Enums;
 using Domain.Models;
+using Domain.Services.Tour.DTO;
 using Domain.Services.Tour.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,8 +21,15 @@ namespace Domain.Services.Tour
             {
                 _context = context;
             }
+        public async Task<List<Tourss>> GetToursAsync()
+        {
 
-            public async Task<List<Tourss>> GetAllAsync(Guid? destinationId = null, string? status = null, DateOnly? departureDate = null)
+            return await _context.Tours
+         .Where(t => t.CustomerId == null)
+         .ToListAsync();
+
+        }
+        public async Task<List<Tourss>> GetAllAsync(Guid? destinationId = null, string? status = null, DateOnly? departureDate = null)
             {
                 var query = _context.Tours.AsQueryable();
 

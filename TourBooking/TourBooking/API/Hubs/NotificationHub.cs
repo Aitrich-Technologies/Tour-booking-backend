@@ -4,7 +4,7 @@ using System.Security.Claims;
 
 namespace TourBooking.API.Hubs
 {
-    [Authorize]
+    [Authorize(Roles ="AGENCY,CONSULTANT")]
     public class NotificationHub : Hub
     {
         public override async Task OnConnectedAsync()

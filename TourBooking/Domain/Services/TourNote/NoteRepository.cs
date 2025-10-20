@@ -37,6 +37,7 @@ namespace Domain.Services.TourNote
             return await _context.Notes
             .Include(n => n.Tour)
             .FirstOrDefaultAsync(n => n.Id == id);
+
         }
 
 
