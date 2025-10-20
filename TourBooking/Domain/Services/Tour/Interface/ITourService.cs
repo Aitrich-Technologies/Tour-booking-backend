@@ -16,5 +16,6 @@ namespace Domain.Services.Tour.Interface
         Task UpdateTourAsync(TourDto tourDto);
         Task UpdateTourStatusAsync(Guid tourId, UpdateTourStatusDto statusDto);
         Task DeleteTourAsync(Guid tourId);
+        Task<List<TourDto>> GetToursAsync();
     }
 }

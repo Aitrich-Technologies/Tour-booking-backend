@@ -52,22 +52,50 @@ namespace Domain.Services.TourNote
 
         //    return _mapper.Map<NoteDto>(createdNote);
         //}
+        //public async Task<NoteDto> AddNotesAsync(NoteDto noteDto)
+        //{
+        //    var noteEntity = _mapper.Map<Notes>(noteDto);
+        //    var createdNote = await _noteRepository.AddNotesAsync(noteEntity);
+
+        //    var TourDetails=await _noteRepository.GetNotesByIdAsync(createdNote.Id);
+
+        //    // ✅ Send real-time notifications if NOT_TO_BE_PRINTED
+        //    if (createdNote.Status == NotesStatus.NOT_TO_BE_PRINTED)
+        //    {
+        //        var message = $"A new Note is marked as NOT_TO_BE_PRINTED for Tour {TourDetails.Tour}.";
+        //        await _notificationService.SendNotificationAsync("AGENCY", message);
+        //        await _notificationService.SendNotificationAsync("CONSULTANT", message);
+        //    }
+
+        //    return _mapper.Map<NoteDto>(createdNote);
+        //}
+
         public async Task<NoteDto> AddNotesAsync(NoteDto noteDto)
         {
+           
             var noteEntity = _mapper.Map<Notes>(noteDto);
+
+            
             var createdNote = await _noteRepository.AddNotesAsync(noteEntity);
 
-            // ✅ Send real-time notifications if NOT_TO_BE_PRINTED
+           
+            var tourDetails = await _noteRepository.GetNotesByIdAsync(createdNote.Id);
+
+           
             if (createdNote.Status == NotesStatus.NOT_TO_BE_PRINTED)
             {
-                var message = $"A new Note (ID: {createdNote.Id}) is marked as NOT_TO_BE_PRINTED for Tour {createdNote.TourId}.";
+                string tourName = tourDetails?.Tour?.TourName ?? "Unknown Tour";
+                string message = $" A new note has been marked as NOT_TO_BE_PRINTED for Tour: {tourName}.";
+
                 await _notificationService.SendNotificationAsync("AGENCY", message);
                 await _notificationService.SendNotificationAsync("CONSULTANT", message);
+
+                Console.WriteLine($"Notification sent for tour '{tourName}' to AGENCY and CONSULTANT roles.");
             }
 
+           
             return _mapper.Map<NoteDto>(createdNote);
         }
-
 
         public async Task<NoteDto?> GetNotesByIdAsync(Guid id)
         {

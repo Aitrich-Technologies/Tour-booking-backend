@@ -24,6 +24,13 @@ namespace TourBooking.API.Tour
             _mapper = mapper;
         }
 
+        [HttpGet("un-customized")]
+        public async Task<IActionResult> GetTours()
+        {
+            var tours = await _tourService.GetToursAsync();
+            return Ok(tours);
+        }
+
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] Guid? destination, [FromQuery] string? status, [FromQuery] DateOnly? departureDate)
