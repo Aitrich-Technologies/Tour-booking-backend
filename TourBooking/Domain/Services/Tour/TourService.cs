@@ -20,8 +20,13 @@ namespace Domain.Services.Tour.Services
         }
         public async Task<List<TourDto>> GetToursAsync()
         {
-            var tours= await _repository.GetAllAsync();
-            return _mapper.Map<List<TourDto>>(tours);
+      
+            var tours = await _repository.GetAllAsync();
+            var toursWithoutCustomer = tours
+                .Where(t => t.CustomerId == null)
+                .ToList();
+            return _mapper.Map<List<TourDto>>(toursWithoutCustomer);
+
         }
         public async Task<List<TourDto>> GetAllToursAsync(Guid? destinationId = null, string? status = null, DateOnly? departureDate = null)
         {
