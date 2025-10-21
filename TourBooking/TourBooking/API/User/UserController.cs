@@ -76,9 +76,29 @@ namespace TourBooking.API.User
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request)
         {
             var dto = _mapper.Map<ForgotPasswordDto>(request);
-            var result = await _userService.ForgotPasswordAsync(dto);
-            if (!result) return NotFound("User not found with this email.");
-            return Ok("Password reset token has been sent to your email.");
+            var token = await _userService.ForgotPasswordAsync(dto);
+
+            if (string.IsNullOrEmpty(token))
+                return NotFound("User not found with this email.");
+
+            // Optionally return token in body (client uses it in next step)
+            return Ok(new
+            {
+                Message = "Verification code has been sent to your email.",
+                VerificationToken = token
+            });
+        }
+
+        [HttpPost("VerifyCode")]
+        public async Task<IActionResult> VerifyCode([FromBody] VerifyCodeRequest request)
+        {
+            var dto = _mapper.Map<VerifyCodeDto>(request);
+            var jwtToken = await _userService.VerifyCodeAsync(dto);
+
+            if (string.IsNullOrEmpty(jwtToken))
+                return BadRequest("Invalid or expired verification code.");
+
+            return Ok(new { Token = jwtToken });
         }
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpPost("ResetPassword")]

@@ -12,7 +12,8 @@ namespace Domain.Services.User.Interface
     {
         Task<UserResponseDto> AddUserAsync(AddUserDto user);
         Task<string> LoginAsync(LoginDto user);
-        Task<bool> ForgotPasswordAsync(ForgotPasswordDto dto);
+        Task<string> ForgotPasswordAsync(ForgotPasswordDto dto);
+        Task<string> VerifyCodeAsync(VerifyCodeDto dto);
         Task<bool> ResetPasswordAsync(ResetPasswordDto dto);
 
         Task<IEnumerable<UserResponseDto>> GetAllUsersAsync();

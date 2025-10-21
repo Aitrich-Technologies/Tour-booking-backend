@@ -30,6 +30,7 @@ namespace Domain.Services.User
         private readonly IUserRepository _userRepository;
         private readonly IConfiguration _config;
         private readonly IMapper _mapper;
+        private readonly string secretKey = "SuperSecretKey123!";
 
         public UserService(IUserRepository userRepository, IMapper mapper, IConfiguration config)
         {
@@ -104,28 +105,66 @@ namespace Domain.Services.User
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-        public async Task<bool> ForgotPasswordAsync(ForgotPasswordDto dto)
+        public async Task<string> ForgotPasswordAsync(ForgotPasswordDto dto)
         {
             var user = await _userRepository.GetByEmailAsync(dto.Email);
-            if (user == null) return false;
+            if (user == null) return null; // do not reveal if email exists
 
-            // Generate a reset token (for demo use Guid, in real use JWT or Identity's Token)
-            var resetToken = GenerateJwtToken(user);
+            // Generate 6-digit numeric code
+            var rng = new Random();
+            var code = rng.Next(100000, 999999).ToString();
 
-            // Save token in DB
-            //user.PasswordResetToken = resetToken;
-            //user.TokenExpiry = DateTime.UtcNow.AddHours(1);
+            // Token expiration 10 minutes
+            var expires = DateTime.UtcNow.AddMinutes(30);
 
-            await _userRepository.UpdateUserAsync(user);
+            // Compute HMAC hash of email|code|expiry
+            var payload = $"{dto.Email}|{code}|{expires.Ticks}";
+            var hash = ComputeHmac(payload);
+           
+            // Create verification token (base64)
+            var verificationToken = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{dto.Email}|{expires.Ticks}|{hash}"));
 
-            // Send Email (or log for now)
-            await SendEmailAsync(user.Email, "Password Reset",
-                $"Use this token to reset your password: {resetToken}");
+            // Send email with code (async)
+            await SendEmailAsync(dto.Email, " Forgot Password Reset Code", $"Your verification code is: {code}");
 
-
-            return true;
+            // Return verification token to client (code is in email)
+            return verificationToken;
         }
+        private string ComputeHmac(string input)
+        {
+            using var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(secretKey));
+            var hashBytes = hmac.ComputeHash(Encoding.UTF8.GetBytes(input));
+            return Convert.ToBase64String(hashBytes);
+        }
+        // 2️⃣ Verify code - generate JWT
+        public async Task<string> VerifyCodeAsync(VerifyCodeDto dto)
+        {
+            try
+            {
+                var tokenBytes = Convert.FromBase64String(dto.VerificationToken);
+                var tokenData = Encoding.UTF8.GetString(tokenBytes).Split('|');
+                var email = tokenData[0];
+                var ticks = long.Parse(tokenData[1]);
+                var hash = tokenData[2];
 
+                var expires = new DateTime(ticks);
+                if (DateTime.UtcNow > expires) return null; // expired
+
+                // Recompute HMAC
+                var payload = $"{email}|{dto.Code}|{ticks}";
+                var computedHash = ComputeHmac(payload);
+
+                if (computedHash != hash || email != dto.Email) return null; // invalid code
+
+                // Code valid - generate JWT
+                var user = await _userRepository.GetByEmailAsync(dto.Email);
+                return GenerateJwtToken(user);
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public async Task<bool> ResetPasswordAsync(ResetPasswordDto dto)
         {
             var user = await _userRepository.GetByEmailAsync(dto.Email);
@@ -138,6 +177,7 @@ namespace Domain.Services.User
             await _userRepository.UpdateUserAsync(user);
             return true;
         }
+       
 
         public async Task<IEnumerable<UserResponseDto>> GetAllUsersAsync()
         {
@@ -232,7 +272,8 @@ namespace Domain.Services.User
                 using var client = new SmtpClient(host, port)
                 {
                     Credentials = new NetworkCredential(user, pass),
-                    EnableSsl = enableSsl
+                    EnableSsl = enableSsl,
+                     UseDefaultCredentials = false
                 };
 
                 using var message = new MailMessage(user, toEmail, subject, body)
