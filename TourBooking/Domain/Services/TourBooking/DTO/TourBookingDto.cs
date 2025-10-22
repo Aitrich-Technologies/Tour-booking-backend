@@ -5,7 +5,9 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Domain.Enums;
+using Domain.Models;
 using Domain.Services.Tour.DTO;
+using Domain.Services.User.DTO;
 
 namespace Domain.Services.TourBooking.DTO
 {
@@ -39,6 +41,8 @@ namespace Domain.Services.TourBooking.DTO
         public string? Status { get; set; }
        
         public TourDto? Tour { get; set; }
+
+        public UserResponseDto? User { get; set; }
 
         public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
 
