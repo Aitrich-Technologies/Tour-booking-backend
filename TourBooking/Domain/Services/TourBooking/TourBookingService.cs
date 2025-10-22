@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Models;
+using Domain.Services.Email.Helper;
+using Domain.Services.Email.Interface;
 using Domain.Services.Tour.DTO;
 using Domain.Services.Tour.Interface;
 using Domain.Services.TourBooking.DTO;
@@ -12,26 +14,68 @@ namespace Domain.Services.TourBooking
         private readonly ITourBookingRepository _repository;
         private readonly ITourRepository _tourRepository;
         private readonly IMapper _mapper;
+        private readonly IMailService _mailService;
 
-        public TourBookingService(ITourBookingRepository repository, IMapper mapper,ITourRepository tourRepository)
+        public TourBookingService(
+            ITourBookingRepository repository,
+            IMapper mapper,
+            ITourRepository tourRepository,
+            IMailService mailService)
         {
             _repository = repository;
             _mapper = mapper;
             _tourRepository = tourRepository;
+            _mailService = mailService;
         }
 
+
+        //public TourBookingService(ITourBookingRepository repository, IMapper mapper,ITourRepository tourRepository)
+        //{
+        //    _repository = repository;
+        //    _mapper = mapper;
+        //    _tourRepository = tourRepository;
+        //}
+
+        //public async Task<TourBookingDto> AddTourBookingAsync(TourBookingDto dto)
+        //{
+
+
+
+        //        var entity = _mapper.Map<TourBookingForm>(dto);
+        //        entity.Id = Guid.NewGuid(); // ensure new ID
+
+
+        //        var saved = await _repository.AddTourBookingAsync(entity);
+        //        return _mapper.Map<TourBookingDto>(saved);
+
+        //}
         public async Task<TourBookingDto> AddTourBookingAsync(TourBookingDto dto)
         {
-          
+            var entity = _mapper.Map<TourBookingForm>(dto);
+            entity.Id = Guid.NewGuid();
 
+            var saved = await _repository.AddTourBookingAsync(entity);
+            var bookings=  await _repository.GetTourBookingByIdAsync(saved.Id);
 
-                var entity = _mapper.Map<TourBookingForm>(dto);
-                entity.Id = Guid.NewGuid(); // ensure new ID
+            var details = _mapper.Map<GetBookingDto>(bookings);
 
+            // ✅ Send confirmation email
+            var email = new MailRequest
+            {
+                ToEmail=details.User.Email,
+                Subject = "Tour Booking Confirmation",
+                Body = $@"
+            <h2>Booking Confirmation</h2>
+            <p>Dear {details.FirstName} {details.LastName},</p>
+            <p>Your booking for <strong>{details.Tour.TourName}</strong> has been successfully placed!</p>
+            <p>Departure: {details.Tour?.DepartureDate?.ToString("dd MMM yyyy")}<br/>
+            Arrival: {details.Tour?.ArrivalDate?.ToString("dd MMM yyyy")}</p>
+            <p>Thank you for booking with us.</p>"
+            };
 
-                var saved = await _repository.AddTourBookingAsync(entity);
-                return _mapper.Map<TourBookingDto>(saved);
-            
+            await _mailService.SendEmailAsync(email);
+
+            return _mapper.Map<TourBookingDto>(saved);
         }
 
         public async Task<IEnumerable<GetBookingDto>> GetAllTourBookingsAsync()

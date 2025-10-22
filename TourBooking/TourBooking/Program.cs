@@ -6,6 +6,10 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using Domain.Services.Notification.Interface;
 using TourBooking.API.Hubs;
+using Domain.Services.Email.Helper;
+using Domain.Services.Email.Interface;
+using Domain.Services.Email;
+using Microsoft.Extensions.Options;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -25,6 +29,13 @@ builder.Services.AddCors(options =>
         .AllowCredentials(); // ✅ Required for SignalR + JWT
     });
 });
+builder.Services.Configure<MailSettings>(
+    builder.Configuration.GetSection("MailSettings"));
+
+builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<IOptions<MailSettings>>().Value);
+
+builder.Services.AddScoped<IMailService, MailService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

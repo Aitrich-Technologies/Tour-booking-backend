@@ -1,5 +1,7 @@
-﻿using Domain.Services.Participant.DTO;
+﻿using Domain.Models;
+using Domain.Services.Participant.DTO;
 using Domain.Services.Tour.DTO;
+using Domain.Services.User.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace Domain.Services.TourBooking.DTO
     public class GetBookingDto
     {
         public Guid Id { get; set; }
-        //public Guid TourId { get; set; }
+        public Guid TourId { get; set; }
         public Guid UserId { get; set; }
         public string FirstName { get; set; } = null!;
 
@@ -38,6 +40,8 @@ namespace Domain.Services.TourBooking.DTO
         public string? Status { get; set; }
 
         public TourDto? Tour { get; set; }
+
+        public UserResponseDto? User { get; set; }
 
         public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
         public List<ParticipantDto>? Participants { get; set; }

@@ -17,5 +17,6 @@ public class ParticipantProfile : Profile
         // For PATCH, map only non-null fields
         CreateMap<PatchParticipantRequest, ParticipantDto>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+      
     }
 }
