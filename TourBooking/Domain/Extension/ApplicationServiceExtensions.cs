@@ -18,8 +18,6 @@ using Domain.Services.TourNote;
 using Domain.Services.Tour.Interface;
 using Domain.Services.Tour;
 using Domain.Services.Tour.Services;
-using Domain.Services.Notification.Interface;
-using Domain.Services.Notification;
 
 
 
