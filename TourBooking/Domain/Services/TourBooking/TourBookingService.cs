@@ -28,27 +28,6 @@ namespace Domain.Services.TourBooking
             _mailService = mailService;
         }
 
-
-        //public TourBookingService(ITourBookingRepository repository, IMapper mapper,ITourRepository tourRepository)
-        //{
-        //    _repository = repository;
-        //    _mapper = mapper;
-        //    _tourRepository = tourRepository;
-        //}
-
-        //public async Task<TourBookingDto> AddTourBookingAsync(TourBookingDto dto)
-        //{
-
-
-
-        //        var entity = _mapper.Map<TourBookingForm>(dto);
-        //        entity.Id = Guid.NewGuid(); // ensure new ID
-
-
-        //        var saved = await _repository.AddTourBookingAsync(entity);
-        //        return _mapper.Map<TourBookingDto>(saved);
-
-        //}
         public async Task<TourBookingDto> AddTourBookingAsync(TourBookingDto dto)
         {
             var entity = _mapper.Map<TourBookingForm>(dto);

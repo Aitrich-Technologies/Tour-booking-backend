@@ -7,7 +7,7 @@ using AutoMapper;
 using Domain.Services.TourNote.DTO;
 using Domain.Services.TourNote.Interface;
 using Domain.Models;
-using Domain.Services.Notification.Interface;
+using Domain.Services.Notifications.Interface;
 using Domain.Enums;
 
 

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
-using Domain.Services.Notification.Interface;
+using Domain.Services.Notifications.Interface;
 using TourBooking.API.Hubs;
 using Domain.Services.Email.Helper;
 using Domain.Services.Email.Interface;
@@ -26,7 +26,7 @@ builder.Services.AddCors(options =>
         )
         .AllowAnyHeader()
         .AllowAnyMethod()
-        .AllowCredentials(); // ✅ Required for SignalR + JWT
+        .AllowCredentials(); // Required for SignalR + JWT
     });
 });
 builder.Services.Configure<MailSettings>(
@@ -42,6 +42,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -73,20 +75,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddApplicationServices(builder.Configuration);
 
-//builder.Services.AddAuthentication("Bearer")
-//    .AddJwtBearer("Bearer", options =>
-//    {
-//        options.TokenValidationParameters = new TokenValidationParameters
-//        {
-//            ValidateIssuer = true,
-//            ValidateAudience = true,
-//            ValidateLifetime = true,
-//            ValidateIssuerSigningKey = true,
-//            ValidIssuer = builder.Configuration["Jwt:Issuer"],
-//            ValidAudience = builder.Configuration["Jwt:Audience"],
-//            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
-//        };
-//    });
+
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
@@ -101,7 +90,7 @@ builder.Services.AddAuthentication("Bearer")
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
         };
 
-        // 👇 Important: Allow JWT token from SignalR query string
+        //  Important: Allow JWT token from SignalR query string
         options.Events = new JwtBearerEvents
         {
             OnMessageReceived = context =>
@@ -123,15 +112,6 @@ builder.Services.AddAuthentication("Bearer")
 
 
 builder.Services.AddAuthorization();
-
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("AllowAll",
-//        policy => policy
-//            .AllowAnyOrigin()
-//            .AllowAnyMethod()
-//            .AllowAnyHeader());
-//});
 
 
 var app = builder.Build();
