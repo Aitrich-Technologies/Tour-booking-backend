@@ -5,7 +5,7 @@ using Domain.Services.Participant.DTO;
 using Domain.Services.TourBooking.DTO;
 using Domain.Services.TourNote.DTO;
 using Domain.Services.Terms.DTO;
-using Domain.Services.User.DTO;
+using Domain.Services.Users.DTO;
 using Domain.Services.Tour.DTO;
 using Domain.Enums;
 

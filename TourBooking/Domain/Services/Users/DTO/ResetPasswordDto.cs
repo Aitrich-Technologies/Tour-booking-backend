@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Services.User.DTO
+namespace Domain.Services.Users.DTO
 {
-    public class ForgotPasswordDto
+    public class ResetPasswordDto
     {
         public string Email { get; set; }
+        public string NewPassword { get; set; }
     }
 }

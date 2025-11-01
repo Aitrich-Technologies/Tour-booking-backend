@@ -13,6 +13,6 @@ namespace Domain.Services.TourNote.Interface
         Task<NoteDto?> GetNotesByIdAsync(Guid id);
         Task<NoteDto?> UpdateNotesAsync(NoteDto noteDto);
         Task<bool> DeleteNotesAsync(Guid id);
-        Task<IEnumerable<NoteDto>> GetNotesByTourIdAsync(Guid tourId);
+        Task<IEnumerable<NoteDto>> GetNotesByTourIdAsync(Guid tourId, string role);
     }
 }

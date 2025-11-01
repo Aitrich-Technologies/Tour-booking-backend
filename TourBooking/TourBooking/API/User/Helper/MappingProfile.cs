@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Enums;
 using Domain.Models;
-using Domain.Services.User.DTO;
+using Domain.Services.Users.DTO;
 using TourBooking.API.User.RequestObjects;
 
 namespace TourBooking.API.User.Helper
