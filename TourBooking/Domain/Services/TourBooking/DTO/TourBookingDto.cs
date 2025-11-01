@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Domain.Enums;
 using Domain.Models;
 using Domain.Services.Tour.DTO;
-using Domain.Services.User.DTO;
+using Domain.Services.Users.DTO;
 
 namespace Domain.Services.TourBooking.DTO
 {

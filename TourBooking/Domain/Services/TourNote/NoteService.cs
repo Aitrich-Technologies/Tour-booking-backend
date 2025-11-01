@@ -9,6 +9,7 @@ using Domain.Services.TourNote.Interface;
 using Domain.Models;
 using Domain.Services.Notifications.Interface;
 using Domain.Enums;
+using System.Data;
 
 
 namespace Domain.Services.TourNote
@@ -26,9 +27,9 @@ namespace Domain.Services.TourNote
             _mapper = mapper;
             _notificationService = notificationService;
         }
-        public async Task<IEnumerable<NoteDto>> GetNotesByTourIdAsync(Guid tourId)
+        public async Task<IEnumerable<NoteDto>> GetNotesByTourIdAsync(Guid tourId, string role)
         {
-            var notes = await _noteRepository.GetNotesByTourIdAsync(tourId);
+            var notes = await _noteRepository.GetNotesByTourIdAsync(tourId,role);
             return _mapper.Map<IEnumerable<NoteDto>>(notes);
         }
         //public async Task<NoteDto> AddNotesAsync(NoteDto noteDto)

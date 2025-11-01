@@ -1,12 +1,12 @@
 ﻿using Domain.Models;
-using Domain.Services.User.DTO;
+using Domain.Services.Users.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Services.User.Interface
+namespace Domain.Services.Users.Interface
 {
     public interface IUserService
     {

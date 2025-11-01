@@ -1,4 +1,4 @@
-﻿using Domain.Services.User.Interface;
+﻿using Domain.Services.Users.Interface;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Models;
 using AutoMapper;
-using Domain.Services.User.DTO;
+using Domain.Services.Users.DTO;
 using Azure.Identity;
 
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +23,7 @@ using System.Net.Mail;
 using System.Net;
 
 
-namespace Domain.Services.User
+namespace Domain.Services.Users
 {
     internal class UserService : IUserService
     {

@@ -7,7 +7,7 @@ namespace TourBooking.API.Controllers
 {
     [Authorize(Roles = "AGENCY,CONSULTANT")]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class NotificationController : ControllerBase
     {
         private readonly INotificationService _service;

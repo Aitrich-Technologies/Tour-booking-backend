@@ -1,7 +1,7 @@
 ﻿using Domain.Models;
 using Domain.Services.Participant.DTO;
 using Domain.Services.Tour.DTO;
-using Domain.Services.User.DTO;
+using Domain.Services.Users.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;

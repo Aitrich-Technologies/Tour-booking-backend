@@ -4,6 +4,7 @@ using Domain.Services.TourNote.DTO;
 using Domain.Services.TourNote.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TourBooking.API.Notes.RequestObjects;
 using TourBooking.Controllers;
 
@@ -28,7 +29,9 @@ namespace TourBooking.API.Notes
         [HttpGet("tour/{tourId}")]
         public async Task<IActionResult> GetNotesByTourIdAsync([FromRoute] Guid tourId)
         {
-            var notes = await _noteService.GetNotesByTourIdAsync(tourId);
+            string role = User.FindFirst(ClaimTypes.Role)?.Value;
+
+            var notes = await _noteService.GetNotesByTourIdAsync(tourId,role);
             return Ok(notes);
         }
 
