@@ -2,7 +2,7 @@
 using Domain.Enums;
 using Domain.Models;
 using Domain.Services.TourBooking.DTO;
-using Domain.Services.User.DTO;
+using Domain.Services.Users.DTO;
 using TourBooking.API.TourBooking.RequestObjects;
 
 namespace TourBooking.API.TourBooking

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Services.User.Interface;
+using Domain.Services.Users.Interface;
 using Microsoft.EntityFrameworkCore;
 using Domain.Enums;
 
-namespace Domain.Services.User
+namespace Domain.Services.Users
 {
     internal class UserRepository : IUserRepository
     {

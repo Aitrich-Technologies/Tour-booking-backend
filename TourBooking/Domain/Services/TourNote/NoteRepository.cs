@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Domain.Services.TourNote.Interface;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 
 
 namespace Domain.Services.TourNote
@@ -14,13 +16,23 @@ namespace Domain.Services.TourNote
     public class NoteRepository: INoteRepository
     {
         private readonly TourBookingDbContext _context;
+       string role="";
 
         public NoteRepository(TourBookingDbContext context)
         {
             _context = context;
         }
-        public async Task<IEnumerable<Notes>> GetNotesByTourIdAsync(Guid tourId)
+        public async Task<IEnumerable<Notes>> GetNotesByTourIdAsync(Guid tourId, string role)
         {
+           
+
+            if (role == "CUSTOMER")
+            {
+                return await _context.Notes
+                .Where(n => n.TourId == tourId).Where(n=>n.Status==0)
+                .ToListAsync();
+            }
+
             return await _context.Notes
                 .Where(n => n.TourId == tourId)
                 .ToListAsync();
@@ -39,8 +51,6 @@ namespace Domain.Services.TourNote
             .FirstOrDefaultAsync(n => n.Id == id);
 
         }
-
-
 
         public async Task<Notes> UpdateNotesAsync(Notes note)
         {

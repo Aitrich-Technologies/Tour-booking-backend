@@ -5,6 +5,13 @@
 *.userosscache
 *.sln.docstates
 
+# Visual Studio cache/options files
+*.v2
+*.dtbcache.*
+*.futdatcache.*
+DocumentLayout.json
+DocumentLayout.*.json
+
 # Build results
 [Bb]in/
 [Oo]bj/
@@ -15,4 +22,3 @@
 # Others
 *.log
 *.json.user
-

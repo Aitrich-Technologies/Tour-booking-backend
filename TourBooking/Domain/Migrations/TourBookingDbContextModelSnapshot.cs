@@ -74,7 +74,7 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AuthUsers");
+                    b.ToTable("AuthUsers", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Destination", b =>
@@ -94,7 +94,7 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Destinations");
+                    b.ToTable("Destinations", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Notification", b =>
@@ -119,7 +119,7 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Notifications");
+                    b.ToTable("Notifications", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.TermsAndCondition", b =>
@@ -138,7 +138,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("TourId");
 
-                    b.ToTable("TermsAndConditions");
+                    b.ToTable("TermsAndConditions", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.TourBookingForm", b =>
@@ -200,7 +200,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TourBookingForms");
+                    b.ToTable("TourBookingForms", (string)null);
                 });
 
             modelBuilder.Entity("Notes", b =>
@@ -222,7 +222,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("TourId");
 
-                    b.ToTable("Notes");
+                    b.ToTable("Notes", (string)null);
                 });
 
             modelBuilder.Entity("ParticipantInformation", b =>
@@ -280,7 +280,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("LeadId");
 
-                    b.ToTable("ParticipantInformations");
+                    b.ToTable("ParticipantInformations", (string)null);
                 });
 
             modelBuilder.Entity("Tourss", b =>
@@ -328,7 +328,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("DestinationId");
 
-                    b.ToTable("Tours");
+                    b.ToTable("Tours", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.TermsAndCondition", b =>
