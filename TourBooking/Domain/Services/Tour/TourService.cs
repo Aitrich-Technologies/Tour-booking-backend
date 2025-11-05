@@ -125,7 +125,7 @@ namespace Domain.Services.Tour.Services
 
         <br/>
         <p>Thank you,</p>
-        <p><strong>Travel Support Team</strong></p>";
+        <p><strong>Lions Sports Club</strong></p>";
 
             // ✅ Send email to each participant individually
             foreach (var emailAddress in recipientEmails)

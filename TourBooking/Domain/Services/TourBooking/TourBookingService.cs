@@ -149,7 +149,7 @@ namespace Domain.Services.TourBooking
         <p>We will keep you updated with any further changes.</p>
         <br/>
         <p>Thank you for choosing our services.</p>
-        <p><strong>Travel Support Team</strong></p>
+        <p><strong>Lions Sports Club</strong></p>
     ";
 
 
