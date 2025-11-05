@@ -13,35 +13,37 @@ namespace TourBooking.API.TourBooking
         {
             CreateMap<AddTourBookingRequest, TourBookingDto>();
             CreateMap<TourBookingDto, AddTourBookingRequest>();
-            // RequestDto -> Entity (string to enum)
+
             CreateMap<TourBookingDto, TourBookingForm>()
-                .ForMember(dest => dest.Status,
-                           opt => opt.MapFrom(src => Enum.Parse<TourStatus>(src.Status, true)))
-                           .ForMember(dest => dest.ParticipantType,
-                           opt => opt.MapFrom(src => Enum.Parse<ParticipantType>(src.ParticipantType, true)));
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Enum.Parse<BookStatus>(src.Status, true)))
+                .ForMember(dest => dest.ParticipantType, opt => opt.MapFrom(src => Enum.Parse<ParticipantType>(src.ParticipantType, true)));
 
-            // Entity -> ResponseDto (enum to string)
             CreateMap<TourBookingForm, TourBookingDto>()
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
+                .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
+                .ForMember(dest => dest.ParticipantType, opt => opt.MapFrom(src => src.ParticipantType.ToString()));
 
-                .ForMember(dest => dest.Status,
-                           opt => opt.MapFrom(src => src.Status.ToString()))
-                  .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
-            .ForMember(dest => dest.ParticipantType,
-                           opt => opt.MapFrom(src => src.ParticipantType.ToString()));
-
-
-            // Entity -> ResponseDto (enum to string)
             CreateMap<TourBookingForm, GetBookingDto>()
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
+                .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
+                .ForMember(dest => dest.Participants, opt => opt.MapFrom(src => src.ParticipantInformations))
+                .ForMember(dest => dest.ParticipantType, opt => opt.MapFrom(src => src.ParticipantType.ToString()));
 
-                        .ForMember(dest => dest.Status,
-                                   opt => opt.MapFrom(src => src.Status.ToString()))
-                        .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
+            // ✅ Add PATCH mapping here
+            CreateMap<PatchTourBookingDto, TourBookingForm>()
+                .ForMember(dest => dest.Status,
+                    opt => opt.Condition(src => src.Status != null))
+                .ForMember(dest => dest.Status,
+                    opt => opt.MapFrom(src => Enum.Parse<BookStatus>(src.Status, true)))
 
-                        .ForMember(dest => dest.Participants,
-                       opt => opt.MapFrom(src => src.ParticipantInformations))
-                    .ForMember(dest => dest.ParticipantType,
-                                   opt => opt.MapFrom(src => src.ParticipantType.ToString()));
+                //.ForMember(dest => dest.ParticipantType,
+                //    opt => opt.Condition(src => src.ParticipantType != null))
+                //.ForMember(dest => dest.ParticipantType,
+                //    opt => opt.MapFrom(src => Enum.Parse<ParticipantType>(src.ParticipantType, true)))
+
+                .ForAllMembers(opt => opt.Condition((src, dest, val) => val != null));
         }
     }
+
 }
 

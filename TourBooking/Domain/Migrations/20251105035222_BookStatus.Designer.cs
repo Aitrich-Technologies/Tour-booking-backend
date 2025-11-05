@@ -4,6 +4,7 @@ using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(TourBookingDbContext))]
-    partial class TourBookingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251105035222_BookStatus")]
+    partial class BookStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,7 +77,7 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AuthUsers", (string)null);
+                    b.ToTable("AuthUsers");
                 });
 
             modelBuilder.Entity("Domain.Models.Destination", b =>
@@ -94,7 +97,7 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Destinations", (string)null);
+                    b.ToTable("Destinations");
                 });
 
             modelBuilder.Entity("Domain.Models.Notification", b =>
@@ -119,7 +122,7 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Notifications", (string)null);
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("Domain.Models.TermsAndCondition", b =>
@@ -138,7 +141,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("TourId");
 
-                    b.ToTable("TermsAndConditions", (string)null);
+                    b.ToTable("TermsAndConditions");
                 });
 
             modelBuilder.Entity("Domain.Models.TourBookingForm", b =>
@@ -200,7 +203,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TourBookingForms", (string)null);
+                    b.ToTable("TourBookingForms");
                 });
 
             modelBuilder.Entity("Notes", b =>
@@ -222,7 +225,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("TourId");
 
-                    b.ToTable("Notes", (string)null);
+                    b.ToTable("Notes");
                 });
 
             modelBuilder.Entity("ParticipantInformation", b =>
@@ -280,7 +283,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("LeadId");
 
-                    b.ToTable("ParticipantInformations", (string)null);
+                    b.ToTable("ParticipantInformations");
                 });
 
             modelBuilder.Entity("Tourss", b =>
@@ -328,7 +331,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("DestinationId");
 
-                    b.ToTable("Tours", (string)null);
+                    b.ToTable("Tours");
                 });
 
             modelBuilder.Entity("Domain.Models.TermsAndCondition", b =>

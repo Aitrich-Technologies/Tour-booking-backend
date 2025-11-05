@@ -93,7 +93,7 @@ namespace TourBooking.API.TourBooking
 
         [Authorize(Roles = "AGENCY,CONSULTANT")]
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchTourBooking(Guid id,
+        public async Task<IActionResult> PatchTourBookingStatus(Guid id,
             [FromBody] PatchTourBookingDto dto)
         {
             var patched = await _service.PatchTourBookingAsync(id, dto);
