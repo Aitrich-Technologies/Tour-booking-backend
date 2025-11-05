@@ -21,6 +21,8 @@ using Azure.Core;
 using Domain.Enums;
 using System.Net.Mail;
 using System.Net;
+using Domain.Services.Email.Helper;
+using Domain.Services.Email.Interface;
 
 
 namespace Domain.Services.Users
@@ -30,12 +32,13 @@ namespace Domain.Services.Users
         private readonly IUserRepository _userRepository;
         private readonly IConfiguration _config;
         private readonly IMapper _mapper;
-
-        public UserService(IUserRepository userRepository, IMapper mapper, IConfiguration config)
+        private readonly IMailService _mailService;
+        public UserService(IUserRepository userRepository, IMapper mapper, IConfiguration config,IMailService mailService)
         {
             _userRepository = userRepository;
             _config = config;
             _mapper = mapper;
+            _mailService = mailService;
         }
 
         public async Task<UserResponseDto> AddUserAsync(AddUserDto dto)
@@ -68,6 +71,23 @@ namespace Domain.Services.Users
             consultant.Role = UserRole.CONSULTANT; //  consultant role
 
             var saved = await _userRepository.AddUserAsync(consultant);
+
+            // ✅ Send confirmation email
+            var email = new MailRequest
+            {
+                ToEmail = dto.Email,
+                Subject = "Consultant Registration",
+                Body = $@"
+            <h2>Consultant Registration</h2>
+            <p>Dear {dto.FirstName} {dto.LastName},</p>
+            <p>We are pleased to welcome you to Lions Sports Club, Travel Agency</p>
+            <p>Email:<strong>{dto.Email}</strong></p>
+            <p>UserName:<strong>{dto.UserName}</strong></p>
+            <p>Password:<strong>{dto.Password}</strong></p>
+        
+            <p>We are excited to have you with us.</p>"
+            };
+            await _mailService.SendEmailAsync(email);
             return _mapper.Map<UserResponseDto>(saved);
         }
 

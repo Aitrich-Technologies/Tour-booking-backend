@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|f:\\aitrich\\tour-booking-backend\\tourbooking\\tourbooking\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|f:\\aitrich\\tour-booking-backend\\tourbooking\\tourbooking\\api\\tourbooking\\tourbookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\api\\tourbooking\\tourbookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|f:\\aitrich\\tour-booking-backend\\tourbooking\\tourbooking\\api\\tourbooking\\tourbookingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\api\\tourbooking\\tourbookingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|f:\\aitrich\\tour-booking-backend\\tourbooking\\tourbooking\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|f:\\aitrich\\tour-booking-backend\\tourbooking\\tourbooking\\api\\notes\\notescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -101,10 +105,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E11E0DE4-FC51-4B55-AC14-FF80C0F4C512}|Domain\\Domain.csproj|f:\\aitrich\\tour-booking-backend\\tourbooking\\domain\\services\\tourbooking\\tourbookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E11E0DE4-FC51-4B55-AC14-FF80C0F4C512}|Domain\\Domain.csproj|solutionrelative:domain\\services\\tourbooking\\tourbookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|f:\\aitrich\\tour-booking-backend\\tourbooking\\tourbooking\\api\\tourbooking\\tourbookingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\api\\tourbooking\\tourbookingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E11E0DE4-FC51-4B55-AC14-FF80C0F4C512}|Domain\\Domain.csproj|f:\\aitrich\\tour-booking-backend\\tourbooking\\domain\\services\\participant\\participantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -280,24 +280,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "appsettings.json",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\appsettings.json",
               "RelativeDocumentMoniker": "TourBooking\\appsettings.json",
-              "ToolTip": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\appsettings.json*",
-              "RelativeToolTip": "TourBooking\\appsettings.json*",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABkAAAASAAAAAAAAAA==",
+              "ToolTip": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\appsettings.json",
+              "RelativeToolTip": "TourBooking\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-09T10:47:03.997Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-09T10:47:03.997Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "TourController.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Tour\\TourController.cs",
               "RelativeDocumentMoniker": "TourBooking\\API\\Tour\\TourController.cs",
@@ -309,7 +308,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "NotesController.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Notes\\NotesController.cs",
               "RelativeDocumentMoniker": "TourBooking\\API\\Notes\\NotesController.cs",
@@ -317,25 +316,36 @@
               "RelativeToolTip": "TourBooking\\API\\Notes\\NotesController.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T10:53:33.253Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-18T10:53:33.253Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "TourBookingController.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\TourBooking\\TourBookingController.cs",
               "RelativeDocumentMoniker": "TourBooking\\API\\TourBooking\\TourBookingController.cs",
               "ToolTip": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\TourBooking\\TourBookingController.cs",
               "RelativeToolTip": "TourBooking\\API\\TourBooking\\TourBookingController.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAgwFgAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAswFgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-08T07:37:09.243Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "TourBookingProfile.cs",
+              "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\TourBooking\\TourBookingProfile.cs",
+              "RelativeDocumentMoniker": "TourBooking\\API\\TourBooking\\TourBookingProfile.cs",
+              "ToolTip": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\TourBooking\\TourBookingProfile.cs",
+              "RelativeToolTip": "TourBooking\\API\\TourBooking\\TourBookingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T07:37:27.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "20251015074355_ParticipantUpdated.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Migrations\\20251015074355_ParticipantUpdated.cs",
               "RelativeDocumentMoniker": "Domain\\Migrations\\20251015074355_ParticipantUpdated.cs",
@@ -347,7 +357,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\Program.cs",
               "RelativeDocumentMoniker": "TourBooking\\Program.cs",
@@ -359,7 +369,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "INotificationService.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Notifications\\Interface\\INotificationService.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\Notifications\\Interface\\INotificationService.cs",
@@ -371,7 +381,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "TourBookingRepository.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Services\\TourBooking\\TourBookingRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\TourBooking\\TourBookingRepository.cs",
@@ -383,7 +393,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "NotificationController.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Hubs\\NotificationController.cs",
               "RelativeDocumentMoniker": "TourBooking\\API\\Hubs\\NotificationController.cs",
@@ -395,7 +405,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "DestinationController.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Destinations\\DestinationController.cs",
               "RelativeDocumentMoniker": "TourBooking\\API\\Destinations\\DestinationController.cs",
@@ -407,7 +417,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "20251024104142_Notification-Table added.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Migrations\\20251024104142_Notification-Table added.cs",
               "RelativeDocumentMoniker": "Domain\\Migrations\\20251024104142_Notification-Table added.cs",
@@ -419,7 +429,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "BaseApiController.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\Controllers\\BaseApiController.cs",
               "RelativeDocumentMoniker": "TourBooking\\Controllers\\BaseApiController.cs",
@@ -431,7 +441,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "20251030114418_update.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Migrations\\20251030114418_update.cs",
               "RelativeDocumentMoniker": "Domain\\Migrations\\20251030114418_update.cs",
@@ -443,7 +453,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "20251015035247_DateAddedinbooking.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Migrations\\20251015035247_DateAddedinbooking.cs",
               "RelativeDocumentMoniker": "Domain\\Migrations\\20251015035247_DateAddedinbooking.cs",
@@ -455,7 +465,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "NotesStatus.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Enums\\NotesStatus.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\NotesStatus.cs",
@@ -466,7 +476,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "NoteService.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Services\\TourNote\\NoteService.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\TourNote\\NoteService.cs",
@@ -477,7 +487,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "ApplicationServiceExtensions.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Extension\\ApplicationServiceExtensions.cs",
               "RelativeDocumentMoniker": "Domain\\Extension\\ApplicationServiceExtensions.cs",
@@ -488,7 +498,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "NotificationService.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Hubs\\NotificationService.cs",
               "RelativeDocumentMoniker": "TourBooking\\API\\Hubs\\NotificationService.cs",
@@ -499,7 +509,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "INotificationRepository.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Notifications\\Interface\\INotificationRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\Notifications\\Interface\\INotificationRepository.cs",
@@ -510,7 +520,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "NotificationRepository.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Notifications\\NotificationRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\Notifications\\NotificationRepository.cs",
@@ -521,7 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "TourBookingDbContext.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Models\\TourBookingDbContext.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\TourBookingDbContext.cs",
@@ -532,7 +542,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "NoteRepository.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Services\\TourNote\\NoteRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\TourNote\\NoteRepository.cs",
@@ -543,7 +553,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "Notification.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Models\\Notification.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Notification.cs",
@@ -554,7 +564,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "TourBookingService.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\Domain\\Services\\TourBooking\\TourBookingService.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\TourBooking\\TourBookingService.cs",
@@ -565,7 +575,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "NotificationHub.cs",
               "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Hubs\\NotificationHub.cs",
               "RelativeDocumentMoniker": "TourBooking\\API\\Hubs\\NotificationHub.cs",
@@ -573,17 +583,6 @@
               "RelativeToolTip": "TourBooking\\API\\Hubs\\NotificationHub.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-19T14:41:21.497Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "TourBookingProfile.cs",
-              "DocumentMoniker": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\TourBooking\\TourBookingProfile.cs",
-              "RelativeDocumentMoniker": "TourBooking\\API\\TourBooking\\TourBookingProfile.cs",
-              "ToolTip": "F:\\Aitrich\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\TourBooking\\TourBookingProfile.cs",
-              "RelativeToolTip": "TourBooking\\API\\TourBooking\\TourBookingProfile.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T07:37:27.372Z"
             },
             {
               "$type": "Document",

@@ -45,13 +45,13 @@ namespace Domain.Services.Tour
             }
 
             public async Task<Tourss?> GetByIdAsync(Guid tourId) =>
-                await _context.Tours
-                    .Include(t => t.Destination)
-                    .Include(t => t.Customer)
-                    .Include(t => t.Consultant)
-                    .FirstOrDefaultAsync(t => t.Id == tourId);
+            await _context.Tours
+                .Include(t => t.Customer)
+                .Include(t => t.TourBookingForms)
+                    .ThenInclude(b => b.ParticipantInformations)
+                .FirstOrDefaultAsync(t => t.Id == tourId);
 
-            public async Task<List<Tourss>> GetByCustomerAsync(Guid customerId) =>
+        public async Task<List<Tourss>> GetByCustomerAsync(Guid customerId) =>
                 await _context.Tours
                     .Where(t => t.CustomerId == customerId)
                     .Include(t => t.Destination)

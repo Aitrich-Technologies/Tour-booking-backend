@@ -28,7 +28,7 @@ namespace TourBooking.API.TourBooking.RequestObjects
 
         public string? ParticipantType { get; set; }
 
-        public string? Status { get; set; }
+       
 
     }
 }
