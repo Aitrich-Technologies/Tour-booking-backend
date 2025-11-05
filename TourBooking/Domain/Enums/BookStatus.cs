@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
-    public enum TourStatus
+   public enum BookStatus
     {
-        SAVE,ONHOLD,CANCELLED
+        SUBMIT,CONFIRMED,REJECTED,CLOSED
     }
 }

@@ -87,18 +87,7 @@ namespace Domain.Services.TourBooking
             return _mapper.Map<TourBookingDto>(saved);
         }
 
-        public async Task<TourBookingDto?> PatchTourBookingAsync(Guid id, PatchTourBookingDto dto)
-        {
-            var entity = await _repository.GetTourBookingByIdAsync(id);
-            if (entity == null) return null;
-
-            // For patching, we want to only update non-null values
-            _mapper.Map(dto, entity);
-
-            var saved = await _repository.UpdateAsync(entity);
-            return _mapper.Map<TourBookingDto>(saved);
-        }
-
+      
         public async Task<bool> DeleteTourBookingAsync(Guid id)
             => await _repository.DeleteTourBookingAsync(id);
 
@@ -106,6 +95,96 @@ namespace Domain.Services.TourBooking
         {
             var entities = await _repository.GetTourBookingsByUserIdAsync(userId);
             return _mapper.Map<IEnumerable<GetBookingDto>>(entities);
+        }
+        public async Task<GetBookingDto?> PatchTourBookingAsync(Guid id, PatchTourBookingDto dto)
+        {
+            var entity = await _repository.GetTourBookingByIdAsync(id);
+            if (entity == null) return null;
+
+            // Apply partial update (patch)
+            _mapper.Map(dto, entity);
+
+            var saved = await _repository.UpdateAsync(entity);
+
+            var mapped = _mapper.Map<GetBookingDto>(saved);
+
+            // ============================
+            // ✅ Collect Valid Email Addresses
+            // ============================
+            var recipientEmails = new List<string>();
+
+            // Lead passenger email (User.Email)
+            if (IsValidEmail(mapped.User?.Email))
+                recipientEmails.Add(mapped.User.Email);
+
+            // Participants Emails
+            if (mapped.Participants != null)
+            {
+                foreach (var participant in mapped.Participants)
+                {
+                    if (IsValidEmail(participant.Email))
+                        recipientEmails.Add(participant.Email);
+                }
+            }
+
+            // Remove duplicates
+            recipientEmails = recipientEmails.Distinct().ToList();
+
+
+            // ============================
+            // ✅ Email subject & body
+            // ============================
+            string subject = $"Booking Status Updated - {mapped.Tour?.TourName}";
+
+            string body = $@"
+        <h2>Tour Booking Status Updated</h2>
+        <p>Dear Traveler,</p>
+        <p>Your booking for <strong>{mapped.Tour?.TourName}</strong> has been updated.</p>
+        <p><strong>Current Status:</strong> {mapped.Status}</p>
+        <p>Tour Details:</p>
+        <ul>
+            <li><strong>Departure:</strong> {mapped.Tour?.DepartureDate?.ToString("dd MMM yyyy")}</li>
+            <li><strong>Arrival:</strong> {mapped.Tour?.ArrivalDate?.ToString("dd MMM yyyy")}</li>
+        </ul>
+        <p>We will keep you updated with any further changes.</p>
+        <br/>
+        <p>Thank you for choosing our services.</p>
+        <p><strong>Travel Support Team</strong></p>
+    ";
+
+
+            // ============================
+            // ✅ Send Email to Every Valid Recipient
+            // ============================
+            foreach (var emailAddress in recipientEmails)
+            {
+                var email = new MailRequest
+                {
+                    ToEmail = emailAddress,
+                    Subject = subject,
+                    Body = body
+                };
+
+                await _mailService.SendEmailAsync(email);
+            }
+
+            return mapped;
+        }
+
+        private bool IsValidEmail(string? email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
     }
