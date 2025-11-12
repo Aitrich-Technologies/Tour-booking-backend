@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
             "http://localhost:4200",  // Angular app
-            "http://192.168.0.169:4200"  // if using HTTPS
+            "http://localhost:4200"  // if using HTTPS
         )
         .AllowAnyHeader()
         .AllowAnyMethod()
