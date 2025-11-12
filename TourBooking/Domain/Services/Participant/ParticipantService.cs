@@ -34,9 +34,9 @@ namespace Domain.Services.Participant
             return _mapper.Map<IEnumerable<ParticipantDto>>(entities);
         }
 
-        public async Task<ParticipantDto?> GetParticipantByIdAsync(Guid bookingId, Guid id)
+        public async Task<ParticipantDto?> GetParticipantByIdAsync(Guid id)
         {
-            var entity = await _repository.GetParticipantByIdAsync(bookingId, id);
+            var entity = await _repository.GetParticipantByIdAsync(id);
             return _mapper.Map<ParticipantDto>(entity);
         }
 
@@ -44,8 +44,6 @@ namespace Domain.Services.Participant
         {
             // Map DTO to entity
             var entity = _mapper.Map<ParticipantInformation>(dto);
-            entity.LeadId = bookingId;
-
             await _repository.AddParticipantAsync(entity);
             await _repository.SaveChangesAsync();
 
@@ -80,13 +78,13 @@ namespace Domain.Services.Participant
         }
 
 
-        public async Task<ParticipantDto?> UpdateParticipantAsync(Guid bookingId, Guid id, ParticipantDto dto)
+        public async Task<ParticipantDto?> UpdateParticipantAsync (Guid id, ParticipantDto dto)
         {
-            var entity = await _repository.GetParticipantByIdAsync(bookingId, id);
+            var entity = await _repository.GetParticipantByIdAsync(id);
             if (entity == null) return null;
 
             _mapper.Map(dto, entity);
-            entity.LeadId = bookingId;
+            
 
             await _repository.UpdateParticipantAsync(entity);
             await _repository.SaveChangesAsync();
@@ -94,9 +92,9 @@ namespace Domain.Services.Participant
             return _mapper.Map<ParticipantDto>(entity);
         }
 
-        public async Task<bool> DeleteParticipantAsync(Guid bookingId, Guid id)
+        public async Task<bool> DeleteParticipantAsync(Guid id)
         {
-            var entity = await _repository.GetParticipantByIdAsync(bookingId, id);
+            var entity = await _repository.GetParticipantByIdAsync(id);
             if (entity == null) return false;
 
             await _repository.DeleteParticipantAsync(entity);

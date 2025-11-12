@@ -10,10 +10,10 @@ namespace Domain.Services.Participant.Interface
     public interface IParticipantService
     {
         Task<IEnumerable<ParticipantDto>> GetParticipantsAsync(Guid bookingId);
-        Task<ParticipantDto?> GetParticipantByIdAsync(Guid bookingId, Guid id);
+        Task<ParticipantDto?> GetParticipantByIdAsync(Guid id);
         Task<ParticipantDto> AddParticipantAsync(Guid bookingId, ParticipantDto dto);
-        Task<ParticipantDto?> UpdateParticipantAsync(Guid bookingId, Guid id, ParticipantDto dto);
-        Task<bool> DeleteParticipantAsync(Guid bookingId, Guid id);
+        Task<ParticipantDto?> UpdateParticipantAsync(Guid id, ParticipantDto dto);
+        Task<bool> DeleteParticipantAsync(Guid id);
     }
 
 

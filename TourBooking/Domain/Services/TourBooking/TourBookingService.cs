@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Models;
+using Domain.Services.CustomerEditRequests;
 using Domain.Services.Email.Helper;
 using Domain.Services.Email.Interface;
 using Domain.Services.Tour.DTO;
@@ -15,17 +16,21 @@ namespace Domain.Services.TourBooking
         private readonly ITourRepository _tourRepository;
         private readonly IMapper _mapper;
         private readonly IMailService _mailService;
+        private readonly ITourBookingEditRequestRepository _editRequestRepository;
 
+      
         public TourBookingService(
             ITourBookingRepository repository,
             IMapper mapper,
             ITourRepository tourRepository,
-            IMailService mailService)
+            IMailService mailService,
+            ITourBookingEditRequestRepository editRequestRepository)
         {
             _repository = repository;
             _mapper = mapper;
             _tourRepository = tourRepository;
             _mailService = mailService;
+            _editRequestRepository = editRequestRepository;
         }
 
         public async Task<TourBookingDto> AddTourBookingAsync(TourBookingDto dto)
@@ -66,7 +71,7 @@ namespace Domain.Services.TourBooking
         public async Task<GetBookingDto?> GetTourBookingByIdAsync(Guid id)
         {
             var entity = await _repository.GetTourBookingByIdAsync(id);
-            return entity == null ? null : _mapper.Map<GetBookingDto>(entity);
+            return _mapper.Map<GetBookingDto>(entity);
         }
 
         public async Task<IEnumerable<GetBookingDto>> GetTourBookingsByTourIdAsync(Guid tourId)
@@ -86,8 +91,8 @@ namespace Domain.Services.TourBooking
             var saved = await _repository.UpdateAsync(entity);
             return _mapper.Map<TourBookingDto>(saved);
         }
-
       
+
         public async Task<bool> DeleteTourBookingAsync(Guid id)
             => await _repository.DeleteTourBookingAsync(id);
 
@@ -186,6 +191,62 @@ namespace Domain.Services.TourBooking
                 return false;
             }
         }
+
+        public async Task RequestEditAsync(Guid bookingId, Guid userId, string? reason)
+        {
+            var booking = await _repository.GetTourBookingByIdAsync(bookingId);
+            if (booking == null) throw new Exception("Booking not found");
+            if (booking.UserId != userId) throw new Exception("You cannot request edit for this booking");
+
+            // ✅ Update booking status
+            booking.Status = Enums.BookStatus.EditPending;
+            await _repository.UpdateAsync(booking);
+
+            // ✅ Save request entry
+            var request = new TourBookingEditRequest
+            {
+                BookingId = bookingId,
+                RequestedByUserId = userId,
+                Reason = reason,
+                Status = Enums.BookStatus.Pending,
+                RequestedAt = DateTime.UtcNow
+            };
+
+            await _editRequestRepository.CreateAsync(request);
+        }
+
+
+
+        public async Task ApproveEditAsync(Guid bookingId)
+        {
+            var booking = await _repository.GetTourBookingByIdAsync(bookingId);
+            if (booking == null) return;
+
+            booking.IsEditAllowed = true; // <-- IMPORTANT
+            booking.Status = Enums.BookStatus.ApprovedForEdit;
+            await _repository.UpdateAsync(booking);
+
+            var request = await _editRequestRepository.GetByBookingIdAsync(bookingId);
+            if (request != null)
+            {
+                request.Status = Enums.BookStatus.ApprovedForEdit;
+                request.RespondedAt = DateTime.UtcNow;
+                await _editRequestRepository.UpdateAsync(request);
+            }
+        }
+
+        public async Task MarkEditCompleteAsync(Guid bookingId)
+        {
+            var booking = await _repository.GetTourBookingByIdAsync(bookingId);
+            if (booking == null) return;
+
+            booking.IsEditAllowed = false;
+            booking.Status = Enums.BookStatus.CONFIRMED;
+
+            await _repository.UpdateAsync(booking);
+        }
+
+
 
     }
 }
