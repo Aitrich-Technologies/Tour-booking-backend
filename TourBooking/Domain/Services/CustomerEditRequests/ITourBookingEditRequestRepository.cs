@@ -12,6 +12,7 @@ namespace Domain.Services.CustomerEditRequests
         Task<TourBookingEditRequest> CreateAsync(TourBookingEditRequest request);
         Task<TourBookingEditRequest?> GetByBookingIdAsync(Guid bookingId);
         Task UpdateAsync(TourBookingEditRequest request);
+         Task<IEnumerable<TourBookingEditRequest>> GetAllRequests();
     }
 
 }

@@ -34,6 +34,11 @@ namespace Domain.Services.CustomerEditRequests
             _context.EditRequests.Update(request);
             await _context.SaveChangesAsync();
         }
+        public async Task<IEnumerable<TourBookingEditRequest>> GetAllRequests()
+        {
+            return _context.EditRequests
+                 .Where(r => r.Status==Enums.BookStatus.Pending).ToList();
+        }
     }
 
 }

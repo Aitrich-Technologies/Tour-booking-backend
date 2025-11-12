@@ -2,6 +2,7 @@
 
 using Domain.Enums;
 using Domain.Models;
+using Domain.Services.CustomerEditRequests;
 using Domain.Services.Tour.Interface;
 using Domain.Services.TourBooking.DTO;
 using Domain.Services.TourBooking.Interface;
@@ -24,12 +25,14 @@ namespace TourBooking.API.TourBooking
         private readonly ITourBookingService _service;
         private readonly ITourService _tourService;
         private readonly IMapper _mapper;
+        private readonly ITourBookingEditRequestRepository _editRequest;
 
-        public TourBookingController(ITourBookingService service, IMapper mapper,ITourService tourService)
+        public TourBookingController(ITourBookingService service, IMapper mapper,ITourService tourService,ITourBookingEditRequestRepository editrequest)
         {
             _service = service;
             _mapper = mapper;
             _tourService = tourService;
+            _editRequest = editrequest;
         }
 
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
@@ -159,7 +162,13 @@ namespace TourBooking.API.TourBooking
             await _service.ApproveEditAsync(bookingId);
             return Ok(new { message = "Customer is now allowed to edit the booking." });
         }
-       
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
+        [HttpGet("pending-edits")]
+        public async Task<IActionResult> GetPendingEditRequests()
+        {
+            var requests = await _editRequest.GetAllRequests();
+            return Ok(requests);
+        }
 
     }
 }

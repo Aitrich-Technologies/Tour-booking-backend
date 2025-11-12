@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Services.Participant.DTO;
 using Domain.Services.Participant.Interface;
+using Domain.Services.ParticipantsEditRequests;
 using Domain.Services.TourBooking.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,13 +17,15 @@ namespace TourBooking.API.Participant
     {
         private readonly IParticipantService _service;
         private readonly IMapper _mapper;
-        private readonly ITourBookingService _tourBookingService;
+        private readonly IParticipantEditRequestRepository _participantEditRequestRepository;
 
-        public ParticipantController(IParticipantService service, IMapper mapper, ITourBookingService tourBookingService)
+        public ParticipantController(
+            IParticipantService service, IMapper mapper,
+            IParticipantEditRequestRepository participantEditRequestRepository)
         {
             _service = service;
             _mapper = mapper;
-            _tourBookingService = tourBookingService;
+                  _participantEditRequestRepository = participantEditRequestRepository;
         }
 
         // ✅ Get all participants of a booking
@@ -73,7 +76,6 @@ namespace TourBooking.API.Participant
             return Ok(new { message = "Participant deleted successfully", id });
         }
 
-        // ✅ Update participant (with CUSTOMER edit request logic)
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpPut("{bookingId}/{id}")]
         public async Task<IActionResult> UpdateParticipant(Guid bookingId, Guid id, [FromBody] UpdateParticipantRequest request)
@@ -82,31 +84,51 @@ namespace TourBooking.API.Participant
             if (participant == null) return NotFound();
 
             _mapper.Map(request, participant);
-
             var role = User.FindFirst(ClaimTypes.Role)?.Value;
-
-            // CUSTOMER logic
+            var userId = Guid.Parse(User.FindFirst("UserId")!.Value);
             if (role == "CUSTOMER")
             {
-                var booking = await _tourBookingService.GetTourBookingByIdAsync(bookingId);
-
-                if (booking.IsEditAllowed)
+                if (participant.IsEditAllowed)
                 {
+                    // ✅ Allow direct update
                     var updatedParticipant = await _service.UpdateParticipantAsync(id, participant);
+
+                    // After successful edit, disable further edits until re-approved
+                    updatedParticipant.IsEditAllowed = false;
+                    await _service.UpdateParticipantAsync(id, updatedParticipant);
+
                     return Ok(updatedParticipant);
                 }
-
-                // Request Edit Approval
-                var userId = Guid.Parse(User.FindFirst("UserId")!.Value);
-                await _tourBookingService.RequestEditAsync(bookingId, userId, "Customer requested edit.");
-
-                return Ok(new { message = "Edit request sent to agency for approval." });
-
+                else
+                {
+                    // ❌ No direct edit allowed — create approval request
+                    var success = await _service.RequestParticipantEditAsync(id, participant, userId);
+                    if (!success) return BadRequest("Failed to submit edit request.");
+                    return Ok(new { message = "Edit request submitted for approval." });
+                }
             }
+
 
             // AGENCY or CONSULTANT can update directly
             var updated = await _service.UpdateParticipantAsync(id, participant);
             return Ok(updated);
         }
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
+        [HttpPost("approve-edit/{requestId}")]
+        public async Task<IActionResult> ApproveParticipantEdit(Guid requestId, [FromQuery] bool approve, [FromBody] string? comments)
+        {
+            var result = await _service.ApproveEditRequestAsync(requestId, approve, comments);
+            if (!result) return BadRequest("Approval failed.");
+            return Ok(new { message = approve ? "Edit approved and applied." : "Edit request rejected." });
+        }
+
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
+        [HttpGet("pending-edits")]
+        public async Task<IActionResult> GetPendingEditRequests()
+        {
+            var requests = await _participantEditRequestRepository.GetPendingRequestsAsync();
+            return Ok(requests);
+        }
+
     }
 }

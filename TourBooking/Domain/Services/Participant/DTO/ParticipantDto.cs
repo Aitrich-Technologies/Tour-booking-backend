@@ -24,6 +24,7 @@ namespace Domain.Services.Participant.DTO
         public DateOnly? IssueDate { get; set; }
         public DateOnly? ExpiryDate { get; set; }
         public string? PlaceOfBirth { get; set; }
+        public bool IsEditAllowed { get; set; }
         public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }

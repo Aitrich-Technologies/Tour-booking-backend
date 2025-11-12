@@ -19,6 +19,7 @@ using Domain.Services.Tour.Interface;
 using Domain.Services.Tour;
 using Domain.Services.Tour.Services;
 using Domain.Services.CustomerEditRequests;
+using Domain.Services.ParticipantsEditRequests;
 
 
 
@@ -63,7 +64,7 @@ namespace Domain.Extension
             services.AddScoped<ITermsAndConditionService, TermsService>();
            
             services.AddScoped< ITourBookingEditRequestRepository,TourBookingEditRequestRepository>();
-
+            services.AddScoped<IParticipantEditRequestRepository, ParticipantEditRequestRepository>();
 
             return services;
         }
