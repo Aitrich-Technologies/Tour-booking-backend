@@ -8,6 +8,6 @@ namespace Domain.Enums
 {
    public enum BookStatus
     {
-        SUBMIT,CONFIRMED,REJECTED,CLOSED
+        SUBMIT,CONFIRMED,REJECTED, CLOSED,EditPending,ApprovedForEdit,Pending
     }
 }

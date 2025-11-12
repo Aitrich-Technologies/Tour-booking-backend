@@ -18,5 +18,9 @@ namespace Domain.Services.TourBooking.Interface
         Task<GetBookingDto?> PatchTourBookingAsync(Guid id, PatchTourBookingDto dto);
         Task<bool> DeleteTourBookingAsync(Guid id);
         Task<IEnumerable<GetBookingDto>> GetTourBookingsByUserIdAsync(Guid userId);
+        Task RequestEditAsync(Guid bookingId, Guid customerId, string? reason);
+        Task ApproveEditAsync(Guid bookingId);
+        Task MarkEditCompleteAsync(Guid bookingId);
+
     }
 }

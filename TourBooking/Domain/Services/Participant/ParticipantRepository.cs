@@ -25,10 +25,10 @@ namespace Domain.Services.Participant
                 .ToListAsync();
         }
 
-        public async Task<ParticipantInformation?> GetParticipantByIdAsync(Guid bookingId, Guid id)
+        public async Task<ParticipantInformation?> GetParticipantByIdAsync(Guid id)
         {
             return await _context.ParticipantInformations
-                .FirstOrDefaultAsync(p => p.LeadId == bookingId && p.Id == id);
+                .FindAsync(id);
         }
 
         public async Task AddParticipantAsync(ParticipantInformation participant)

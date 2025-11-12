@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
-using AutoMapper;
+
 using Domain.Enums;
 using Domain.Models;
+using Domain.Services.CustomerEditRequests;
 using Domain.Services.Tour.Interface;
 using Domain.Services.TourBooking.DTO;
 using Domain.Services.TourBooking.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TourBooking.API.TourBooking.RequestObjects;
 using TourBooking.Controllers;
 
@@ -23,12 +25,14 @@ namespace TourBooking.API.TourBooking
         private readonly ITourBookingService _service;
         private readonly ITourService _tourService;
         private readonly IMapper _mapper;
+        private readonly ITourBookingEditRequestRepository _editRequest;
 
-        public TourBookingController(ITourBookingService service, IMapper mapper,ITourService tourService)
+        public TourBookingController(ITourBookingService service, IMapper mapper,ITourService tourService,ITourBookingEditRequestRepository editrequest)
         {
             _service = service;
             _mapper = mapper;
             _tourService = tourService;
+            _editRequest = editrequest;
         }
 
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
@@ -83,12 +87,40 @@ namespace TourBooking.API.TourBooking
             return Ok(result);
         }
 
-        [Authorize(Roles = "AGENCY,CONSULTANT")]
+        [Authorize(Roles = "AGENCY,CONSULTANT,CUSTOMER")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTourBooking(Guid id, [FromBody] UpdateTourBookingDto dto)
         {
-            var updated = await _service.UpdateTourBookingAsync(id, dto);
-            return updated == null ? NotFound() : Ok(updated);
+            var role = User.FindFirst(ClaimTypes.Role)?.Value;
+            var bk = await _service.GetTourBookingByIdAsync(id);
+            // If CUSTOMER tries to update
+            if (role == "CUSTOMER")
+            {
+       
+                if (bk.Status== "ApprovedForEdit")
+                {
+                    var update = await _service.UpdateTourBookingAsync(id, dto);
+                    return update == null ? NotFound() : Ok(update);
+                }
+                else
+                {
+                    // Call RequestEdit here
+                    var userIdString = User.FindFirst("UserId")?.Value;
+                    var userId = Guid.Parse(userIdString);
+
+                    await _service.RequestEditAsync(id, userId, "Customer requested edit.");
+
+                    return Ok(new { message = "Edit request sent to agency for approval." });
+                }
+            }
+
+            // If AGENCY or CONSULTANT is updating
+            if (role == "AGENCY"||role=="CONSULTANT")
+            {
+                var updated = await _service.UpdateTourBookingAsync(id, dto);
+                return updated == null ? NotFound() : Ok(updated);
+            }
+            return BadRequest();
         }
 
         [Authorize(Roles = "AGENCY,CONSULTANT")]
@@ -121,6 +153,21 @@ namespace TourBooking.API.TourBooking
             
             return Ok(result);
 
+        }
+       
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
+        [HttpPatch("{bookingId}/approve-edit")]
+        public async Task<IActionResult> ApproveEdit(Guid bookingId)
+        {
+            await _service.ApproveEditAsync(bookingId);
+            return Ok(new { message = "Customer is now allowed to edit the booking." });
+        }
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
+        [HttpGet("pending-edits")]
+        public async Task<IActionResult> GetPendingEditRequests()
+        {
+            var requests = await _editRequest.GetAllRequests();
+            return Ok(requests);
         }
 
     }

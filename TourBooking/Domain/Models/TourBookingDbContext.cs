@@ -20,6 +20,8 @@ namespace Domain.Models
         public virtual DbSet<Notes> Notes { get; set; }
         public virtual DbSet<TourBookingForm> TourBookingForms { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<TourBookingEditRequest> EditRequests { get; set; }
+        public DbSet<ParticipantEditRequest> ParticipantEditRequests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

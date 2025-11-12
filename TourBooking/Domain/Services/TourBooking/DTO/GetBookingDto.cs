@@ -42,7 +42,7 @@ namespace Domain.Services.TourBooking.DTO
         public TourDto? Tour { get; set; }
 
         public UserResponseDto? User { get; set; }
-
+        public bool IsEditAllowed { get; set; }
         public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
         public List<ParticipantDto>? Participants { get; set; }
     }

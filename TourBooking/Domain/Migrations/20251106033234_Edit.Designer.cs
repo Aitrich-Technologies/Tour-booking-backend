@@ -4,6 +4,7 @@ using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(TourBookingDbContext))]
-    partial class TourBookingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251106033234_Edit")]
+    partial class Edit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,41 +125,6 @@ namespace Domain.Migrations
                     b.ToTable("Notifications");
                 });
 
-            modelBuilder.Entity("Domain.Models.ParticipantEditRequest", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Comments")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("ParticipantId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("RequestedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("ReviewedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdatedDataJson")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParticipantId");
-
-                    b.ToTable("ParticipantEditRequests");
-                });
-
             modelBuilder.Entity("Domain.Models.TermsAndCondition", b =>
                 {
                     b.Property<Guid>("Id")
@@ -231,9 +199,6 @@ namespace Domain.Migrations
 
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsEditAllowed")
-                        .HasColumnType("bit");
 
                     b.Property<DateOnly?>("IssueDate")
                         .HasColumnType("date");
@@ -326,9 +291,6 @@ namespace Domain.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsEditAllowed")
-                        .HasColumnType("bit");
-
                     b.Property<DateOnly?>("IssueDate")
                         .HasColumnType("date");
 
@@ -401,17 +363,6 @@ namespace Domain.Migrations
                     b.HasIndex("DestinationId");
 
                     b.ToTable("Tours");
-                });
-
-            modelBuilder.Entity("Domain.Models.ParticipantEditRequest", b =>
-                {
-                    b.HasOne("ParticipantInformation", "Participant")
-                        .WithMany()
-                        .HasForeignKey("ParticipantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Participant");
                 });
 
             modelBuilder.Entity("Domain.Models.TermsAndCondition", b =>

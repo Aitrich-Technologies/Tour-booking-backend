@@ -7,16 +7,20 @@ public class ParticipantProfile : Profile
 {
     public ParticipantProfile()
     {
-        // Request → DTO
+        // Add
         CreateMap<AddParticipantRequest, ParticipantDto>();
-        CreateMap<UpdateParticipantRequest, ParticipantDto>();
 
-        // DTO → Entity
+        // Update (prevent null overwrite)
+        CreateMap<UpdateParticipantRequest, ParticipantDto>()
+            .ForAllMembers(opts =>
+                opts.Condition((src, dest, srcMember) => srcMember != null));
+
+        // DTO ↔ Entity
         CreateMap<ParticipantDto, ParticipantInformation>().ReverseMap();
 
-        // For PATCH, map only non-null fields
+        // Patch (already correct)
         CreateMap<PatchParticipantRequest, ParticipantDto>()
-            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
-      
+            .ForAllMembers(opts =>
+                opts.Condition((src, dest, srcMember) => srcMember != null));
     }
 }

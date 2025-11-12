@@ -4,11 +4,13 @@ using Domain.Services.Email.Helper;
 using Domain.Services.Email.Interface;
 using Domain.Services.Participant.DTO;
 using Domain.Services.Participant.Interface;
+using Domain.Services.ParticipantsEditRequests;
 using Domain.Services.TourBooking.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Domain.Services.Participant
@@ -19,13 +21,20 @@ namespace Domain.Services.Participant
         private readonly IMapper _mapper;
         private readonly IMailService _mailService;
         private readonly ITourBookingService _bookingService;
+        private readonly IParticipantEditRequestRepository _editRequestRepo;
 
-        public ParticipantService(IParticipantRepository repository, IMapper mapper,IMailService mailService,ITourBookingService tourBookingService)
+
+        public ParticipantService(
+            IParticipantRepository repository, 
+            IMapper mapper,IMailService mailService,
+            ITourBookingService tourBookingService,
+            IParticipantEditRequestRepository participantEditRequest)
         {
             _repository = repository;
             _mapper = mapper;
             _mailService = mailService;
             _bookingService = tourBookingService;
+            _editRequestRepo = participantEditRequest;
         }
 
         public async Task<IEnumerable<ParticipantDto>> GetParticipantsAsync(Guid bookingId)
@@ -34,9 +43,9 @@ namespace Domain.Services.Participant
             return _mapper.Map<IEnumerable<ParticipantDto>>(entities);
         }
 
-        public async Task<ParticipantDto?> GetParticipantByIdAsync(Guid bookingId, Guid id)
+        public async Task<ParticipantDto?> GetParticipantByIdAsync(Guid id)
         {
-            var entity = await _repository.GetParticipantByIdAsync(bookingId, id);
+            var entity = await _repository.GetParticipantByIdAsync(id);
             return _mapper.Map<ParticipantDto>(entity);
         }
 
@@ -44,8 +53,6 @@ namespace Domain.Services.Participant
         {
             // Map DTO to entity
             var entity = _mapper.Map<ParticipantInformation>(dto);
-            entity.LeadId = bookingId;
-
             await _repository.AddParticipantAsync(entity);
             await _repository.SaveChangesAsync();
 
@@ -80,13 +87,13 @@ namespace Domain.Services.Participant
         }
 
 
-        public async Task<ParticipantDto?> UpdateParticipantAsync(Guid bookingId, Guid id, ParticipantDto dto)
+        public async Task<ParticipantDto?> UpdateParticipantAsync (Guid id, ParticipantDto dto)
         {
-            var entity = await _repository.GetParticipantByIdAsync(bookingId, id);
+            var entity = await _repository.GetParticipantByIdAsync(id);
             if (entity == null) return null;
 
             _mapper.Map(dto, entity);
-            entity.LeadId = bookingId;
+            
 
             await _repository.UpdateParticipantAsync(entity);
             await _repository.SaveChangesAsync();
@@ -94,15 +101,75 @@ namespace Domain.Services.Participant
             return _mapper.Map<ParticipantDto>(entity);
         }
 
-        public async Task<bool> DeleteParticipantAsync(Guid bookingId, Guid id)
+        public async Task<bool> DeleteParticipantAsync(Guid id)
         {
-            var entity = await _repository.GetParticipantByIdAsync(bookingId, id);
+            var entity = await _repository.GetParticipantByIdAsync(id);
             if (entity == null) return false;
 
             await _repository.DeleteParticipantAsync(entity);
             await _repository.SaveChangesAsync();
             return true;
         }
+        public async Task<bool> RequestParticipantEditAsync(Guid participantId, ParticipantDto dto, Guid requestedBy)
+        {
+            var existing = await _repository.GetParticipantByIdAsync(participantId);
+            if (existing == null) return false;
+
+            // Convert the new values to JSON for review
+            var updatedJson = System.Text.Json.JsonSerializer.Serialize(dto);
+
+            var editRequest = new ParticipantEditRequest
+            {
+                ParticipantId = participantId,
+                RequestedBy = requestedBy,
+                UpdatedDataJson = updatedJson,
+                Status = "PENDING"
+            };
+
+            await _editRequestRepo.AddAsync(editRequest);
+            await _editRequestRepo.SaveChangesAsync();
+
+            
+            return true;
+        }
+        public async Task<bool> ApproveEditRequestAsync(Guid requestId, bool approve, string? comments = null)
+        {
+            var request = await _editRequestRepo.GetByIdAsync(requestId);
+            if (request == null) return false;
+
+            var participant = await _repository.GetParticipantByIdAsync(request.ParticipantId);
+            if (participant == null) return false;
+
+            if (approve)
+            {
+                // Deserialize the requested updates
+                var dto = JsonSerializer.Deserialize<ParticipantDto>(request.UpdatedDataJson!);
+
+                // Apply the approved changes
+                _mapper.Map(dto, participant);
+
+                // ✅ Allow future edits after approval
+                participant.IsEditAllowed = true;
+
+                await _repository.UpdateParticipantAsync(participant);
+                request.Status = "APPROVED";
+            }
+            else
+            {
+                request.Status = "REJECTED";
+                participant.IsEditAllowed = false;
+            }
+
+            request.Comments = comments;
+            request.ReviewedAt = DateTime.UtcNow;
+
+            await _editRequestRepo.UpdateAsync(request);
+            await _repository.SaveChangesAsync();
+            await _editRequestRepo.SaveChangesAsync();
+
+            return true;
+        }
+
     }
 
 }
