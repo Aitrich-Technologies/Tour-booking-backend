@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|d:\\tourbooking\\tour-booking-backend\\tourbooking\\tourbooking\\api\\participant\\participantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\api\\participant\\participantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|d:\\tourbooking\\tour-booking-backend\\tourbooking\\tourbooking\\api\\tourbooking\\tourbookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\api\\tourbooking\\tourbookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E11E0DE4-FC51-4B55-AC14-FF80C0F4C512}|Domain\\Domain.csproj|d:\\tourbooking\\tour-booking-backend\\tourbooking\\domain\\services\\users\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E11E0DE4-FC51-4B55-AC14-FF80C0F4C512}|Domain\\Domain.csproj|solutionrelative:domain\\services\\users\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -63,10 +71,6 @@
       "RelativeMoniker": "D:0:0:{E11E0DE4-FC51-4B55-AC14-FF80C0F4C512}|Domain\\Domain.csproj|solutionrelative:domain\\models\\tourbookingeditrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|d:\\tourbooking\\tour-booking-backend\\tourbooking\\tourbooking\\api\\tourbooking\\tourbookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\api\\tourbooking\\tourbookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|d:\\tourbooking\\tour-booking-backend\\tourbooking\\tourbooking\\api\\tourbooking\\tourbookingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\api\\tourbooking\\tourbookingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -97,10 +101,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E11E0DE4-FC51-4B55-AC14-FF80C0F4C512}|Domain\\Domain.csproj|d:\\tourbooking\\tour-booking-backend\\tourbooking\\domain\\models\\authuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E11E0DE4-FC51-4B55-AC14-FF80C0F4C512}|Domain\\Domain.csproj|solutionrelative:domain\\models\\authuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|d:\\tourbooking\\tour-booking-backend\\tourbooking\\tourbooking\\api\\participant\\participantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F3DC881-0169-4C2B-9555-8D0D96C6242E}|TourBooking\\TourBooking.csproj|solutionrelative:tourbooking\\api\\participant\\participantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E11E0DE4-FC51-4B55-AC14-FF80C0F4C512}|Domain\\Domain.csproj|d:\\tourbooking\\tour-booking-backend\\tourbooking\\domain\\services\\customereditrequests\\itourbookingeditrequestrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -460,32 +460,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Class1.cs",
-              "RelativeDocumentMoniker": "Domain\\Class1.cs",
-              "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Class1.cs",
-              "RelativeToolTip": "Domain\\Class1.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T09:30:00.485Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserResponse.cs",
-              "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\UserResponse.cs",
-              "RelativeDocumentMoniker": "TourBooking\\API\\User\\RequestObjects\\UserResponse.cs",
-              "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\UserResponse.cs",
-              "RelativeToolTip": "TourBooking\\API\\User\\RequestObjects\\UserResponse.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T09:21:39.133Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -501,66 +477,107 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "AddUserRequest.cs",
-              "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\AddUserRequest.cs",
-              "RelativeDocumentMoniker": "TourBooking\\API\\User\\RequestObjects\\AddUserRequest.cs",
-              "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\AddUserRequest.cs",
-              "RelativeToolTip": "TourBooking\\API\\User\\RequestObjects\\AddUserRequest.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T11:04:29.098Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "UserResponseDto.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Users\\DTO\\UserResponseDto.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\Users\\DTO\\UserResponseDto.cs",
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Users\\DTO\\UserResponseDto.cs",
               "RelativeToolTip": "Domain\\Services\\Users\\DTO\\UserResponseDto.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T05:31:21.679Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-10T05:31:21.679Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Users\\UserService.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\Users\\UserService.cs",
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Users\\UserService.cs",
               "RelativeToolTip": "Domain\\Services\\Users\\UserService.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T10:49:28.324Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-09T10:49:28.324Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "AddUserDto.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Users\\DTO\\AddUserDto.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\Users\\DTO\\AddUserDto.cs",
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Users\\DTO\\AddUserDto.cs",
               "RelativeToolTip": "Domain\\Services\\Users\\DTO\\AddUserDto.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T11:00:21.12Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-01T11:00:21.12Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\UserController.cs",
               "RelativeDocumentMoniker": "TourBooking\\API\\User\\UserController.cs",
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\UserController.cs",
               "RelativeToolTip": "TourBooking\\API\\User\\UserController.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T05:25:46.366Z",
+              "WhenOpened": "2025-10-10T05:25:46.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TourBookingController.cs",
+              "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\TourBooking\\TourBookingController.cs",
+              "RelativeDocumentMoniker": "TourBooking\\API\\TourBooking\\TourBookingController.cs",
+              "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\TourBooking\\TourBookingController.cs",
+              "RelativeToolTip": "TourBooking\\API\\TourBooking\\TourBookingController.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T07:37:09.243Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
+              "Title": "ParticipantController.cs",
+              "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Participant\\ParticipantController.cs",
+              "RelativeDocumentMoniker": "TourBooking\\API\\Participant\\ParticipantController.cs",
+              "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Participant\\ParticipantController.cs",
+              "RelativeToolTip": "TourBooking\\API\\Participant\\ParticipantController.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-14T10:41:28.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AddUserRequest.cs",
+              "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\AddUserRequest.cs",
+              "RelativeDocumentMoniker": "TourBooking\\API\\User\\RequestObjects\\AddUserRequest.cs",
+              "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\AddUserRequest.cs",
+              "RelativeToolTip": "TourBooking\\API\\User\\RequestObjects\\AddUserRequest.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T11:04:29.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserResponse.cs",
+              "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\UserResponse.cs",
+              "RelativeDocumentMoniker": "TourBooking\\API\\User\\RequestObjects\\UserResponse.cs",
+              "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\UserResponse.cs",
+              "RelativeToolTip": "TourBooking\\API\\User\\RequestObjects\\UserResponse.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T09:21:39.133Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Class1.cs",
+              "RelativeDocumentMoniker": "Domain\\Class1.cs",
+              "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Class1.cs",
+              "RelativeToolTip": "Domain\\Class1.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T09:30:00.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "EditStatus.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Enums\\EditStatus.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\EditStatus.cs",
@@ -571,7 +588,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "BookStatus.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Enums\\BookStatus.cs",
               "RelativeDocumentMoniker": "Domain\\Enums\\BookStatus.cs",
@@ -582,7 +599,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "TourBookingRepository.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\TourBooking\\TourBookingRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\TourBooking\\TourBookingRepository.cs",
@@ -594,7 +611,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "TourBookingService.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\TourBooking\\TourBookingService.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\TourBooking\\TourBookingService.cs",
@@ -605,15 +622,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "ForgotPasswordRequest.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\ForgotPasswordRequest.cs",
               "RelativeDocumentMoniker": "TourBooking\\API\\User\\RequestObjects\\ForgotPasswordRequest.cs",
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\User\\RequestObjects\\ForgotPasswordRequest.cs",
               "RelativeToolTip": "TourBooking\\API\\User\\RequestObjects\\ForgotPasswordRequest.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T11:05:01.679Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-01T11:05:01.679Z"
             },
             {
               "$type": "Document",
@@ -628,7 +644,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "TourBookingEditRequest.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Models\\TourBookingEditRequest.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\TourBookingEditRequest.cs",
@@ -639,18 +655,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "TourBookingController.cs",
-              "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\TourBooking\\TourBookingController.cs",
-              "RelativeDocumentMoniker": "TourBooking\\API\\TourBooking\\TourBookingController.cs",
-              "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\TourBooking\\TourBookingController.cs",
-              "RelativeToolTip": "TourBooking\\API\\TourBooking\\TourBookingController.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T07:37:09.243Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "TourBookingProfile.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\TourBooking\\TourBookingProfile.cs",
               "RelativeDocumentMoniker": "TourBooking\\API\\TourBooking\\TourBookingProfile.cs",
@@ -661,7 +666,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "TourBookingEditRequestRepository.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\CustomerEditRequests\\TourBookingEditRequestRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\CustomerEditRequests\\TourBookingEditRequestRepository.cs",
@@ -672,7 +677,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "UpdateTourBookingDto.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\TourBooking\\DTO\\UpdateTourBookingDto.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\TourBooking\\DTO\\UpdateTourBookingDto.cs",
@@ -683,7 +688,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "TourBookingDto.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\TourBooking\\DTO\\TourBookingDto.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\TourBooking\\DTO\\TourBookingDto.cs",
@@ -694,7 +699,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "PatchTourBookingDto.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\TourBooking\\DTO\\PatchTourBookingDto.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\TourBooking\\DTO\\PatchTourBookingDto.cs",
@@ -705,7 +710,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "GetBookingDto.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\TourBooking\\DTO\\GetBookingDto.cs",
               "RelativeDocumentMoniker": "Domain\\Services\\TourBooking\\DTO\\GetBookingDto.cs",
@@ -716,7 +721,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "TourBookingForm.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Models\\TourBookingForm.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\TourBookingForm.cs",
@@ -738,7 +743,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "Tourss.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Models\\Tourss.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Tourss.cs",
@@ -750,17 +755,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 24,
-              "Title": "ParticipantController.cs",
-              "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Participant\\ParticipantController.cs",
-              "RelativeDocumentMoniker": "TourBooking\\API\\Participant\\ParticipantController.cs",
-              "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Participant\\ParticipantController.cs",
-              "RelativeToolTip": "TourBooking\\API\\Participant\\ParticipantController.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-14T10:41:28.253Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
               "Title": "AuthUser.cs",
               "DocumentMoniker": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Models\\AuthUser.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\AuthUser.cs",

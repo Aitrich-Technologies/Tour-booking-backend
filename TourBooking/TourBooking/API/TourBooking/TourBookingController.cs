@@ -156,15 +156,15 @@ namespace TourBooking.API.TourBooking
         }
        
         [Authorize(Roles = "AGENCY,CONSULTANT")]
-        [HttpPatch("{bookingId}/approve-edit")]
-        public async Task<IActionResult> ApproveEdit(Guid bookingId)
+        [HttpPatch("{bookingId}/TourBookingApprove-edit")]
+        public async Task<IActionResult> TourBookingApproveEdit(Guid bookingId)
         {
             await _service.ApproveEditAsync(bookingId);
             return Ok(new { message = "Customer is now allowed to edit the booking." });
         }
         [Authorize(Roles = "AGENCY,CONSULTANT")]
-        [HttpGet("pending-edits")]
-        public async Task<IActionResult> GetPendingEditRequests()
+        [HttpGet("TourBookingPending-edits")]
+        public async Task<IActionResult> GetTourBookingPendingEditRequests()
         {
             var requests = await _editRequest.GetAllRequests();
             return Ok(requests);
