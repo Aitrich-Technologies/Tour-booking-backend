@@ -18,6 +18,7 @@ namespace Domain.Services.Users.DTO
         public string UserName { get; set; }
         public string Email { get; set; }
         public string TelephoneNo { get; set; }
+        public string Password { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }

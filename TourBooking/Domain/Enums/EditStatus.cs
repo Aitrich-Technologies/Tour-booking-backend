@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
-   public enum BookStatus
+    public enum EditStatus
     {
-        SUBMIT,CONFIRMED,REJECTED, CLOSED
+        EditPending, ApprovedForEdit, Pending
     }
 }

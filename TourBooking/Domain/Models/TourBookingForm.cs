@@ -35,6 +35,7 @@ public partial class TourBookingForm
     public ParticipantType ParticipantType { get; set; }
 
     public BookStatus Status { get; set; }
+    public EditStatus EditStatusCheck { get; set; }
     public bool IsEditAllowed { get; set; } = false;
 
     public virtual ICollection<ParticipantInformation> ParticipantInformations { get; set; } = new List<ParticipantInformation>();

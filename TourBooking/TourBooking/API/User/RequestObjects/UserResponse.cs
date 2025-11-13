@@ -14,5 +14,6 @@ namespace TourBooking.API.User.RequestObjects
         public string UserName { get; set; }
         public string Email { get; set; }
         public string TelephoneNo { get; set; }
+        public string Password { get; set; }
     }
 }

@@ -199,7 +199,7 @@ namespace Domain.Services.TourBooking
             if (booking.UserId != userId) throw new Exception("You cannot request edit for this booking");
 
             // ✅ Update booking status
-            booking.Status = Enums.BookStatus.EditPending;
+            booking.EditStatusCheck = Enums.EditStatus.EditPending;
             await _repository.UpdateAsync(booking);
 
             // ✅ Save request entry
@@ -208,7 +208,7 @@ namespace Domain.Services.TourBooking
                 BookingId = bookingId,
                 RequestedByUserId = userId,
                 Reason = reason,
-                Status = Enums.BookStatus.Pending,
+                Status = Enums.EditStatus.Pending,
                 RequestedAt = DateTime.UtcNow
             };
 
@@ -223,13 +223,13 @@ namespace Domain.Services.TourBooking
             if (booking == null) return;
 
             booking.IsEditAllowed = true; // <-- IMPORTANT
-            booking.Status = Enums.BookStatus.ApprovedForEdit;
+            booking.EditStatusCheck = Enums.EditStatus.ApprovedForEdit;
             await _repository.UpdateAsync(booking);
 
             var request = await _editRequestRepository.GetByBookingIdAsync(bookingId);
             if (request != null)
             {
-                request.Status = Enums.BookStatus.ApprovedForEdit;
+                request.Status = Enums.EditStatus.ApprovedForEdit;
                 request.RespondedAt = DateTime.UtcNow;
                 await _editRequestRepository.UpdateAsync(request);
             }
@@ -241,7 +241,8 @@ namespace Domain.Services.TourBooking
             if (booking == null) return;
 
             booking.IsEditAllowed = false;
-            booking.Status = Enums.BookStatus.CONFIRMED;
+            //booking.Status = Enums.BookStatus.CONFIRMED;
+            booking.EditStatusCheck = Enums.EditStatus.Pending;
 
             await _repository.UpdateAsync(booking);
         }
