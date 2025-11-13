@@ -195,10 +195,11 @@ namespace Domain.Services.Users
             existingUser.UserName = user.UserName;
             existingUser.Email = user.Email;
             existingUser.TelephoneNo = user.TelephoneNo;
-
+            existingUser.Password=user.Password;
 
             var updated = await _userRepository.UpdateUserAsync(existingUser);
             var updatedUser = _mapper.Map<UserResponseDto>(updated);
+            updatedUser.Password = user.Password;
             return updatedUser;
         }
 
