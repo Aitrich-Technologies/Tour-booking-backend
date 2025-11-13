@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Domain.Enums;
+using Domain.Models;
 using Domain.Services.Participant.DTO;
 using Domain.Services.Tour.DTO;
 using Domain.Services.Users.DTO;
@@ -38,6 +39,8 @@ namespace Domain.Services.TourBooking.DTO
         public string? ParticipantType { get; set; }
 
         public string? Status { get; set; }
+
+        public string? EditStatusCheck { get; set; }
 
         public TourDto? Tour { get; set; }
 

@@ -14,7 +14,7 @@ namespace Domain.Models
         public TourBookingForm Booking { get; set; } = null!;
         public Guid RequestedByUserId { get; set; }
         public string? Reason { get; set; }
-        public BookStatus Status { get; set; } = BookStatus.Pending; // Pending, Approved, Rejected
+        public EditStatus Status { get; set; } = EditStatus.Pending; // Pending, Approved, Rejected
         public DateTime RequestedAt { get; set; } = DateTime.UtcNow;
         public DateTime? RespondedAt { get; set; }
     }

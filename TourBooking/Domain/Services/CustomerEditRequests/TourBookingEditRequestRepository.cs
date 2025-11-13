@@ -26,7 +26,7 @@ namespace Domain.Services.CustomerEditRequests
         public async Task<TourBookingEditRequest?> GetByBookingIdAsync(Guid bookingId)
         {
             return await _context.EditRequests
-                .FirstOrDefaultAsync(x => x.BookingId == bookingId && x.Status == Enums.BookStatus.Pending);
+                .FirstOrDefaultAsync(x => x.BookingId == bookingId && x.Status == Enums.EditStatus.Pending);
         }
 
         public async Task UpdateAsync(TourBookingEditRequest request)
@@ -37,7 +37,7 @@ namespace Domain.Services.CustomerEditRequests
         public async Task<IEnumerable<TourBookingEditRequest>> GetAllRequests()
         {
             return _context.EditRequests
-                 .Where(r => r.Status==Enums.BookStatus.Pending).ToList();
+                 .Where(r => r.Status==Enums.EditStatus.Pending).ToList();
         }
     }
 

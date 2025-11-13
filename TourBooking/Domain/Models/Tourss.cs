@@ -17,7 +17,7 @@ public partial class Tourss
     // Foreign keys for AuthUser
     public Guid? CustomerId { get; set; }
     public Guid ConsultantId { get; set; }
-
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public TourStatus Status { get; set; }
 
     // Navigation properties

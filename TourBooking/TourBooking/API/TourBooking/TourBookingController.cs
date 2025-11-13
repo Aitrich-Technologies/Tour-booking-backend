@@ -97,7 +97,7 @@ namespace TourBooking.API.TourBooking
             if (role == "CUSTOMER")
             {
        
-                if (bk.Status== "ApprovedForEdit")
+                if (bk.EditStatusCheck== "ApprovedForEdit")
                 {
                     var update = await _service.UpdateTourBookingAsync(id, dto);
                     return update == null ? NotFound() : Ok(update);

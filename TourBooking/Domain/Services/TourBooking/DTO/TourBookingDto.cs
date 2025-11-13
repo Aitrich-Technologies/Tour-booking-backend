@@ -39,7 +39,9 @@ namespace Domain.Services.TourBooking.DTO
         public string? ParticipantType { get; set; }
 
         public string? Status { get; set; }
-       
+
+        public string? EditStatusCheck { get; set; }
+
         public TourDto? Tour { get; set; }
 
         public UserResponseDto? User { get; set; }

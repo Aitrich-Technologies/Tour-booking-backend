@@ -17,15 +17,18 @@ namespace TourBooking.API.TourBooking
 
             CreateMap<TourBookingDto, TourBookingForm>()
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Enum.Parse<BookStatus>(src.Status, true)))
+                .ForMember(dest => dest.EditStatusCheck, opt => opt.MapFrom(src => Enum.Parse<EditStatus>(src.EditStatusCheck, true)))
                 .ForMember(dest => dest.ParticipantType, opt => opt.MapFrom(src => Enum.Parse<ParticipantType>(src.ParticipantType, true)));
 
             CreateMap<TourBookingForm, TourBookingDto>()
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
+                .ForMember(dest => dest.EditStatusCheck, opt => opt.MapFrom(src => src.EditStatusCheck.ToString()))
                 .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
                 .ForMember(dest => dest.ParticipantType, opt => opt.MapFrom(src => src.ParticipantType.ToString()));
 
             CreateMap<TourBookingForm, GetBookingDto>()
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
+                  .ForMember(dest => dest.EditStatusCheck, opt => opt.MapFrom(src => src.EditStatusCheck.ToString()))
                 .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
                  .ForMember(dest => dest.IsEditAllowed, opt => opt.MapFrom(src => src.IsEditAllowed))
                 .ForMember(dest => dest.Participants, opt => opt.MapFrom(src => src.ParticipantInformations))
