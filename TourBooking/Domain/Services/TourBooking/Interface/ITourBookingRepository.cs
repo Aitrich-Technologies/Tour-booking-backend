@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Enums;
 using Domain.Models;
 using Domain.Services.TourBooking.DTO;
 
@@ -17,5 +18,6 @@ namespace Domain.Services.TourBooking.Interface
         Task<TourBookingForm?> UpdateAsync(TourBookingForm booking);
         Task<bool> DeleteTourBookingAsync(Guid id);
         Task<IEnumerable<TourBookingForm>> GetTourBookingsByUserIdAsync(Guid userId);
+        Task<IEnumerable<TourBookingForm>> GetByStatusAsync(BookStatus status);
     }
 }

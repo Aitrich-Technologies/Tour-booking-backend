@@ -25,9 +25,9 @@ namespace TourBooking.API.TourBooking
         private readonly ITourBookingService _service;
         private readonly ITourService _tourService;
         private readonly IMapper _mapper;
-        private readonly ITourBookingEditRequestRepository _editRequest;
+        private readonly ITourBookingEditRequestService _editRequest;
 
-        public TourBookingController(ITourBookingService service, IMapper mapper,ITourService tourService,ITourBookingEditRequestRepository editrequest)
+        public TourBookingController(ITourBookingService service, IMapper mapper,ITourService tourService,ITourBookingEditRequestService editrequest)
         {
             _service = service;
             _mapper = mapper;
@@ -100,6 +100,7 @@ namespace TourBooking.API.TourBooking
                 if (bk.EditStatusCheck== "ApprovedForEdit")
                 {
                     var update = await _service.UpdateTourBookingAsync(id, dto);
+                    await _service.MarkEditCompleteAsync(id);
                     return update == null ? NotFound() : Ok(update);
                 }
                 else
@@ -156,19 +157,57 @@ namespace TourBooking.API.TourBooking
         }
        
         [Authorize(Roles = "AGENCY,CONSULTANT")]
-        [HttpPatch("{bookingId}/TourBookingApprove-edit")]
+        [HttpPatch("{bookingId}/Approve-edit")]
         public async Task<IActionResult> TourBookingApproveEdit(Guid bookingId)
         {
             await _service.ApproveEditAsync(bookingId);
+          
             return Ok(new { message = "Customer is now allowed to edit the booking." });
         }
         [Authorize(Roles = "AGENCY,CONSULTANT")]
-        [HttpGet("TourBookingPending-edits")]
+        [HttpGet("Pending-edits")]
         public async Task<IActionResult> GetTourBookingPendingEditRequests()
         {
-            var requests = await _editRequest.GetAllRequests();
+            var requests = await _editRequest.GetPendingRequestsAsync();
             return Ok(requests);
         }
+
+        [Authorize(Roles = "CUSTOMER,AGENCY,CONSULTANT")]
+        [HttpPatch("{id}/cancel")]
+        public async Task<IActionResult> CancelBooking(Guid id, [FromBody] CancelBookingDto request)
+        {
+            var role = User.FindFirst(ClaimTypes.Role)?.Value;
+
+            var booking = await _service.GetTourBookingByIdAsync(id);
+            if (booking == null)
+                return NotFound(new { message = "Booking not found" });
+
+            // CUSTOMER can cancel ONLY their own booking
+            if (role == "CUSTOMER")
+            {
+                var userIdString = User.FindFirst("UserId")?.Value;
+                var userId = Guid.Parse(userIdString);
+
+                if (booking.UserId != userId)
+                    return Unauthorized(new { message = "You can only cancel your own booking." });
+            }
+
+            var result = await _service.CancelBookingAsync(id, request.Reason);
+
+            if (!result)
+                return BadRequest(new { message = "Booking cancellation failed." });
+
+            return Ok(new { message = "Booking cancelled successfully." });
+        }
+
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
+        [HttpGet("cancelled")]
+        public async Task<IActionResult> GetCancelledBookings()
+        {
+            var result = await _service.GetCancelledBookingsAsync();
+            return Ok(result);
+        }
+
 
     }
 }

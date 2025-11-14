@@ -21,6 +21,9 @@ namespace Domain.Services.TourBooking.Interface
         Task RequestEditAsync(Guid bookingId, Guid customerId, string? reason);
         Task ApproveEditAsync(Guid bookingId);
         Task MarkEditCompleteAsync(Guid bookingId);
+        Task<bool> CancelBookingAsync(Guid bookingId, string? reason);
+        Task<IEnumerable<TourBookingDto>> GetCancelledBookingsAsync();
+
 
     }
 }

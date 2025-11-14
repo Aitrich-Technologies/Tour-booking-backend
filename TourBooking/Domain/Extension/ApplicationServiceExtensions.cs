@@ -64,6 +64,7 @@ namespace Domain.Extension
             services.AddScoped<ITermsAndConditionService, TermsService>();
            
             services.AddScoped< ITourBookingEditRequestRepository,TourBookingEditRequestRepository>();
+            services.AddScoped<ITourBookingEditRequestService, TourBookingEditRequestService>();
             services.AddScoped<IParticipantEditRequestRepository, ParticipantEditRequestRepository>();
 
             return services;

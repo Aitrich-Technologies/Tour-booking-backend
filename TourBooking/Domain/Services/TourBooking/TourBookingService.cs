@@ -3,6 +3,7 @@ using Domain.Models;
 using Domain.Services.CustomerEditRequests;
 using Domain.Services.Email.Helper;
 using Domain.Services.Email.Interface;
+using Domain.Services.Notifications.Interface;
 using Domain.Services.Tour.DTO;
 using Domain.Services.Tour.Interface;
 using Domain.Services.TourBooking.DTO;
@@ -17,20 +18,24 @@ namespace Domain.Services.TourBooking
         private readonly IMapper _mapper;
         private readonly IMailService _mailService;
         private readonly ITourBookingEditRequestRepository _editRequestRepository;
+        private readonly INotificationService _notificationService;
 
-      
+
+
         public TourBookingService(
             ITourBookingRepository repository,
             IMapper mapper,
             ITourRepository tourRepository,
             IMailService mailService,
-            ITourBookingEditRequestRepository editRequestRepository)
+            ITourBookingEditRequestRepository editRequestRepository,
+            INotificationService notificationService)
         {
             _repository = repository;
             _mapper = mapper;
             _tourRepository = tourRepository;
             _mailService = mailService;
             _editRequestRepository = editRequestRepository;
+            _notificationService = notificationService;
         }
 
         public async Task<TourBookingDto> AddTourBookingAsync(TourBookingDto dto)
@@ -247,6 +252,36 @@ namespace Domain.Services.TourBooking
             await _repository.UpdateAsync(booking);
         }
 
+        public async Task<bool> CancelBookingAsync(Guid bookingId, string? reason)
+        {
+            var booking = await _repository.GetTourBookingByIdAsync(bookingId);
+            if (booking == null) return false;
+
+            booking.Status = Enums.BookStatus.CANCELLED;
+            booking.CancellationReason = reason;
+            booking.CancelledAt = DateTime.UtcNow;
+
+            await _repository.UpdateAsync(booking);
+
+   
+            // SEND SIGNALR NOTIFICATIONS
+        
+            string tourName = booking.Tour?.TourName ?? "Unknown Tour";
+
+            string message = $"Booking {booking.Id} for tour '{tourName}' has been cancelled by the customer {booking.FirstName}  {booking.LastName}.";
+
+            await _notificationService.SendNotificationAsync("AGENCY", message);
+            await _notificationService.SendNotificationAsync("CONSULTANT", message);
+
+            Console.WriteLine($"Cancellation notification sent for Booking {booking.Id}");
+
+            return true;
+        }
+        public async Task<IEnumerable<TourBookingDto>> GetCancelledBookingsAsync()
+        {
+            var cancelled = await _repository.GetByStatusAsync(Enums.BookStatus.CANCELLED);
+            return _mapper.Map<IEnumerable<TourBookingDto>>(cancelled);
+        }
 
 
     }

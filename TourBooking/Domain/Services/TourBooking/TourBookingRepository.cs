@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Enums;
 using Domain.Models;
 using Domain.Services.TourBooking.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -83,6 +84,14 @@ namespace Domain.Services.TourBooking
                      .ToListAsync();
             return tours;
         }
+        public async Task<IEnumerable<TourBookingForm>> GetByStatusAsync(BookStatus status)
+        {
+            return await _context.TourBookingForms
+                .Where(b => b.Status == status)
+                .Include(b => b.Tour)
+                .ToListAsync();
+        }
+
     }
 }
 
