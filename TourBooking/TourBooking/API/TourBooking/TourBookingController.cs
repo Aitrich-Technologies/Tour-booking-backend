@@ -172,6 +172,43 @@ namespace TourBooking.API.TourBooking
             return Ok(requests);
         }
 
+        [Authorize(Roles = "CUSTOMER,AGENCY,CONSULTANT")]
+        [HttpPatch("{id}/cancel")]
+        public async Task<IActionResult> CancelBooking(Guid id, [FromBody] CancelBookingDto request)
+        {
+            var role = User.FindFirst(ClaimTypes.Role)?.Value;
+
+            var booking = await _service.GetTourBookingByIdAsync(id);
+            if (booking == null)
+                return NotFound(new { message = "Booking not found" });
+
+            // CUSTOMER can cancel ONLY their own booking
+            if (role == "CUSTOMER")
+            {
+                var userIdString = User.FindFirst("UserId")?.Value;
+                var userId = Guid.Parse(userIdString);
+
+                if (booking.UserId != userId)
+                    return Unauthorized(new { message = "You can only cancel your own booking." });
+            }
+
+            var result = await _service.CancelBookingAsync(id, request.Reason);
+
+            if (!result)
+                return BadRequest(new { message = "Booking cancellation failed." });
+
+            return Ok(new { message = "Booking cancelled successfully." });
+        }
+
+        [Authorize(Roles = "AGENCY,CONSULTANT")]
+        [HttpGet("cancelled")]
+        public async Task<IActionResult> GetCancelledBookings()
+        {
+            var result = await _service.GetCancelledBookingsAsync();
+            return Ok(result);
+        }
+
+
     }
 }
 

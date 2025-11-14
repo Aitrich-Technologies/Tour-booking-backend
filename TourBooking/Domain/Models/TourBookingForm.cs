@@ -37,6 +37,8 @@ public partial class TourBookingForm
     public BookStatus Status { get; set; }
     public EditStatus EditStatusCheck { get; set; }
     public bool IsEditAllowed { get; set; } = false;
+    public string? CancellationReason { get; set; }
+    public DateTime? CancelledAt { get; set; }
 
     public virtual ICollection<ParticipantInformation> ParticipantInformations { get; set; } = new List<ParticipantInformation>();
 

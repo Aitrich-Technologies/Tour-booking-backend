@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Enums
+namespace Domain.Services.TourBooking.DTO
 {
-   public enum BookStatus
+    public class CancelBookingDto
     {
-        SUBMIT,CONFIRMED,REJECTED,CLOSED,CANCELLED
+        public string? Reason { get; set; }
     }
 }
