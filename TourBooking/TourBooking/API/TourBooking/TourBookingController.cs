@@ -25,9 +25,9 @@ namespace TourBooking.API.TourBooking
         private readonly ITourBookingService _service;
         private readonly ITourService _tourService;
         private readonly IMapper _mapper;
-        private readonly ITourBookingEditRequestRepository _editRequest;
+        private readonly ITourBookingEditRequestService _editRequest;
 
-        public TourBookingController(ITourBookingService service, IMapper mapper,ITourService tourService,ITourBookingEditRequestRepository editrequest)
+        public TourBookingController(ITourBookingService service, IMapper mapper,ITourService tourService,ITourBookingEditRequestService editrequest)
         {
             _service = service;
             _mapper = mapper;
@@ -166,7 +166,7 @@ namespace TourBooking.API.TourBooking
         [HttpGet("TourBookingPending-edits")]
         public async Task<IActionResult> GetTourBookingPendingEditRequests()
         {
-            var requests = await _editRequest.GetAllRequests();
+            var requests = await _editRequest.GetPendingRequestsAsync();
             return Ok(requests);
         }
 
