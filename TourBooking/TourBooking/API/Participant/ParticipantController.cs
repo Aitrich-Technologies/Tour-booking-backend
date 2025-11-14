@@ -114,7 +114,7 @@ namespace TourBooking.API.Participant
             return Ok(updated);
         }
         [Authorize(Roles = "AGENCY,CONSULTANT")]
-        [HttpPost("ParticipantApprove-edit/{requestId}")]
+        [HttpPost("Approve-edit/{requestId}")]
         public async Task<IActionResult> ApproveParticipantEdit(Guid requestId, [FromQuery] bool approve, [FromBody] string? comments)
         {
             var result = await _service.ApproveEditRequestAsync(requestId, approve, comments);
@@ -123,7 +123,7 @@ namespace TourBooking.API.Participant
         }
 
         [Authorize(Roles = "AGENCY,CONSULTANT")]
-        [HttpGet("ParticipantPending-edits")]
+        [HttpGet("Pending-edits")]
         public async Task<IActionResult> GetParticipantPendingEditRequests()
         {
             var requests = await _participantEditRequestRepository.GetPendingRequestsAsync();

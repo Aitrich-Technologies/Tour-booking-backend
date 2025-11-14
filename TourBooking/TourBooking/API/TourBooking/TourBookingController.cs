@@ -100,6 +100,7 @@ namespace TourBooking.API.TourBooking
                 if (bk.EditStatusCheck== "ApprovedForEdit")
                 {
                     var update = await _service.UpdateTourBookingAsync(id, dto);
+                    await _service.MarkEditCompleteAsync(id);
                     return update == null ? NotFound() : Ok(update);
                 }
                 else
@@ -156,14 +157,15 @@ namespace TourBooking.API.TourBooking
         }
        
         [Authorize(Roles = "AGENCY,CONSULTANT")]
-        [HttpPatch("{bookingId}/TourBookingApprove-edit")]
+        [HttpPatch("{bookingId}/Approve-edit")]
         public async Task<IActionResult> TourBookingApproveEdit(Guid bookingId)
         {
             await _service.ApproveEditAsync(bookingId);
+          
             return Ok(new { message = "Customer is now allowed to edit the booking." });
         }
         [Authorize(Roles = "AGENCY,CONSULTANT")]
-        [HttpGet("TourBookingPending-edits")]
+        [HttpGet("Pending-edits")]
         public async Task<IActionResult> GetTourBookingPendingEditRequests()
         {
             var requests = await _editRequest.GetPendingRequestsAsync();
