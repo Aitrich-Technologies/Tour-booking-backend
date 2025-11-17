@@ -30,41 +30,34 @@ namespace Domain.Extension
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
             services.AddDbContext<TourBookingDbContext>(options =>
-               options.UseSqlServer(config.GetConnectionString("DefaultConnection"))
-            );
+               options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+
             services.AddAutoMapper(typeof(MappingProfile));
+
             services.AddScoped<IParticipantRepository, ParticipantRepository>();
             services.AddScoped<IParticipantService, ParticipantService>();
 
-
-           services. AddScoped<ITourBookingRepository, TourBookingRepository>();
-           services.AddScoped<ITourBookingService, TourBookingService>();
+            services. AddScoped<ITourBookingRepository, TourBookingRepository>();
+            services.AddScoped<ITourBookingService, TourBookingService>();
            
-
             services.AddScoped<INoteRepository, NoteRepository>();
             services.AddScoped<INoteService, NoteService>();
-
 
             services.AddScoped<IDestinationService, DestinationService>();
             services.AddScoped<IDestinationRepository, DestinationRepository>();
 
-
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
 
-
-
-
-
             services.AddScoped<ITourRepository, TourRepository>();
             services.AddScoped<ITourService, TourService>();
-
 
             services.AddScoped<ITermsAndConditionRepository, TermsRepository>();
             services.AddScoped<ITermsAndConditionService, TermsService>();
            
             services.AddScoped< ITourBookingEditRequestRepository,TourBookingEditRequestRepository>();
             services.AddScoped<ITourBookingEditRequestService, TourBookingEditRequestService>();
+
             services.AddScoped<IParticipantEditRequestRepository, ParticipantEditRequestRepository>();
 
             return services;

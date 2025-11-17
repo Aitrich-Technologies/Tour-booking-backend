@@ -46,18 +46,14 @@ namespace TourBooking.API.Participant
             if (result == null) return NotFound();
             return Ok(result);
         }
-
-        // ✅ Add participant
-        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpPost("{bookingId}")]
         public async Task<IActionResult> AddParticipant(Guid bookingId, [FromBody] AddParticipantRequest request)
         {
-            var userIdString = User.FindFirst("UserId")?.Value;
-            if (string.IsNullOrEmpty(userIdString)) return Unauthorized("UserId claim missing.");
-
-            request.LeadId = Guid.Parse(userIdString);
+            // LeadId must match TourBookingForm.Id
+            request.LeadId = bookingId;
 
             var dto = _mapper.Map<ParticipantDto>(request);
+
             dto.BookingId = bookingId;
 
             var result = await _service.AddParticipantAsync(bookingId, dto);
@@ -65,6 +61,7 @@ namespace TourBooking.API.Participant
             return CreatedAtAction(nameof(GetParticipantById),
                 new { id = result.Id }, result);
         }
+
 
         // ✅ Delete participant
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]

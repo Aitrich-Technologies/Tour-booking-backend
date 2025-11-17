@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.Enums;
 using Domain.Models;
 using Domain.Services.CustomerEditRequests;
 using Domain.Services.Email.Helper;
@@ -242,14 +243,8 @@ namespace Domain.Services.TourBooking
 
         public async Task MarkEditCompleteAsync(Guid bookingId)
         {
-            var booking = await _repository.GetTourBookingByIdAsync(bookingId);
-            if (booking == null) return;
-
-            booking.IsEditAllowed = false;
-            //booking.Status = Enums.BookStatus.CONFIRMED;
-            booking.EditStatusCheck = Enums.EditStatus.Pending;
-
-            await _repository.UpdateAsync(booking);
+            var booking = await _repository.GetByTourBookingByIdAsync(bookingId);
+         
         }
 
         public async Task<bool> CancelBookingAsync(Guid bookingId, string? reason)

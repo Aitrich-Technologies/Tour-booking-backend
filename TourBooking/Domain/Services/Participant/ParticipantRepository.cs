@@ -21,7 +21,7 @@ namespace Domain.Services.Participant
         public async Task<IEnumerable<ParticipantInformation>> GetParticipantsAsync(Guid bookingId)
         {
             return await _context.ParticipantInformations
-                .Where(p => p.LeadId == bookingId)
+                .Where(p => p.BookingId== bookingId)
                 .ToListAsync();
         }
 

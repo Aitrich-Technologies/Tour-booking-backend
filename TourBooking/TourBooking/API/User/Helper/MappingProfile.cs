@@ -6,40 +6,36 @@ using TourBooking.API.User.RequestObjects;
 
 namespace TourBooking.API.User.Helper
 {
-    public class MappingProfile:Profile
+    public class MappingProfile : Profile
     {
-
         public MappingProfile()
         {
+            // -----------------------------
             // Request ↔ DTO
+            // -----------------------------
             CreateMap<AddUserRequest, AddUserDto>().ReverseMap();
-
-            CreateMap<UserResponse, UserResponseDto>().ReverseMap();
-
             CreateMap<LoginRequest, LoginDto>().ReverseMap();
-            // DTO → Model
-            CreateMap<AddUserDto, AuthUser>().ReverseMap();
-
-            // Model → DTO
-            CreateMap<AuthUser, UserResponseDto>().ReverseMap();
-
             CreateMap<PatchUserRequest, PatchUserDto>().ReverseMap();
-
-            CreateMap<ForgotPasswordDto,ForgotPasswordRequest>().ReverseMap();
-
+            CreateMap<ForgotPasswordRequest, ForgotPasswordDto>().ReverseMap();
             CreateMap<ResetPasswordRequest, ResetPasswordDto>().ReverseMap();
 
-            // RequestDto -> Entity (string to enum)
+            // -----------------------------
+            // DTO ↔ Entity
+            // -----------------------------
+            CreateMap<AddUserDto, AuthUser>().ReverseMap();
             CreateMap<UserResponseDto, AuthUser>()
                 .ForMember(dest => dest.Role,
                            opt => opt.MapFrom(src => Enum.Parse<UserRole>(src.Role, true)));
 
-            // Entity -> ResponseDto (enum to string)
+            // -----------------------------
+            // Entity ↔ Response
+            // -----------------------------
             CreateMap<AuthUser, UserResponseDto>()
                 .ForMember(dest => dest.Role,
                            opt => opt.MapFrom(src => src.Role.ToString()));
 
+            CreateMap<UserResponse, UserResponseDto>().ReverseMap();
         }
-
     }
+
 }

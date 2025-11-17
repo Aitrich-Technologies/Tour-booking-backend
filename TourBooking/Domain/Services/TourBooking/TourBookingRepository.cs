@@ -47,6 +47,15 @@ namespace Domain.Services.TourBooking
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
+        public async Task<TourBookingForm?> GetByTourBookingByIdAsync(Guid id)
+        {
+            var bookings = await _context.TourBookingForms.FindAsync(id);
+            bookings.IsEditAllowed = false;
+            bookings.EditStatusCheck = EditStatus.Pending;
+           await _context.SaveChangesAsync();
+            return bookings;
+
+        }
 
         public async Task<IEnumerable<TourBookingForm>> GetTourBookingsByTourIdAsync(Guid tourId)
             => await _context.TourBookingForms
@@ -57,10 +66,18 @@ namespace Domain.Services.TourBooking
                             .ToListAsync();
 
 
-       
+
+        //public async Task<TourBookingForm?> UpdateAsync(TourBookingForm booking)
+        //{
+        //    _context.TourBookingForms.Update(booking);
+        //    await _context.SaveChangesAsync();
+        //    return booking;
+        //}
         public async Task<TourBookingForm?> UpdateAsync(TourBookingForm booking)
         {
-            _context.TourBookingForms.Update(booking);
+            _context.TourBookingForms.Attach(booking);
+            _context.Entry(booking).State = EntityState.Modified;
+
             await _context.SaveChangesAsync();
             return booking;
         }
