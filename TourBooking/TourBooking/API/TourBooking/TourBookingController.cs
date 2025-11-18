@@ -26,13 +26,15 @@ namespace TourBooking.API.TourBooking
         private readonly ITourService _tourService;
         private readonly IMapper _mapper;
         private readonly ITourBookingEditRequestService _editRequest;
+        private readonly TourBookingPdfService _pdf;
 
-        public TourBookingController(ITourBookingService service, IMapper mapper,ITourService tourService,ITourBookingEditRequestService editrequest)
+        public TourBookingController(ITourBookingService service, IMapper mapper,ITourService tourService, ITourBookingEditRequestService editrequest, TourBookingPdfService pdfService)
         {
             _service = service;
             _mapper = mapper;
             _tourService = tourService;
             _editRequest = editrequest;
+            _pdf = pdfService;
         }
 
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
@@ -206,6 +208,30 @@ namespace TourBooking.API.TourBooking
         {
             var result = await _service.GetCancelledBookingsAsync();
             return Ok(result);
+        }
+
+        [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
+        [HttpGet("booking/{id}/document")]
+        public async Task<IActionResult> GetDocument(Guid id)
+        {
+            var booking = await _service.GetTourBookingByIdAsync(id);
+            if (booking == null) return NotFound();
+
+            var pdf = _pdf.GenerateBookingPdf(booking);
+
+            return File(pdf, "application/pdf", $"Booking-{id}.pdf");
+        }
+
+
+        [HttpPost("booking/{id}/send-document")]
+        public async Task<IActionResult> SendDocument(Guid id)
+        {
+            var booking = await _service.GetTourBookingByIdAsync(id);
+            if (booking == null) return NotFound();
+
+            await _service.SendBookingDocumentAsync(booking);
+
+            return Ok("Booking PDF document sent to the customer.");
         }
 
 

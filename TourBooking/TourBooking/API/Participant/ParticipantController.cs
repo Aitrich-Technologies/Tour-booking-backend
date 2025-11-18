@@ -28,7 +28,7 @@ namespace TourBooking.API.Participant
                   _participantEditRequestRepository = participantEditRequestRepository;
         }
 
-        // ✅ Get all participants of a booking
+        // Get all participants of a booking
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpGet("{bookingId}")]
         public async Task<IActionResult> GetParticipantsByBookingId(Guid bookingId)
@@ -37,7 +37,7 @@ namespace TourBooking.API.Participant
             return Ok(result);
         }
 
-        // ✅ Get a single participant
+        // Get a single participant
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpGet("details/{id}")]
         public async Task<IActionResult> GetParticipantById(Guid id)
@@ -63,7 +63,7 @@ namespace TourBooking.API.Participant
         }
 
 
-        // ✅ Delete participant
+        // Delete participant
         [Authorize(Roles = "AGENCY,CUSTOMER,CONSULTANT")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteParticipant(Guid id)
@@ -87,7 +87,7 @@ namespace TourBooking.API.Participant
             {
                 if (participant.IsEditAllowed)
                 {
-                    // ✅ Allow direct update
+                    // Allow direct update
                     var updatedParticipant = await _service.UpdateParticipantAsync(id, participant);
 
                     // After successful edit, disable further edits until re-approved
@@ -98,7 +98,7 @@ namespace TourBooking.API.Participant
                 }
                 else
                 {
-                    // ❌ No direct edit allowed — create approval request
+                    // No direct edit allowed — create approval request
                     var success = await _service.RequestParticipantEditAsync(id, participant, userId);
                     if (!success) return BadRequest("Failed to submit edit request.");
                     return Ok(new { message = "Edit request submitted for approval." });

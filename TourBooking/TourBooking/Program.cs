@@ -10,41 +10,55 @@ using Domain.Services.Email.Helper;
 using Domain.Services.Email.Interface;
 using Domain.Services.Email;
 using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddSignalR();
+
+// CORS Configuration
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularApp", policy =>
     {
         policy.WithOrigins(
-            "http://localhost:4200",  // Angular app
-            "http://localhost:4200"  // if using HTTPS
+            "http://localhost:4200",
+            "https://localhost:4200"
         )
         .AllowAnyHeader()
         .AllowAnyMethod()
-        .AllowCredentials(); // Required for SignalR + JWT
+        .AllowCredentials();
     });
 });
+
+// Configuration
 builder.Services.Configure<MailSettings>(
     builder.Configuration.GetSection("MailSettings"));
 
 builder.Services.AddSingleton(sp =>
     sp.GetRequiredService<IOptions<MailSettings>>().Value);
 
+// Service Registrations
 builder.Services.AddScoped<IMailService, MailService>();
+
+// Fix: Proper registration of TourBookingPdfService with dependency
+builder.Services.AddSingleton<TourBookingPdfService>(provider =>
+{
+    var env = provider.GetRequiredService<IWebHostEnvironment>();
+    return new TourBookingPdfService(env);
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddHttpContextAccessor();
+
+// Notification Services
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
-
+// Swagger Configuration
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -73,9 +87,10 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+// Application Services
 builder.Services.AddApplicationServices(builder.Configuration);
 
-
+// Authentication
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
@@ -90,7 +105,7 @@ builder.Services.AddAuthentication("Bearer")
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
         };
 
-        //  Important: Allow JWT token from SignalR query string
+        // Important: Allow JWT token from SignalR query string
         options.Events = new JwtBearerEvents
         {
             OnMessageReceived = context =>
@@ -98,7 +113,6 @@ builder.Services.AddAuthentication("Bearer")
                 var accessToken = context.Request.Query["access_token"];
                 var path = context.HttpContext.Request.Path;
 
-                // If request is for SignalR hub, use the token from query
                 if (!string.IsNullOrEmpty(accessToken) &&
                     path.StartsWithSegments("/hubs/notifications"))
                 {
@@ -110,20 +124,20 @@ builder.Services.AddAuthentication("Bearer")
         };
     });
 
-
 builder.Services.AddAuthorization();
 
-
 var app = builder.Build();
-// Configure the HTTP request pipeline.
+
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseSwagger();
-app.UseSwaggerUI();
+
+// Enable static files to serve wwwroot content (important for logo images)
 app.UseStaticFiles();
+
 app.UseCors("AllowAngularApp");
 app.UseAuthentication();
 app.UseAuthorization();
@@ -131,4 +145,5 @@ app.UseAuthorization();
 app.MapControllers().RequireCors("AllowAngularApp");
 app.MapHub<TourBooking.API.Hubs.NotificationHub>("/hubs/notifications")
    .RequireCors("AllowAngularApp");
+
 app.Run();
