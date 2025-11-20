@@ -122,7 +122,7 @@ public class TourBookingPdfService
         summaryRow.TopPadding = Unit.FromCentimeter(0.3);
         summaryRow.BottomPadding = Unit.FromCentimeter(0.3);
 
-        AddInfoCell(summaryRow.Cells[0], "Booking ID", booking.Id.ToString());
+        AddInfoCell(summaryRow.Cells[0], "Reference ID", booking.ReferenceNumber);
         AddInfoCell(summaryRow.Cells[1], "Status", booking.Status ?? "-", GetStatusColor(booking.Status));
         AddInfoCell(summaryRow.Cells[2], "Booking Date", booking.CreatedAt?.ToString("MMM dd, yyyy") ?? "-");
         AddInfoCell(summaryRow.Cells[3], "Departure Date", booking.Tour?.DepartureDate?.ToString("MMM dd, yyyy") ?? "-");
@@ -389,5 +389,7 @@ public class TourBookingPdfService
             _ => new Color(52, 73, 94)
         };
     }
-   
-}
+    
+    }
+
+  

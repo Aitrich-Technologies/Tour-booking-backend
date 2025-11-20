@@ -294,7 +294,7 @@ namespace Domain.Services.TourBooking
         {
             new AttachmentFile
             {
-                FileName = $"Booking-{booking.Id}.pdf",
+                FileName = $"Booking-{booking.ReferenceNumber}.pdf",
                 FileBytes = pdfBytes,
                 ContentType = "application/pdf"
             }
