@@ -6,6 +6,7 @@ public class NoteProfile : Profile
 {
     public NoteProfile()
     {
+        CreateMap<Notes, NoteDto>().ReverseMap();
         CreateMap<AddNoteRequest, NoteDto>();
         CreateMap<UpdateNoteRequest, NoteDto>();
     }

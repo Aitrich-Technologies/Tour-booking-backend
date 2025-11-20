@@ -15,59 +15,11 @@ namespace Domain.Helper
     {
         public MappingProfile()
         {
-            // Entity → DTO
-            CreateMap<ParticipantInformation, ParticipantDto>()
-                .ForMember(dest => dest.BookingId, opt => opt.MapFrom(src => src.LeadId));
-
-            // DTO → Entity
-            CreateMap<ParticipantDto, ParticipantInformation>()
-                .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.BookingId));
-                                    
-             CreateMap<TourBookingDto, TourBookingForm>();
-             CreateMap<TourBookingForm, TourBookingDto>();      
-            
-            CreateMap<UpdateTourBookingDto, TourBookingForm>()
-                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
            
-
-
-            // DTO → Entity
-            CreateMap<ParticipantDto, ParticipantInformation>()
-                .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.BookingId));
-
             CreateMap<Destination, DestinationDto>().ReverseMap();
             CreateMap<Destination, DestinationResponseDto>().ReverseMap();
 
-
-
-            // DTO → Entity
-            CreateMap<ParticipantDto, ParticipantInformation>()
-                .ForMember(dest => dest.LeadId, opt => opt.MapFrom(src => src.BookingId));
-
-            CreateMap<Notes, NoteDto>().ReverseMap();
-
-
             CreateMap<TermsDto, TermsAndCondition>().ReverseMap();
-
-            //// DTO ↔ Entity
-            //CreateMap<TourDto, Tourss>()
-            //    .ForMember(dest => dest.Status,
-            //               opt => opt.MapFrom(src => Enum.Parse<TourStatus>(src.Status, true)))
-            //    .ReverseMap();
-            //CreateMap<Tourss, TourDto>()
-            //.ForMember(dest => dest.Status,
-            //           opt => opt.MapFrom(src => src.Status.ToString()));
-            ////.ForMember(dest => dest.DestinationName,
-            ////           opt => opt.MapFrom(src => src.Destination != null ? src.Destination.Name : null))
-            ////.ForMember(dest => dest.ImageUrl,
-            ////           opt => opt.MapFrom(src => src.Destination != null ? src.Destination.ImageUrl : "default-image-url.jpg"));
-
-            //CreateMap<Tourss, TourDto>().ReverseMap();
-
-
-            CreateMap<AddUserDto, AuthUser>().ReverseMap();
-
-            CreateMap<AuthUser, UserResponseDto>().ReverseMap();
 
         }
 

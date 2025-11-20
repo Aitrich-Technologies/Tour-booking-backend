@@ -23,7 +23,7 @@ namespace Domain.Services.TourBooking.Interface
         Task MarkEditCompleteAsync(Guid bookingId);
         Task<bool> CancelBookingAsync(Guid bookingId, string? reason);
         Task<IEnumerable<TourBookingDto>> GetCancelledBookingsAsync();
-
+        Task SendBookingDocumentAsync(GetBookingDto booking);
 
     }
 }

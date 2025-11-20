@@ -8,6 +8,7 @@ namespace Domain.Models;
 public partial class TourBookingForm
 {
     public Guid Id { get; set; }
+    public string ReferenceNumber { get; set; } = null!;
 
     public Guid TourId { get; set; }
     public Guid? UserId { get; set; }

@@ -14,6 +14,7 @@ namespace Domain.Services.TourBooking.DTO
     public class GetBookingDto
     {
         public Guid Id { get; set; }
+        public string ReferenceNumber { get; set; }
         public Guid TourId { get; set; }
         public Guid UserId { get; set; }
         public string FirstName { get; set; } = null!;

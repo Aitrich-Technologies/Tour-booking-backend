@@ -20,6 +20,7 @@ namespace Domain.Services.TourBooking
         }
         public async Task<TourBookingForm> AddTourBookingAsync(TourBookingForm form)
         {
+            form.ReferenceNumber = GenerateReferenceNumber(form);
             _context.TourBookingForms.Add(form);
             await _context.SaveChangesAsync();
             return form;
@@ -47,6 +48,15 @@ namespace Domain.Services.TourBooking
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
+        public async Task<TourBookingForm?> GetByTourBookingByIdAsync(Guid id)
+        {
+            var bookings = await _context.TourBookingForms.FindAsync(id);
+            bookings.IsEditAllowed = false;
+            bookings.EditStatusCheck = EditStatus.Pending;
+           await _context.SaveChangesAsync();
+            return bookings;
+
+        }
 
         public async Task<IEnumerable<TourBookingForm>> GetTourBookingsByTourIdAsync(Guid tourId)
             => await _context.TourBookingForms
@@ -57,10 +67,18 @@ namespace Domain.Services.TourBooking
                             .ToListAsync();
 
 
-       
+
+        //public async Task<TourBookingForm?> UpdateAsync(TourBookingForm booking)
+        //{
+        //    _context.TourBookingForms.Update(booking);
+        //    await _context.SaveChangesAsync();
+        //    return booking;
+        //}
         public async Task<TourBookingForm?> UpdateAsync(TourBookingForm booking)
         {
-            _context.TourBookingForms.Update(booking);
+            _context.TourBookingForms.Attach(booking);
+            _context.Entry(booking).State = EntityState.Modified;
+
             await _context.SaveChangesAsync();
             return booking;
         }
@@ -90,6 +108,14 @@ namespace Domain.Services.TourBooking
                 .Where(b => b.Status == status)
                 .Include(b => b.Tour)
                 .ToListAsync();
+        }
+        private string GenerateReferenceNumber(TourBookingForm booking)
+        {
+            
+            string shortTourId = booking.TourId.ToString().Substring(0, 3).ToUpper();
+            string randomPart = new Random().Next(1000, 9999).ToString();
+
+            return $"LSC-{shortTourId}-{randomPart}";
         }
 
     }

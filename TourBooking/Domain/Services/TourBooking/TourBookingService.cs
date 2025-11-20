@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.Enums;
 using Domain.Models;
 using Domain.Services.CustomerEditRequests;
 using Domain.Services.Email.Helper;
@@ -19,7 +20,7 @@ namespace Domain.Services.TourBooking
         private readonly IMailService _mailService;
         private readonly ITourBookingEditRequestRepository _editRequestRepository;
         private readonly INotificationService _notificationService;
-
+        private readonly TourBookingPdfService _pdfService;
 
 
         public TourBookingService(
@@ -28,7 +29,8 @@ namespace Domain.Services.TourBooking
             ITourRepository tourRepository,
             IMailService mailService,
             ITourBookingEditRequestRepository editRequestRepository,
-            INotificationService notificationService)
+            INotificationService notificationService,
+            TourBookingPdfService pdfService)
         {
             _repository = repository;
             _mapper = mapper;
@@ -36,6 +38,7 @@ namespace Domain.Services.TourBooking
             _mailService = mailService;
             _editRequestRepository = editRequestRepository;
             _notificationService = notificationService;
+            _pdfService = pdfService;
         }
 
         public async Task<TourBookingDto> AddTourBookingAsync(TourBookingDto dto)
@@ -58,7 +61,8 @@ namespace Domain.Services.TourBooking
             <p>Dear {details.FirstName} {details.LastName},</p>
             <p>Your booking for <strong>{details.Tour.TourName}</strong> has been successfully placed!</p>
             <p>Departure: {details.Tour?.DepartureDate?.ToString("dd MMM yyyy")}<br/>
-            Arrival: {details.Tour?.ArrivalDate?.ToString("dd MMM yyyy")}</p>
+            Arrival: {details.Tour?.ArrivalDate?.ToString("dd MMM yyyy")}
+            </p>
             <p>Thank you for booking with us.</p>"
             };
 
@@ -242,14 +246,8 @@ namespace Domain.Services.TourBooking
 
         public async Task MarkEditCompleteAsync(Guid bookingId)
         {
-            var booking = await _repository.GetTourBookingByIdAsync(bookingId);
-            if (booking == null) return;
-
-            booking.IsEditAllowed = false;
-            //booking.Status = Enums.BookStatus.CONFIRMED;
-            booking.EditStatusCheck = Enums.EditStatus.Pending;
-
-            await _repository.UpdateAsync(booking);
+            var booking = await _repository.GetByTourBookingByIdAsync(bookingId);
+         
         }
 
         public async Task<bool> CancelBookingAsync(Guid bookingId, string? reason)
@@ -281,6 +279,29 @@ namespace Domain.Services.TourBooking
         {
             var cancelled = await _repository.GetByStatusAsync(Enums.BookStatus.CANCELLED);
             return _mapper.Map<IEnumerable<TourBookingDto>>(cancelled);
+        }
+
+        public async Task SendBookingDocumentAsync(GetBookingDto booking)
+        {
+            var pdfBytes = _pdfService.GenerateBookingPdf(booking);
+
+            var req = new MailRequest
+            {
+                ToEmail = booking.User!.Email!,
+                Subject = "Your Booking Document",
+                Body = "<p>Attached is your booking document.</p>",
+                Attachments = new List<AttachmentFile>
+        {
+            new AttachmentFile
+            {
+                FileName = $"Booking-{booking.ReferenceNumber}.pdf",
+                FileBytes = pdfBytes,
+                ContentType = "application/pdf"
+            }
+        }
+            };
+
+            await _mailService.SendEmailAsync(req);
         }
 
 
