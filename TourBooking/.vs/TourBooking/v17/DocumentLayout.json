@@ -382,8 +382,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Terms\\TermsController.cs",
               "RelativeToolTip": "TourBooking\\API\\Terms\\TermsController.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T06:24:18.914Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T06:24:18.914Z"
             },
             {
               "$type": "Document",
@@ -394,8 +393,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Terms\\TermsRepository.cs",
               "RelativeToolTip": "Domain\\Services\\Terms\\TermsRepository.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T06:23:48.328Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T06:23:48.328Z"
             },
             {
               "$type": "Document",
@@ -406,8 +404,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Terms\\TermsService.cs",
               "RelativeToolTip": "Domain\\Services\\Terms\\TermsService.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T06:23:25.721Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T06:23:25.721Z"
             },
             {
               "$type": "Document",
@@ -418,8 +415,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Terms\\DTO\\TermsDto.cs",
               "RelativeToolTip": "Domain\\Services\\Terms\\DTO\\TermsDto.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T06:23:14.62Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T06:23:14.62Z"
             },
             {
               "$type": "Document",
@@ -430,8 +426,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Models\\TermsAndCondition.cs",
               "RelativeToolTip": "Domain\\Models\\TermsAndCondition.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T06:22:52.811Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T06:22:52.811Z"
             },
             {
               "$type": "Document",
@@ -442,8 +437,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Models\\Tourss.cs",
               "RelativeToolTip": "Domain\\Models\\Tourss.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T09:58:53.689Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T09:58:53.689Z"
             },
             {
               "$type": "Document",
@@ -466,8 +460,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Terms\\RequestObjects\\AddTerms.cs",
               "RelativeToolTip": "TourBooking\\API\\Terms\\RequestObjects\\AddTerms.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T06:24:04.819Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T06:24:04.819Z"
             },
             {
               "$type": "Document",
@@ -478,8 +471,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\TourBooking\\TourBookingRepository.cs",
               "RelativeToolTip": "Domain\\Services\\TourBooking\\TourBookingRepository.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T09:58:53.595Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T09:58:53.595Z"
             },
             {
               "$type": "Document",
@@ -490,8 +482,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Tour\\TourRepository.cs",
               "RelativeToolTip": "Domain\\Services\\Tour\\TourRepository.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T09:58:53.645Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T09:58:53.645Z"
             },
             {
               "$type": "Document",
@@ -502,8 +493,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Tour\\TourService.cs",
               "RelativeToolTip": "Domain\\Services\\Tour\\TourService.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T09:58:53.694Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T09:58:53.694Z"
             },
             {
               "$type": "Document",
@@ -514,8 +504,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\Tour\\DTO\\TourDto.cs",
               "RelativeToolTip": "Domain\\Services\\Tour\\DTO\\TourDto.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T09:58:53.658Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T09:58:53.658Z"
             },
             {
               "$type": "Document",
@@ -526,8 +515,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Tour\\TourController.cs",
               "RelativeToolTip": "TourBooking\\API\\Tour\\TourController.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T09:58:53.582Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T09:58:53.582Z"
             },
             {
               "$type": "Document",
@@ -538,8 +526,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\Tour\\Helper\\TourProfile.cs",
               "RelativeToolTip": "TourBooking\\API\\Tour\\Helper\\TourProfile.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T09:58:53.825Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T09:58:53.825Z"
             },
             {
               "$type": "Document",
@@ -550,8 +537,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\TourBooking\\API\\TourBooking\\TourBookingController.cs",
               "RelativeToolTip": "TourBooking\\API\\TourBooking\\TourBookingController.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T09:58:53.568Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T09:58:53.568Z"
             },
             {
               "$type": "Document",
@@ -562,8 +548,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\TourBooking\\Interface\\ITourBookingService.cs",
               "RelativeToolTip": "Domain\\Services\\TourBooking\\Interface\\ITourBookingService.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T09:58:53.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T09:58:53.84Z"
             },
             {
               "$type": "Document",
@@ -585,8 +570,7 @@
               "ToolTip": "D:\\TourBooking\\Tour-booking-backend\\TourBooking\\Domain\\Services\\TourBooking\\TourBookingService.cs",
               "RelativeToolTip": "Domain\\Services\\TourBooking\\TourBookingService.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T09:58:53.64Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T09:58:53.64Z"
             },
             {
               "$type": "Document",
