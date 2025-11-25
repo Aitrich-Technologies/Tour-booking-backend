@@ -28,6 +28,7 @@ namespace Domain.Services.Tour.DTO
         public string? CustomerName { get; set; }  // 👈 add this
         public string ConsultantName { get; set; } // 👈 add this
         public string Status { get; set; }
+        public DateTime? CreatedDate { get; set; }
        
     }
 }

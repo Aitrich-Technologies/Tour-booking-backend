@@ -38,6 +38,9 @@ public class TourProfile : Profile
                     src.Consultant != null
                         ? $"{src.Consultant.FirstName} {src.Consultant.LastName}"
                         : null))
+            .ForMember(dest => dest.CreatedDate,
+                 opt => opt.MapFrom(src => src.CreatedAt))
+
 
             .ForMember(dest => dest.Status,
                 opt => opt.MapFrom(src => src.Status.ToString()));

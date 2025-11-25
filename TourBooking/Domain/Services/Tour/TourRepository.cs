@@ -45,8 +45,10 @@ namespace Domain.Services.Tour
             }
 
             public async Task<Tourss?> GetByIdAsync(Guid tourId) =>
-            await _context.Tours
+            await _context.Tours.Include(t=>t.Destination)
                 .Include(t => t.Customer)
+            .Include(t=>t.Consultant)
+            .Include(t=>t.Consultant)
                 .Include(t => t.TourBookingForms)
                     .ThenInclude(b => b.ParticipantInformations)
                 .FirstOrDefaultAsync(t => t.Id == tourId);

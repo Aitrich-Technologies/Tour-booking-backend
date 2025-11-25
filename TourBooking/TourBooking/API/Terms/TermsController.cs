@@ -48,10 +48,10 @@ namespace TourBooking.API.Terms
 
             // ✅ Check if a term already exists for this TourId
             var existingTerms = await _service.GetTermsByTourIdAsync(tourId);
-            if (existingTerms != null && existingTerms.Any())
-            {
-                return BadRequest(new { message = "A term already exists for this tour." });
-            }
+            //if (existingTerms != null && existingTerms.Any())
+            //{
+            //    return BadRequest(new { message = "A term already exists for this tour." });
+            //}
 
             var newTerm = new TermsDto
             {
